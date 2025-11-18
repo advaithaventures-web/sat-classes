@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital SAT Reading & Writing Classes | Boutique Online Instruction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', Georgia, 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #1A2332;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header with Logo and Contact */
+        .top-header {
+            background-color: #fff;
+            padding: 30px 0;
+            border-bottom: 3px solid #B8860B;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            flex: 0 0 auto;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: #6B7280;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #B8860B;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Header */
+        header {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.4em;
+            opacity: 0.9;
+            color: #F5F5DC;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            border-top: 4px solid #B8860B;
+            border-bottom: 4px solid #B8860B;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .hero-banner h2 {
+            color: #1A2332;
+            font-size: 2.2em;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: #1A2332;
+            font-size: 2.4em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #B8860B;
+            font-size: 1.7em;
+            margin: 30px 0 20px 0;
+            font-weight: bold;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #4A4A4A;
+            font-style: italic;
+        }
+
+        /* Decorative Line */
+        .decorative-line {
+            height: 3px;
+            background-color: #B8860B;
+            width: 150px;
+            margin: 40px auto;
+        }
+
+        /* Course Structure Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .course-box {
+            background-color: #FAFAFA;
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid #e8e8e8;
+            text-align: center;
+        }
+
+        .course-box h3 {
+            color: #B8860B;
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .course-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-box ul li {
+            padding: 12px 0;
+            font-size: 1.15em;
+            color: #4A4A4A;
+        }
+
+        .course-box ul li strong {
+            color: #1A2332;
+            font-weight: bold;
+        }
+
+        /* Question Types */
+        .question-types {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .question-category {
+            background-color: #FAFAFA;
+            padding: 35px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+        }
+
+        .question-category h3 {
+            color: #B8860B;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #B8860B;
+            padding-bottom: 10px;
+        }
+
+        .question-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .question-category ul li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #4A4A4A;
+            font-size: 1.05em;
+        }
+
+        .question-category ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #B8860B;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        /* Method Section */
+        .method-item {
+            margin: 25px 0;
+            padding: 30px;
+            background-color: #FAFAFA;
+            border-left: 5px solid #B8860B;
+            border-radius: 4px;
+        }
+
+        .method-item strong {
+            color: #B8860B;
+            font-size: 1.25em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .method-item p {
+            font-size: 1.1em;
+            color: #4A4A4A;
+            line-height: 1.7;
+        }
+
+        /* Why Choose */
+        .why-list {
+            list-style: none;
+            padding: 0;
+            margin: 40px 0;
+        }
+
+        .why-list li {
+            padding: 20px 30px;
+            margin: 15px 0;
+            background-color: #FAFAFA;
+            border-left: 5px solid #B8860B;
+            font-size: 1.15em;
+            color: #4A4A4A;
+            border-radius: 4px;
+        }
+
+        .why-list li strong {
+            color: #1A2332;
+            font-weight: bold;
+        }
+
+        /* Week by Week */
+        .week-item {
+            margin: 20px 0;
+            padding: 20px 30px;
+            background-color: #FAFAFA;
+            border-radius: 4px;
+        }
+
+        .week-item strong {
+            color: #B8860B;
+            font-size: 1.15em;
+        }
+
+        /* Ideal Banner */
+        .ideal-banner {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 8px;
+            border-top: 4px solid #B8860B;
+            border-bottom: 4px solid #B8860B;
+        }
+
+        .ideal-banner p {
+            color: #1A2332;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2em;
+        }
+
+        .contact-details p {
+            margin: 0;
+            color: #F5F5DC;
+        }
+
+        .contact-details strong {
+            color: #B8860B;
+            font-weight: bold;
+        }
+
+        .contact-details a {
+            color: #B8860B;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-note {
+            margin-top: 30px;
+            font-style: italic;
+            color: #F5F5DC;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0F1419;
+            color: #F5F5DC;
+            text-align: center;
+            padding: 25px 0;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .course-grid,
+            .question-types {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .hero-banner h2 {
+                font-size: 1.7em;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header with Logo and Contact -->
+    <div class="top-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="prepcool_logo.jpg" alt="Prepcool Logo" onerror="this.style.display='none'">
+            </div>
+            <div class="contact-info">
+                <a href="/cdn-cgi/l/email-protection#384a595278484a5d485b575754165b5755"><span class="__cf_email__" data-cfemail="ddafbcb79dadafb8adbeb2b2b1f3beb2b0">[email&#160;protected]</span></a>
+                <a href="tel:+918106461788">+91 8106461788</a>
+                <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header>
+        <div class="container">
+            <h1>Digital SAT Reading & Writing</h1>
+            <p>Private Online Instruction for Exceptional Scores</p>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="container">
+        <div class="hero-banner">
+            <h2>Exclusively for High Achievers • Transform 650+ into 750+</h2>
+        </div>
+    </div>
+
+    <!-- The Program -->
+    <section id="program">
+        <div class="container">
+            <h2>The Program</h2>
+            <div class="decorative-line"></div>
+            <p class="section-intro">
+                An intensive 8-week journey for serious students who demand excellence. Through intimate groups of no more than four students, receive personalized attention that transforms good scores into exceptional ones.
+            </p>
+
+            <div class="course-grid">
+                <div class="course-box">
+                    <h3>8 Classes</h3>
+                    <ul>
+                        <li>90 minutes each</li>
+                        <li>One per week</li>
+                        <li>Live online sessions</li>
+                    </ul>
+                </div>
+                <div class="course-box">
+                    <h3>1-4 Students</h3>
+                    <ul>
+                        <li>Intimate groups</li>
+                        <li>Personal attention</li>
+                        <li>Individual feedback</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Mastery -->
+    <section id="mastery">
+        <div class="container">
+            <h2>Complete Mastery</h2>
+            <div class="decorative-line"></div>
+            <p class="section-intro">
+                Master all ten question types through systematic, cumulative instruction. Each lesson builds upon the last.
+            </p>
+
+            <div class="question-types">
+                <div class="question-category">
+                    <h3>Grammar & Conventions</h3>
+                    <ul>
+                        <li>Boundaries (Punctuation)</li>
+                        <li>Form, Structure & Sense</li>
+                        <li>Transitions</li>
+                        <li>Rhetorical Synthesis</li>
+                    </ul>
+                </div>
+                <div class="question-category">
+                    <h3>Reading Comprehension</h3>
+                    <ul>
+                        <li>Words in Context</li>
+                        <li>Inferences</li>
+                        <li>Text Structure & Purpose</li>
+                        <li>Central Ideas & Details</li>
+                        <li>Command of Evidence</li>
+                        <li>Cross-Text Connections</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Method -->
+    <section id="method">
+        <div class="container">
+            <h2>The Method</h2>
+            <div class="decorative-line"></div>
+
+            <div class="method-item">
+                <strong>Incremental Learning</strong>
+                <p>Each class builds on previous lessons with systematic revision, ensuring permanent retention.</p>
+            </div>
+
+            <div class="method-item">
+                <strong>Progressive Practice</strong>
+                <p>From focused drills to mixed timed practice to full tests. Each stage prepares you for the next.</p>
+            </div>
+
+            <div class="method-item">
+                <strong>Premium Materials</strong>
+                <p>Only official College Board questions and expertly crafted problems. No compromises on quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Works -->
+    <section id="why">
+        <div class="container">
+            <h2>Why This Works</h2>
+            <div class="decorative-line"></div>
+
+            <ul class="why-list">
+                <li><strong>Thirteen years of experience.</strong> Hundreds of successful students. Every single one came through word-of-mouth referrals—the ultimate testament to quality and results.</li>
+                <li><strong>This is not mass education.</strong> This is private, personalized instruction for students who are already good and want to become exceptional.</li>
+                <li><strong>Small groups mean genuine attention.</strong> You're not a number. You're a student with specific needs, and those needs get met.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Week by Week -->
+    <section id="schedule">
+        <div class="container">
+            <h2>Week by Week</h2>
+            <div class="decorative-line"></div>
+
+            <div class="week-item">
+                <strong>Weeks 1-4:</strong> Master all 10 question types through focused instruction and targeted practice
+            </div>
+            <div class="week-item">
+                <strong>Weeks 5-6:</strong> Mixed timed drills combining all types to build speed and confidence
+            </div>
+            <div class="week-item">
+                <strong>Week 7:</strong> Comprehensive revision and discussion of challenging problems
+            </div>
+            <div class="week-item">
+                <strong>Week 8:</strong> Full Reading & Writing test with detailed assessment and recommendations
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideal For -->
+    <div class="container">
+        <div class="ideal-banner">
+            <p>For high achievers currently scoring 650+ who are committed to reaching 750+</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Begin Your Journey</h2>
+            <div class="decorative-line"></div>
+            <div class="contact-details">
+                <p><strong>Classes:</strong> 7:00 AM - 8:00 PM IST (Online)</p>
+                <p class="contact-note">Pricing discussed individually • Investment in excellence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="
