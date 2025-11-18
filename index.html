@@ -66,6 +66,26 @@
             text-decoration: underline;
         }
 
+        /* Navigation */
+        .nav {
+            background-color: #1A2332;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #F5F5DC;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #B8860B;
+        }
+
         /* Main Header */
         header {
             background-color: #1A2332;
@@ -363,6 +383,17 @@
             font-size: 0.95em;
         }
 
+        footer a {
+            color: #B8860B;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #F5F5DC;
+            text-decoration: underline;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
@@ -404,6 +435,11 @@
             .logo img {
                 height: 60px;
             }
+
+            .nav a {
+                display: block;
+                margin: 5px 0;
+            }
         }
     </style>
 </head>
@@ -420,6 +456,12 @@
                 <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
             </div>
         </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Free Digital SAT Practice</a>
     </div>
 
     <!-- Main Header -->
@@ -580,4 +622,13 @@
 
     <!-- Footer -->
     <footer>
-        <div class="
+        <div class="container" style="padding: 25px 30px;">
+            <p style="margin-bottom: 15px;">Expert Digital SAT Reading & Writing instruction since 2012 | Empowering students to achieve 750+</p>
+            <p style="margin: 10px 0;">
+                <a href="index.html">Home</a> | 
+                <a href="resources.html">Free Practice Questions</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
