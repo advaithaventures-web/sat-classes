@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Digital SAT Reading & Writing practice questions with detailed explanations. Master all question types with expert-crafted Digital SAT practice materials.">
+    <meta name="keywords" content="digital SAT, digital SAT reading and writing, digital SAT practice, digital SAT practice tests, digital SAT preparation, SAT reading practice, SAT writing practice">
+    <title>Free Digital SAT Reading & Writing Practice Questions | Expert Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', Georgia, 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #1A2332;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header with Logo and Contact */
+        .top-header {
+            background-color: #fff;
+            padding: 30px 0;
+            border-bottom: 3px solid #B8860B;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            flex: 0 0 auto;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: #6B7280;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #B8860B;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #1A2332;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #F5F5DC;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #B8860B;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            color: #F5F5DC;
+            opacity: 0.9;
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 50px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            border-bottom: 3px solid #B8860B;
+        }
+
+        .intro h2 {
+            color: #1A2332;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.2em;
+            color: #4A4A4A;
+            max-width: 900px;
+            margin: 0 auto 15px auto;
+        }
+
+        /* Question Type Section */
+        .question-type-section {
+            padding: 60px 0;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        .type-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .type-badge {
+            display: inline-block;
+            background-color: #B8860B;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .type-header h2 {
+            color: #1A2332;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            padding: 35px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 5px solid #B8860B;
+        }
+
+        .explanation-box h3 {
+            color: #1A2332;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .explanation-box p {
+            font-size: 1.1em;
+            color: #4A4A4A;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .explanation-box ul {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+
+        .explanation-box li {
+            font-size: 1.05em;
+            color: #4A4A4A;
+            margin-bottom: 8px;
+        }
+
+        /* Question Card */
+        .question-card {
+            background-color: #fff;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .question-number {
+            display: inline-block;
+            background-color: #1A2332;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .passage {
+            background-color: #FAFAFA;
+            padding: 25px;
+            border-left: 4px solid #B8860B;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.9;
+        }
+
+        .passage strong {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+        }
+
+        .question-text {
+            font-size: 1.15em;
+            margin: 25px 0;
+            font-weight: 500;
+            color: #1A2332;
+        }
+
+        .choices {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .choice {
+            padding: 12px 20px;
+            margin: 10px 0;
+            background-color: #F9F9F9;
+            border-left: 3px solid #ddd;
+            font-size: 1.05em;
+        }
+
+        .answer-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #E8F4E8 0%, #D4EDD4 100%);
+            border-left: 5px solid #4A7C59;
+            border-radius: 4px;
+        }
+
+        .answer-label {
+            font-weight: bold;
+            color: #2C5F3E;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .explanation {
+            color: #2C5F3E;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .explanation strong {
+            color: #1F4A2E;
+        }
+
+        .difficulty {
+            margin-top: 15px;
+            font-style: italic;
+            color: #4A7C59;
+            font-size: 0.95em;
+        }
+
+        /* Key Takeaways Box */
+        .takeaways-box {
+            background-color: #FFF9E6;
+            padding: 35px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border: 2px solid #B8860B;
+        }
+
+        .takeaways-box h3 {
+            color: #B8860B;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .takeaways-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .takeaways-box li {
+            padding: 12px 0 12px 30px;
+            font-size: 1.1em;
+            color: #4A4A4A;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .takeaways-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #B8860B;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, transparent, #B8860B, transparent);
+            margin: 60px 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.3em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #F5F5DC;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #B8860B;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #8B6914;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0F1419;
+            color: #F5F5DC;
+            text-align: center;
+            padding: 25px 0;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .question-card {
+                padding: 25px;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            .type-header h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="prepcool_logo.jpg" alt="Prepcool Logo" onerror="this.style.display='none'">
+            </div>
+            <div class="contact-info">
+                <a href="mailto:raj@prepcool.com">raj@prepcool.com</a>
+                <a href="tel:+918106461788">+91 8106461788</a>
+                <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Free Digital SAT Practice</a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Free Digital SAT Reading & Writing Practice</h1>
+            <p>Expert-Crafted Questions with Detailed Explanations</p>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+        <div class="container">
+            <h2>Master Digital SAT Reading & Writing</h2>
+            <p>The Digital SAT Reading & Writing section tests your ability to comprehend complex texts, understand Standard English conventions, and analyze information effectively. This comprehensive Digital SAT practice resource covers all essential question types you'll encounter on test day.</p>
+            <p>Each Digital SAT practice question below includes detailed explanations to help you understand not just the correct answer, but why other options are incorrect—the key to true Digital SAT preparation mastery.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" style="padding: 40px 30px;">
+
+        <!-- ============================================ -->
+        <!-- WORDS IN CONTEXT -->
+        <!-- ============================================ -->
+        <div class="question-type-section">
+            <div class="type-header">
+                <span class="type-badge">Question Type 1</span>
+                <h2>Words in Context</h2>
+            </div>
+
+            <div class="explanation-box">
+                <h3>What This Digital SAT Question Type Tests</h3>
+                <p>Words in Context questions assess your ability to understand how words and phrases function in specific contexts. These Digital SAT Reading & Writing questions come in two formats:</p>
+                <ul>
+                    <li><strong>Fill-in-the-blank format:</strong> You'll choose the word or phrase that best completes a sentence based on context clues.</li>
+                    <li><strong>Word meaning format:</strong> You'll identify what a specific underlined word means as used in the passage, not just its dictionary definition.</li>
+                </ul>
+                <p>Success on these Digital SAT practice questions requires reading carefully for context clues, understanding connotation and tone, and recognizing how surrounding sentences influence word meaning. This is a fundamental skill for Digital SAT preparation.</p>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-card">
+                <span class="question-number">Practice Question 1</span>
+                
+                <div class="passage">
+                    Neurologist Oliver Sacks was known for his ability to <strong>______</strong> complex medical conditions in ways that general readers could understand, transforming technical case studies into compelling narratives that revealed the humanity of his patients.
+                </div>
+
+                <div class="question-text">
+                    Which choice completes the text with the most logical and precise word or phrase?
+                </div>
+
+                <div class="choices">
+                    <div class="choice">A. obscure</div>
+                    <div class="choice">B. elucidate</div>
+                    <div class="choice">C. complicate</div>
+                    <div class="choice">D. summarize</div>
+                </div>
+
+                <div class="answer-section">
+                    <span class="answer-label">✓ Correct Answer: B</span>
+                    <div class="explanation">
+                        <p><strong>Rationale:</strong></p>
+                        <p>Choice B is the best answer because it most logically completes the text's discussion of Oliver Sacks's writing approach. "Elucidate" means to make something clear or explain it in detail. The text indicates that Sacks had an ability to help readers understand complex medical conditions by transforming technical information into compelling narratives. This context thus indicates that Sacks elucidated, or clarified, complex medical conditions for general readers.</p>
+                        <p>Choice A is incorrect because "obscure" means to make something unclear or difficult to understand, which contradicts the text's description of Sacks making complex conditions understandable to general readers. Choice C is incorrect because "complicate" means to make something more complex or difficult, which is the opposite of what the text describes. Choice D is incorrect because while "summarize" might seem plausible, the text emphasizes that Sacks didn't just condense information but rather made it understandable through compelling narratives, which goes beyond mere summarization.</p>
+                        <p class="difficulty">Question Difficulty: Medium</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <span class="question-number">Practice Question 2</span>
+                
+                <div class="passage">
+                    The following text is from Zora Neale Hurston's 1937 novel <em>Their Eyes Were Watching God</em>.
+                    <br><br>
+                    The hurricane's force intensified as darkness fell. Families huddled in their hastily built shanties, constructed from salvaged wood and tin. The wind howled through gaps in the <strong>crude</strong> walls, which had been thrown together in haste and offered little protection against the storm's fury.
+                </div>
+
+                <div class="question-text">
+                    As used in the text, what does the word "crude" most nearly mean?
+                </div>
+
+                <div class="choices">
+                    <div class="choice">A. Unrefined</div>
+                    <div class="choice">B. Offensive</div>
+                    <div class="choice">C. Roughly made</div>
+                    <div class="choice">D. Vulgar</div>
+                </div>
+
+                <div class="answer-section">
+                    <span class="answer-label">✓ Correct Answer: C</span>
+                    <div class="explanation">
+                        <p><strong>Rationale:</strong></p>
+                        <p>Choice C is the best answer because as used in the text, "crude" most nearly means "roughly made," or constructed in a basic, unpolished way. The text describes walls of shanties that were "thrown together in haste" from "salvaged wood and tin" and that had "gaps" through which wind howled. These details clearly indicate that the walls were roughly and quickly constructed, not carefully or skillfully built. Therefore, "crude walls" refers to walls that are roughly made.</p>
+                        <p>Choice A is incorrect because while "unrefined" can be a synonym for crude in some contexts, it's too abstract for this context about physical construction. The text provides specific details about how the walls were made (hastily, from salvaged materials, with gaps), pointing to "roughly made" as the more precise meaning. Choice B is incorrect because "offensive" relates to crude language or behavior that is rude or inappropriate, not to the physical construction quality of walls. Choice D is incorrect because "vulgar" also relates to crude language or socially inappropriate behavior, not to how something is built.</p>
+                        <p class="difficulty">Question Difficulty: Easy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Takeaways -->
+            <div class="takeaways-box">
+                <h3>Key Digital SAT Takeaways: Words in Context</h3>
+                <ul>
+                    <li>Always read the entire sentence and surrounding context before choosing your answer</li>
+                    <li>Focus on how the word functions in this specific passage, not just its general dictionary meaning</li>
+                    <li>Look for context clues in the same sentence and nearby sentences that hint at the word's meaning</li>
+                    <li>For fill-in-the-blank questions, try each answer choice in the blank and see which creates the most logical meaning</li>
+                    <li>Eliminate answers that contradict the passage's tone or message</li>
+                    <li>Pay attention to transition words and phrases that signal relationships between ideas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================ -->
+        <!-- TEXT STRUCTURE AND PURPOSE -->
+        <!-- ============================================ -->
+        <div class="question-type-section">
+            <div class="type-header">
+                <span class="type-badge">Question Type 2</span>
+                <h2>Text Structure and Purpose</h2>
+            </div>
+
+            <div class="explanation-box">
+                <h3>What This Digital SAT Question Type Tests</h3>
+                <p>Text Structure and Purpose questions on the Digital SAT Reading & Writing section evaluate your ability to understand how texts are organized and what they aim to accomplish. These Digital SAT practice questions appear in three formats:</p>
+                <ul>
+                    <li><strong>Overall purpose:</strong> Identify what the entire text is trying to accomplish (explain, argue, describe, etc.)</li>
+                    <li><strong>Overall structure:</strong> Recognize how the text is organized (chronologically, compare/contrast, problem/solution, cause/effect)</li>
+                    <li><strong>Function of a portion:</strong> Understand what role a specific underlined section plays in supporting the text's main idea</li>
+                </ul>
+                <p>These questions are essential for Digital SAT preparation because they test reading comprehension at a higher level—you must understand not just what the text says, but how and why it's constructed that way.</p>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-card">
+                <span class="question-number">Practice Question 1</span>
+                
+                <div class="passage">
+                    Marine biologist Sylvia Earle began her groundbreaking research on ocean ecosystems in the 1960s by conducting extensive underwater observations using early diving technology. She documented the behavior of marine species and the health of coral reefs in ways that had never been done before. Her work revealed alarming patterns of environmental degradation caused by pollution and overfishing. These findings prompted Earle to shift from pure research to environmental advocacy, leading her to establish Mission Blue, an organization dedicated to creating protected marine sanctuaries around the world.
+                </div>
+
+                <div class="question-text">
+                    Which choice best describes the overall structure of the text?
+                </div>
+
+                <div class="choices">
+                    <div class="choice">A. It presents a scientific theory, then describes experiments that tested that theory.</div>
+                    <div class="choice">B. It traces the evolution of a scientist's career from research to activism, explaining what motivated the change.</div>
+                    <div class="choice">C. It compares two different approaches to marine conservation, then advocates for one over the other.</div>
+                    <div class="choice">D. It describes a problem in ocean ecosystems, then proposes multiple solutions to address it.</div>
+                </div>
+
+                <div class="answer-section">
+                    <span class="answer-label">✓ Correct Answer: B</span>
+                    <div class="explanation">
+                        <p><strong>Rationale:</strong></p>
+                        <p>Choice B is the best answer. The text follows Sylvia Earle's career chronologically, beginning with her research work in the 1960s ("conducting extensive underwater observations"), then describing what her research revealed ("alarming patterns of environmental degradation"), and finally explaining how this led her to shift to activism ("prompted Earle to shift from pure research to environmental advocacy"). This traces the evolution from research to activism and explains the motivation for the change.</p>
+                        <p>Choice A is incorrect. The text doesn't present a theory being tested; instead, it describes observational research and its consequences. Choice C is incorrect. The text doesn't compare two different approaches to marine conservation; it focuses solely on Earle's progression from researcher to advocate. Choice D is incorrect. While the text does mention problems in ocean ecosystems, its primary focus is on Earle's career trajectory, not on presenting multiple solutions to environmental problems.</p>
+                        <p class="difficulty">Question Difficulty: Medium</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <span class="question-number">Practice Question 2</span>
+                
+                <div class="passage">
+                    Historian Dolores Hayden argues that urban planning in twentieth-century America systematically excluded women's perspectives. City layouts prioritized men's needs for commuting to centralized workplaces while ignoring women's need for accessible community services, childcare facilities, and local employment opportunities. <strong>As evidence, Hayden points to the post-World War II suburban developments, where houses were built far from schools, shops, and medical facilities, creating environments that assumed women would be available to drive children and manage household errands throughout the day.</strong> This design philosophy reinforced traditional gender roles and limited women's economic independence.
+                </div>
+
+                <div class="question-text">
+                    Which choice best describes the function of the underlined portion in the text as a whole?
+                </div>
+
+                <div class="choices">
+                    <div class="choice">A. It provides a specific historical example that supports the historian's argument about gender bias in urban planning.</div>
+                    <div class="choice">B. It introduces a counterargument to Hayden's main thesis about women and city design.</div>
+                    <div class="choice">C. It explains the economic factors that influenced suburban development after World War II.</div>
+                    <div class="choice">D. It describes the benefits that suburban design offered to families in the mid-twentieth century.</div>
+                </div>
+
+                <div class="answer-section">
+                    <span class="answer-label">✓ Correct Answer: A</span>
+                    <div class="explanation">
+                        <p><strong>Rationale:</strong></p>
+                        <p>Choice A is the best answer because it best describes how the underlined portion functions in the text as a whole. The text begins by stating Hayden's argument that urban planning excluded women's perspectives and prioritized men's needs. The underlined portion provides a concrete example of this bias: post-World War II suburban developments that placed houses far from essential services, assuming women would be available for transportation duties. This specific example serves as evidence supporting Hayden's broader claim about gender bias in urban planning.</p>
+                        <p>Choice B is incorrect because the underlined portion supports Hayden's thesis rather than presenting a counterargument to it; the suburban example reinforces her claim about gender bias. Choice C is incorrect because while the underlined portion mentions a time period (post-World War II), it doesn't explain economic factors that influenced development; instead, it focuses on how the design reflected gendered assumptions. Choice D is incorrect because the underlined portion emphasizes the problems with suburban design for women, not the benefits it offered to families.</p>
+                        <p class="difficulty">Question Difficulty: Medium</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <span class="question-number">Practice Question 3</span>
+                
+                <div class="passage">
+                    In 2018, computer scientist Timnit Gebru and her colleague Joy Buolamwini published research demonstrating that facial recognition systems performed significantly worse at identifying women and people with darker skin tones. Their study tested commercial facial recognition software from major technology companies and found error rates of up to 34% for dark-skinned women, compared to less than 1% for light-skinned men. Since then, Gebru has continued to investigate algorithmic bias, examining how artificial intelligence systems can perpetuate discrimination. Her work has influenced policy discussions and led several cities to ban the use of facial recognition technology by law enforcement.
+                </div>
+
+                <div class="question-text">
+                    Which choice best describes the overall purpose of the text?
+                </div>
+
+                <div class="choices">
+                    <div class="choice">A. To argue that facial recognition technology should be completely banned worldwide.</div>
+                    <div class="choice">B. To explain the technical mechanisms that cause errors in facial recognition software.</div>
+                    <div class="choice">C. To present an overview of Gebru's research on algorithmic bias and its broader impact.</div>
+                    <div class="choice">D. To compare the accuracy rates of different facial recognition systems across multiple companies.</div>
+                </div>
+
+                <div class="answer-section">
+                    <span class="answer-label">✓ Correct Answer: C</span>
+                    <div class="explanation">
+                        <p><strong>Rationale:</strong></p>
+                        <p>Choice C is the best answer. The text presents a summary of Timnit Gebru's research journey, starting with her 2018 study on facial recognition bias, describing her continued investigation of algorithmic bias, and concluding with the impact of her work on policy and law enforcement practices. This provides an overview of both her research and its broader societal influence.</p>
+                        <p>Choice A is incorrect. This isn't the overall purpose. While the text mentions that some cities banned facial recognition technology, it presents this as one outcome of Gebru's research, not as an argument the text itself is making for a worldwide ban. Choice B is incorrect. The text doesn't explain the technical mechanisms behind the errors; instead, it focuses on documenting the existence of bias and its consequences. Choice D is incorrect. This is too narrow. Although the text mentions that multiple companies' software was tested, comparing accuracy rates across companies is not the overall purpose; the text is focused on Gebru's research career and impact.</p>
+                        <p class="difficulty">Question Difficulty: Easy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Takeaways -->
+            <div class="takeaways-box">
+                <h3>Key Digital SAT Takeaways: Text Structure and Purpose</h3>
+                <ul>
+                    <li>For structure questions, identify how ideas progress: chronologically, by comparison, cause/effect, or problem/solution</li>
+                    <li>For purpose questions, ask yourself "What is this text trying to accomplish?" rather than "What is this text about?"</li>
+                    <li>When analyzing underlined portions, consider how they connect to the text's main idea—do they provide evidence, examples, counterarguments, or elaboration?</li>
+                    <li>Look for transition words and phrases that signal structure (however, therefore, for example, in contrast)</li>
+                    <li>Eliminate answers that focus on minor details rather than the overall organization or purpose</li>
+                    <li>Practice identifying whether a text primarily explains, argues, describes, or compares—this is crucial for Digital SAT Reading & Writing success</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Ready to Ace Digital SAT Reading & Writing?</h2>
+            <p>These free Digital SAT practice questions are just the beginning. Join my intensive 8-week Digital SAT preparation program for comprehensive practice, expert strategies, and personalized feedback.</p>
+            <a href="index.html#contact" class="cta-button">Transform Your Score Today</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Expert Digital SAT Reading & Writing instruction since 2012 | Empowering students to achieve 750+</p>
+        </div>
+    </footer>
+</body>
+</html>
