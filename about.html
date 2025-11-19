@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet Raj - Digital SAT Reading & Writing expert with 13+ years of experience helping high achievers reach 750+ scores through boutique online instruction.">
+    <title>About | Digital SAT Reading & Writing Expert | Premium Instruction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', Georgia, 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #1A2332;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header with Logo and Contact */
+        .top-header {
+            background-color: #fff;
+            padding: 30px 0;
+            border-bottom: 3px solid #B8860B;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            flex: 0 0 auto;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: #6B7280;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #B8860B;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #1A2332;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #F5F5DC;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #B8860B;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            color: #F5F5DC;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+
+        h2 {
+            color: #1A2332;
+            font-size: 2.4em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .decorative-line {
+            height: 3px;
+            background-color: #B8860B;
+            width: 150px;
+            margin: 20px auto 40px auto;
+        }
+
+        /* Intro Quote */
+        .intro-quote {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            padding: 50px;
+            margin: 50px 0;
+            text-align: center;
+            border-top: 4px solid #B8860B;
+            border-bottom: 4px solid #B8860B;
+            border-radius: 8px;
+        }
+
+        .intro-quote p {
+            font-size: 1.8em;
+            color: #1A2332;
+            font-style: italic;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Story Section */
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-content p {
+            font-size: 1.2em;
+            color: #4A4A4A;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .story-content p:first-of-type::first-letter {
+            font-size: 3.5em;
+            font-weight: bold;
+            float: left;
+            line-height: 0.9;
+            margin: 0.1em 0.1em 0 0;
+            color: #B8860B;
+        }
+
+        /* Credentials Grid */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .credential-box {
+            background-color: #FAFAFA;
+            padding: 35px 25px;
+            border-radius: 8px;
+            border: 2px solid #e8e8e8;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .credential-box:hover {
+            transform: translateY(-5px);
+            border-color: #B8860B;
+        }
+
+        .credential-box h3 {
+            color: #B8860B;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .credential-box p {
+            color: #4A4A4A;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .timeline-item {
+            padding: 30px;
+            margin: 25px 0;
+            background-color: #FAFAFA;
+            border-left: 5px solid #B8860B;
+            border-radius: 4px;
+        }
+
+        .timeline-item .year {
+            color: #B8860B;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-item p {
+            font-size: 1.15em;
+            color: #4A4A4A;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Philosophy Section */
+        .philosophy-box {
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            padding: 50px;
+            margin: 50px 0;
+            border-radius: 8px;
+            border: 3px solid #B8860B;
+        }
+
+        .philosophy-box h3 {
+            color: #1A2332;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .philosophy-list {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-list li {
+            padding: 20px 0;
+            font-size: 1.15em;
+            color: #4A4A4A;
+            line-height: 1.7;
+            border-bottom: 1px solid #D4C9A3;
+        }
+
+        .philosophy-list li:last-child {
+            border-bottom: none;
+        }
+
+        .philosophy-list li strong {
+            color: #1A2332;
+            font-weight: bold;
+        }
+
+        /* Results Box */
+        .results-banner {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 60px 0;
+            border-radius: 8px;
+        }
+
+        .results-banner h3 {
+            color: #B8860B;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item .number {
+            font-size: 3em;
+            color: #B8860B;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-item .label {
+            font-size: 1.1em;
+            color: #F5F5DC;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #F5F5DC;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #B8860B;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #8B6914;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0F1419;
+            color: #F5F5DC;
+            text-align: center;
+            padding: 25px 0;
+            font-style: italic;
+        }
+
+        footer a {
+            color: #B8860B;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2.2em;
+            }
+
+            .credentials-grid,
+            .results-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .intro-quote p {
+                font-size: 1.4em;
+            }
+
+            .story-content p {
+                text-align: left;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="prepcool_logo.jpg" alt="Prepcool Logo" onerror="this.style.display='none'">
+            </div>
+            <div class="contact-info">
+                <a href="/cdn-cgi/l/email-protection#9be9faf1dbebe9feebf8f4f4f7b5f8f4f6"><span class="__cf_email__" data-cfemail="c2b0a3a882b2b0a7b2a1adadaeeca1adaf">[email&#160;protected]</span></a>
+                <a href="tel:+918106461788">+91 8106461788</a>
+                <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Free Digital SAT Practice</a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>About Raj</h1>
+            <p>Thirteen Years of Excellence in Digital SAT Instruction</p>
+        </div>
+    </div>
+
+    <!-- Intro Quote -->
+    <div class="container">
+        <div class="intro-quote">
+            <p>"Excellence in test preparation isn't about tricks or shortcuts. It's about genuine mastery, delivered through patient, expert instruction."</p>
+        </div>
+    </div>
+
+    <!-- The Story -->
+    <section>
+        <div class="container">
+            <h2>The Journey</h2>
+            <div class="decorative-line"></div>
+            
+            <div class="story-content">
+                <p>Twenty-six years ago, in 1999, I discovered something about myself while taking my engineering admission test: I had an instinct for the kind of questions that appear on admissions tests. Not just an ability to answer them, but a genuine fascination with how they're constructed, what they measure, and how students can be taught to excel at them. That day, applying naturally built problem-solving skills that differentiated me from the crowd, I realized this was more than just test-taking—it was intellectual engagement of the highest order.</p>
+
+                <p>That fascination has sustained a career dedicated exclusively to helping students achieve exceptional scores. After years in finance—working with stock-broking firms and asset management companies, eventually running my own firm—I returned to what I'd always found most intellectually rewarding: the art and science of test preparation.</p>
+
+                <p>Since 2012, I've focused entirely on helping students master standardized tests. First at The Princeton Review and Kaplan, where I rose from trainer to academic head. Then, from 2017 onwards, through my own ventures: Prepcool for Digital SAT preparation, Lexcello for LNAT practice, and TheSATTrial for comprehensive assessment.</p>
+
+                <p>For the past nine years, my attention has narrowed to what I believe is the most critical—and most misunderstood—section of the Digital SAT: Reading & Writing. While there are excellent math coaches doing commendable work, I found students desperately needing specialized guidance in Reading & Writing, where many believe subjectivity exists. It doesn't. Every answer is objectively, demonstrably correct—you just need to know how to see it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials -->
+    <section style="background-color: #FAFAFA; padding: 60px 0;">
+        <div class="container">
+            <h2>Credentials & Expertise</h2>
+            <div class="decorative-line"></div>
+
+            <div class="credentials-grid">
+                <div class="credential-box">
+                    <h3>Education</h3>
+                    <p><strong>B.Tech</strong> Computer Science Engineering, Osmania University (2002)</p>
+                    <p><strong>PGDBM</strong> FORE School of Management, New Delhi (2005)</p>
+                    <p><strong>LLB</strong> Osmania University (2024)</p>
+                </div>
+
+                <div class="credential-box">
+                    <h3>Certifications</h3>
+                    <p>Princeton Review Certified Instructor for GRE, GMAT, SAT, and PSAT—both Quantitative and Verbal sections</p>
+                    <p>Over a decade of specialized Digital SAT expertise</p>
+                </div>
+
+                <div class="credential-box">
+                    <h3>Test Scores</h3>
+                    <p>99+ percentile across multiple standardized admissions tests</p>
+                    <p>Deep understanding of test construction and scoring mechanisms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey -->
+    <section>
+        <div class="container">
+            <h2>Professional Journey</h2>
+            <div class="decorative-line"></div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">2013-2015</span>
+                    <p>Trainer, Senior Trainer, and Academic Head at The Princeton Review and Kaplan—training hundreds of students and mentoring fellow instructors in advanced test preparation techniques.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="year">2016</span>
+                    <p>Contributed to building a comprehensive digital platform for SAT aspirants at a leading EdTech company, developing curriculum and assessment methodologies.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="year">2017-Present</span>
+                    <p>Founder, Prepcool Edutech Private Limited. Created and operate three specialized platforms: Prepcool.com (Digital SAT preparation), Lexcello.com (LNAT practice tests), and TheSATTrial.com (SAT assessment portal). Over this period, personally coached thousands of students to exceptional scores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <div class="container">
+        <div class="results-banner">
+            <h3>Track Record of Excellence</h3>
+            <div class="results-stats">
+                <div class="stat-item">
+                    <span class="number">13+</span>
+                    <span class="label">Years of Expert Instruction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">1000s</span>
+                    <span class="label">of Students Coached</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">100%</span>
+                    <span class="label">Word-of-Mouth Referrals</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teaching Philosophy -->
+    <section>
+        <div class="container">
+            <h2>Why Reading & Writing?</h2>
+            <div class="decorative-line"></div>
+
+            <div class="story-content">
+                <p>While I genuinely love mathematics and would enjoy teaching Digital SAT Math, I've realized something important: there are already many excellent math coaches doing outstanding work. Students have quality options for quantitative preparation.</p>
+
+                <p>Reading & Writing is different. Here, students—especially those with strong analytical minds who excel at math—struggle with what they perceive as subjectivity. They want objective, logical answers. They want problems they can solve with certainty.</p>
+
+                <p>Here's what I tell them: <em>Digital SAT Reading & Writing is completely objective.</em> Every single answer is demonstrably, logically correct. There is no subjectivity, no "best guess," no "it depends on interpretation." The questions are constructed with the same precision as mathematical problems. You simply need to learn the framework for seeing it.</p>
+
+                <p>Students who are naturally good at math approach Reading & Writing expecting the same kind of clear, logical reasoning—and they're right to expect it. It's there. But without specialized guidance, they can't see the patterns. They mistake unfamiliarity for ambiguity.</p>
+
+                <p>This is where I focus my expertise: showing analytically-minded students that Reading & Writing questions are just as objective as math questions—they simply require a different analytical framework. Once you have that framework, every answer becomes clear, logical, and provable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Philosophy -->
+    <section style="background-color: #FAFAFA;">
+        <div class="container">
+            <h2>Teaching Philosophy</h2>
+            <div class="decorative-line"></div>
+
+            <div class="philosophy-box">
+                <h3>What I Believe</h3>
+                <ul class="philosophy-list">
+                    <li><strong>Reading & Writing is objective, not subjective.</strong> Every answer can be proven correct through systematic analysis. My job is teaching you that analytical framework.</li>
+                    
+                    <li><strong>Small groups are non-negotiable.</strong> With more than four students, personalized attention becomes impossible. Every student has unique weaknesses that deserve individual focus.</li>
+                    
+                    <li><strong>Quality over everything.</strong> I use only official College Board materials and expertly crafted questions. Students deserve the real thing, not approximations.</li>
+                    
+                    <li><strong>Mastery takes time and patience.</strong> There are no shortcuts to a 750+ score. What there is: systematic instruction, cumulative learning, and genuine expertise.</li>
+                    
+                    <li><strong>This is not mass education.</strong> I work with students who are already good and want to become exceptional. Students who understand that excellence requires commitment.</li>
+                    
+                    <li><strong>Results speak louder than marketing.</strong> Every student I've taught came through word-of-mouth referrals. That's the only metric that matters.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beyond Teaching -->
+    <section>
+        <div class="container">
+            <h2>Beyond Teaching</h2>
+            <div class="decorative-line"></div>
+
+            <div class="story-content">
+                <p>Outside of test preparation, my intellectual life centers on two enduring passions: mathematics and financial markets. I still love math—the elegant, logical problems, the clarity of proofs, the satisfaction of problem-solving. While I could happily teach Digital SAT Math, I've chosen to focus where students need the most specialized help: Reading & Writing.</p>
+
+                <p>My other passion, financial markets, has held my attention for over 26 years. Studying technical charts and market patterns requires the same analytical rigor I bring to teaching—pattern recognition, logical frameworks, systematic analysis. These cognitive tools are precisely what help students see the objective logic in Reading & Writing questions that others mistake for subjective interpretation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Ready to Begin?</h2>
+            <p>If you're a serious student committed to achieving an exceptional Digital SAT Reading & Writing score, let's discuss whether this program is right for you.</p>
+            <a href="index.html#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Expert Digital SAT Reading & Writing instruction since 2012 | Empowering students to achieve 750+</p>
+            <p style="margin-top: 10px;">
+                <a href="index.html">Home</a> | 
+                <a href="about.html">About</a> |
