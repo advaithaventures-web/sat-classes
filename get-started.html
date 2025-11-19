@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your Digital SAT tutoring session with Raj. Choose from demo sessions, hourly tutoring, or contact via WhatsApp for personalized SAT preparation.">
+    <meta name="keywords" content="digital SAT tutoring, SAT demo session, SAT hourly tutoring, Digital SAT preparation, book SAT tutor">
+    <title>Get Started - Book Your Digital SAT Session | Prepcool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Garamond', Georgia, 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #1A2332;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header with Logo and Contact */
+        .top-header {
+            background-color: #fff;
+            padding: 30px 0;
+            border-bottom: 3px solid #B8860B;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            flex: 0 0 auto;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: #6B7280;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #B8860B;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #1A2332;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #F5F5DC;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #B8860B;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #1A2332;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            color: #F5F5DC;
+            opacity: 0.9;
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 50px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+            border-bottom: 3px solid #B8860B;
+        }
+
+        .intro h2 {
+            color: #1A2332;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.2em;
+            color: #4A4A4A;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Pricing Cards Section */
+        .pricing-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border: 3px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-color: #B8860B;
+        }
+
+        .pricing-card.featured {
+            border-color: #B8860B;
+            border-width: 4px;
+            background: linear-gradient(135deg, #FFF9E6 0%, #F5F5DC 100%);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #B8860B;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .pricing-card h3 {
+            color: #1A2332;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 3em;
+            color: #B8860B;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-currency {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+
+        .price-period {
+            font-size: 0.4em;
+            color: #6B7280;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e8e8e8;
+            color: #4A4A4A;
+            font-size: 1.05em;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #B8860B;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #B8860B;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #8B6914;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #20BD5A;
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* Payment Note */
+        .payment-note {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #6B7280;
+            font-style: italic;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #F5F5DC 0%, #E8E4D0 100%);
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            color: #1A2332;
+            font-size: 2.3em;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            background: #fff;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #B8860B;
+        }
+
+        .faq-item h3 {
+            color: #1A2332;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            color: #4A4A4A;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0F1419;
+            color: #F5F5DC;
+            text-align: center;
+            padding: 25px 0;
+            font-style: italic;
+        }
+
+        footer a {
+            color: #B8860B;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #F5F5DC;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .logo img {
+                height: 60px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="prepcool_logo.jpg" alt="Prepcool Logo" onerror="this.style.display='none'">
+            </div>
+            <div class="contact-info">
+                <a href="mailto:raj@prepcool.com">raj@prepcool.com</a>
+                <a href="tel:+918106461788">+91 8106461788</a>
+                <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Free Digital SAT Practice</a>
+        <a href="get-started.html">Get Started</a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Get Started with Expert Digital SAT Tutoring</h1>
+            <p>Choose the option that best fits your learning needs</p>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+        <div class="container">
+            <h2>Invest in Your Future</h2>
+            <p>With 13 years of teaching experience and proven results, I offer flexible Digital SAT tutoring options designed to help you achieve your target score. Whether you want to experience my teaching style with a demo, need ongoing support, or have specific questions, there's an option for you.</p>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing-section">
+        <div class="pricing-grid">
+            
+            <!-- Demo Session Card -->
+            <div class="pricing-card">
+                <h3>Demo Session</h3>
+                <div class="price">
+                    <span class="price-currency">$</span>20
+                    <span class="price-period">40-minute session</span>
+                </div>
+                <ul class="features-list">
+                    <li>Experience my teaching methodology</li>
+                    <li>Diagnostic assessment of your current level</li>
+                    <li>Personalized strategy discussion</li>
+                    <li>Sample question walkthrough</li>
+                    <li>No commitment required</li>
+                </ul>
+                <a href="mailto:raj@prepcool.com?subject=Demo Session Request&body=Hi Raj,%0A%0AI would like to book a 40-minute demo session for $20. Please let me know the next steps for payment and scheduling.%0A%0AThank you!" class="cta-button">Book Demo Session</a>
+                <p class="payment-note">Payment details will be shared via email</p>
+            </div>
+
+            <!-- Hourly Tutoring Card (Featured) -->
+            <div class="pricing-card featured">
+                <div class="featured-badge">Most Popular</div>
+                <h3>Hourly Tutoring</h3>
+                <div class="price">
+                    <span class="price-currency">$</span>50
+                    <span class="price-period">per hour</span>
+                </div>
+                <ul class="features-list">
+                    <li>Flexible scheduling at your convenience</li>
+                    <li>Doubt clarification sessions</li>
+                    <li>Topic-specific deep dives</li>
+                    <li>Practice test review & analysis</li>
+                    <li>Customized study strategies</li>
+                    <li>Buy multiple hours at once</li>
+                </ul>
+                <a href="mailto:raj@prepcool.com?subject=Hourly Tutoring Request&body=Hi Raj,%0A%0AI would like to purchase hourly tutoring sessions at $50/hour. I am interested in [NUMBER] hours.%0A%0APlease share payment and scheduling details.%0A%0AThank you!" class="cta-button">Buy Tutoring Hours</a>
+                <p class="payment-note">Purchase multiple hours and use as needed</p>
+            </div>
+
+            <!-- WhatsApp Inquiry Card -->
+            <div class="pricing-card">
+                <h3>Have Questions?</h3>
+                <div class="price">
+                    <span style="font-size: 0.5em;">Free</span>
+                    <span class="price-period">Consultation</span>
+                </div>
+                <ul class="features-list">
+                    <li>Connect directly via WhatsApp</li>
+                    <li>Discuss your specific needs</li>
+                    <li>Get course recommendations</li>
+                    <li>Learn about 8-week intensive program</li>
+                    <li>Quick response guaranteed</li>
+                </ul>
+                <a href="https://wa.me/918106461788?text=Hi%20Raj,%20I'm%20interested%20in%20learning%20more%20about%20your%20Digital%20SAT%20tutoring%20services." class="cta-button whatsapp-button" target="_blank">
+                    <span class="whatsapp-icon">📱</span>Message on WhatsApp
+                </a>
+                <p class="payment-note">I typically respond within 2 hours</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How do I pay for sessions?</h3>
+                <p>After you express interest via email or WhatsApp, I'll send you secure payment instructions. I accept payments via bank transfer, UPI, PayPal, and other international payment methods.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I schedule sessions at different times?</h3>
+                <p>Absolutely! When you purchase hourly tutoring, you can schedule sessions at times that work for your schedule. We'll coordinate timing that works for both of us.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What if I need to cancel or reschedule?</h3>
+                <p>I understand that schedules change. Please provide at least 24 hours notice for cancellations or rescheduling, and your purchased hours will remain available for future use.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do unused hours expire?</h3>
+                <p>Purchased tutoring hours are valid for 6 months from the date of purchase, giving you plenty of flexibility to use them as needed.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What's covered in the demo session?</h3>
+                <p>The 40-minute demo includes a diagnostic assessment of your current level, a walkthrough of 2-3 sample questions showcasing my teaching methodology, and a personalized strategy discussion for your Digital SAT preparation.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I combine different options?</h3>
+                <p>Yes! Many students start with a demo session, then purchase hourly tutoring or join the 8-week intensive program. Contact me to discuss the best combination for your needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 15px;">Expert Digital SAT Reading & Writing instruction since 2012 | Empowering students to achieve 750+</p>
+            <p style="margin: 10px 0;">
+                <a href="index.html">Home</a> | 
+                <a href="about.html">About</a> | 
+                <a href="resources.html">Free Practice Questions</a> | 
+                <a href="get-started.html">Get Started</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
