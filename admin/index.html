@@ -118,6 +118,15 @@
             background: #218838;
         }
 
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
         .btn-sm {
             padding: 6px 12px;
             font-size: 12px;
@@ -879,8 +888,9 @@
                             <td><span class="badge ${s.is_active ? 'badge-success' : 'badge-danger'}">${s.is_active ? 'Active' : 'Inactive'}</span></td>
                             <td>${new Date(s.created_at).toLocaleDateString()}</td>
                             <td class="actions">
-                                <button class="btn btn-sm btn-secondary" onclick="editStudent(${s.id}, '${s.name}', '${s.email}', ${s.is_active})">Edit</button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.id}, '${s.name}')">Delete</button>
+                                <button class="btn btn-sm btn-secondary" onclick="editStudent(${s.id}, '${s.name.replace(/'/g, "\\'")}', '${s.email}', ${s.is_active})">Edit</button>
+                                <button class="btn btn-sm btn-warning" onclick="generateResetCode(${s.id}, '${s.email}')">Reset PW</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.id}, '${s.name.replace(/'/g, "\\'")}')">Delete</button>
                             </td>
                         </tr>
                     `).join('')
@@ -1217,6 +1227,19 @@
                 
             } catch (error) {
                 statusDiv.innerHTML = `<p style="color: #dc3545;">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        // Generate password reset code for a student
+        async function generateResetCode(userId, email) {
+            try {
+                const result = await apiCall(`/admin/users/${userId}/reset-code`, {
+                    method: 'POST'
+                });
+                
+                alert(`✅ Reset Code Generated!\n\nStudent: ${result.student.name}\nEmail: ${email}\n\n🔑 Reset Code: ${result.reset_code}\n\n⏰ Expires in: ${result.expires_in}\n\nShare this code with the student. They can use it on the login page by clicking "Forgot Password".`);
+            } catch (error) {
+                alert('Error generating reset code: ' + error.message);
             }
         }
     </script>
