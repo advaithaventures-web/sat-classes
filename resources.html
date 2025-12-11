@@ -129,65 +129,133 @@
             margin: 0 auto 15px auto;
         }
 
-        /* Quick Navigation - 5x2 Compact Grid */
-.quick-nav {
-    background: linear-gradient(135deg, #FFF9E6 0%, #F5F5DC 100%);
-    padding: 25px 30px;
-    margin: 40px 0;
-    border-radius: 8px;
-    border: 3px solid #B8860B;
-}
-
-.quick-nav h3 {
-    color: #1A2332;
-    font-size: 1.4em;
-    margin-bottom: 18px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.quick-nav-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-}
-
-.quick-nav-item {
+       /* Main Two-Column Layout */
+.main-layout {
+    display: flex;
+    max-width: 1400px;
+    margin: 30px auto;
     background: white;
-    padding: 10px 12px;
-    border-radius: 5px;
-    border-left: 4px solid #B8860B;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
-    color: #1A2332;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    min-height: 700px;
+}
+
+/* Left Sidebar - Vertical Tabs */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #1A2332 0%, #2A3342 100%);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-header h3 {
+    color: #B8860B;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.sidebar-header p {
+    color: #F5F5DC;
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+/* Tab Items */
+.tab-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+    color: #F5F5DC;
+    text-decoration: none;
 }
 
-.quick-nav-item:hover {
-    transform: translateX(3px);
-    box-shadow: 0 3px 10px rgba(184, 134, 11, 0.2);
+.tab-item:hover {
+    background: rgba(184, 134, 11, 0.15);
+    border-left-color: #B8860B;
 }
 
-.quick-nav-item .number {
+.tab-item.active {
+    background: rgba(184, 134, 11, 0.25);
+    border-left-color: #B8860B;
+}
+
+.tab-number {
     background-color: #B8860B;
     color: white;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8em;
+    font-size: 0.85em;
     font-weight: bold;
     flex-shrink: 0;
 }
 
-.quick-nav-item .title {
-    font-size: 0.9em;
+.tab-item.active .tab-number {
+    background-color: #FFD700;
+    color: #1A2332;
+}
+
+.tab-title {
+    font-size: 0.95em;
     line-height: 1.3;
+}
+
+/* Right Content Area */
+.content-area {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background: #fafafa;
+}
+
+.content-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #B8860B;
+}
+
+.content-header .type-badge {
+    background-color: #B8860B;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.content-header h2 {
+    color: #1A2332;
+    font-size: 1.8em;
+    margin: 0;
+}
+
+/* Tab Panels */
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
 }
         /* Accordion Styles */
         .accordion-item {
@@ -643,70 +711,69 @@
         </div>
     </div>
 
-   <!-- Quick Navigation - 5x2 Compact Grid -->
-<div class="container">
-    <div class="quick-nav">
-        <h3>📚 Jump to Any Question Type</h3>
-        <div class="quick-nav-grid">
-            <a href="#type1" class="quick-nav-item">
-                <span class="number">1</span>
-                <span class="title">Words in Context</span>
-            </a>
-            <a href="#type2" class="quick-nav-item">
-                <span class="number">2</span>
-                <span class="title">Text Structure & Purpose</span>
-            </a>
-            <a href="#type3" class="quick-nav-item">
-                <span class="number">3</span>
-                <span class="title">Central Ideas & Details</span>
-            </a>
-            <a href="#type4" class="quick-nav-item">
-                <span class="number">4</span>
-                <span class="title">Inferences</span>
-            </a>
-            <a href="#type5" class="quick-nav-item">
-                <span class="number">5</span>
-                <span class="title">Command of Evidence</span>
-            </a>
-            <a href="#type6" class="quick-nav-item">
-                <span class="number">6</span>
-                <span class="title">Cross-Text Connections</span>
-            </a>
-            <a href="#type7" class="quick-nav-item">
-                <span class="number">7</span>
-                <span class="title">Transitions</span>
-            </a>
-            <a href="#type8" class="quick-nav-item">
-                <span class="number">8</span>
-                <span class="title">Rhetorical Synthesis</span>
-            </a>
-            <a href="#type9" class="quick-nav-item">
-                <span class="number">9</span>
-                <span class="title">Form, Structure & Sense</span>
-            </a>
-            <a href="#type10" class="quick-nav-item">
-                <span class="number">10</span>
-                <span class="title">Boundaries</span>
-            </a>
-        </div>
-    </div>
-</div>
-
-    <!-- Main Content - Accordion Sections -->
-    <div class="container" style="padding: 40px 30px;">
-
-        <!-- ============================================ -->
-        <!-- TYPE 1: WORDS IN CONTEXT -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type1">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 1</span>
-                    Words in Context
-                </h2>
-                <span class="accordion-icon">▼</span>
+  <!-- Main Two-Column Layout -->
+    <div class="main-layout">
+        
+        <!-- Left Sidebar with Vertical Tabs -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>📚 Question Types</h3>
+                <p>Click to explore</p>
             </div>
-            <div class="accordion-content">
+            
+            <div class="tab-item active" data-tab="type1">
+                <span class="tab-number">1</span>
+                <span class="tab-title">Words in Context</span>
+            </div>
+            <div class="tab-item" data-tab="type2">
+                <span class="tab-number">2</span>
+                <span class="tab-title">Text Structure & Purpose</span>
+            </div>
+            <div class="tab-item" data-tab="type3">
+                <span class="tab-number">3</span>
+                <span class="tab-title">Central Ideas & Details</span>
+            </div>
+            <div class="tab-item" data-tab="type4">
+                <span class="tab-number">4</span>
+                <span class="tab-title">Inferences</span>
+            </div>
+            <div class="tab-item" data-tab="type5">
+                <span class="tab-number">5</span>
+                <span class="tab-title">Command of Evidence</span>
+            </div>
+            <div class="tab-item" data-tab="type6">
+                <span class="tab-number">6</span>
+                <span class="tab-title">Cross-Text Connections</span>
+            </div>
+            <div class="tab-item" data-tab="type7">
+                <span class="tab-number">7</span>
+                <span class="tab-title">Transitions</span>
+            </div>
+            <div class="tab-item" data-tab="type8">
+                <span class="tab-number">8</span>
+                <span class="tab-title">Rhetorical Synthesis</span>
+            </div>
+            <div class="tab-item" data-tab="type9">
+                <span class="tab-number">9</span>
+                <span class="tab-title">Form, Structure & Sense</span>
+            </div>
+            <div class="tab-item" data-tab="type10">
+                <span class="tab-number">10</span>
+                <span class="tab-title">Boundaries</span>
+            </div>
+        </div>
+
+        <!-- Right Content Area -->
+        <div class="content-area">
+
+        <!-- ============================================ -->
+            <!-- TYPE 1: WORDS IN CONTEXT -->
+            <!-- ============================================ -->
+            <div class="tab-panel active" id="type1">
+                <div class="content-header">
+                    <span class="type-badge">Type 1</span>
+                    <h2>Words in Context</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -801,22 +868,17 @@
                         <li>Eliminate answers that contradict the passage's tone or message</li>
                         <li>Pay attention to transition words and phrases that signal relationships between ideas</li>
                     </ul>
-                </div>
-            </div>
-        </div>
+               </div>
+            </div>  <!-- ADD THIS LINE - Closes tab-panel type1 -->
 
-        <!-- ============================================ -->
-        <!-- TYPE 2: TEXT STRUCTURE & PURPOSE -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type2">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 2</span>
-                    Text Structure & Purpose
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 2: TEXT STRUCTURE & PURPOSE -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type2">
+                <div class="content-header">
+                    <span class="type-badge">Type 2</span>
+                    <h2>Text Structure & Purpose</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -942,19 +1004,15 @@
                     </ul>
                 </div>
             </div>
-        </div>
-<!-- ============================================ -->
-        <!-- TYPE 3: CENTRAL IDEAS & DETAILS -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type3">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 3</span>
-                    Central Ideas & Details
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+
+            <!-- ============================================ -->
+            <!-- TYPE 3: CENTRAL IDEAS & DETAILS -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type3">
+                <div class="content-header">
+                    <span class="type-badge">Type 3</span>
+                    <h2>Central Ideas & Details</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1096,20 +1154,15 @@
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 4: INFERENCES -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type4">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 4</span>
-                    Inferences
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 4: INFERENCES -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type4">
+                <div class="content-header">
+                    <span class="type-badge">Type 4</span>
+                    <h2>Inferences</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1158,8 +1211,8 @@
                         <span class="answer-label">✓ Correct Answer: B</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer because it presents the conclusion that most logically completes the text's discussion of the archaeological evidence from the Peruvian settlement. The text describes a pattern where the coastal site contained both coastal and highland materials, but crucially, the highland materials arrived in processed forms: the alpaca wool "appeared to have arrived already woven" rather than as raw wool that would be processed locally, and 30% of ceramics were "manufactured using clay sources found only in highland regions" rather than made locally from highland clay. This pattern indicates an exchange of finished, specialized products between communities. If the coastal site were simply acquiring raw materials, we would expect to find raw wool being processed there and local ceramics made from imported clay. Instead, the evidence points to communities trading their specialized finished goods—coastal communities producing coastal ceramics and highland communities producing woven textiles and highland ceramics—with the coastal settlement serving as a point where these specialized products were exchanged.</p>
-                            <p>Choice A is incorrect because the text indicates that the wool "appeared to have arrived already woven," meaning coastal communities were receiving finished textiles rather than producing them locally. If coastal communities possessed highland weaving techniques and chose not to use local materials, we would expect to find raw alpaca wool at the site being processed into textiles, but the text explicitly states the wool arrived already woven. Choice C is incorrect because the evidence doesn't support permanent highland settlement in coastal areas. If highland populations had established permanent coastal settlements while maintaining their practices, we would expect to find evidence of wool processing at the coastal site (raw wool, processing tools, evidence of weaving), but the text indicates the wool arrived already woven, suggesting it was processed elsewhere and then transported. Additionally, the presence of both locally-produced coastal ceramics and highland-produced ceramics suggests two distinct communities trading rather than one community maintaining dual traditions. Choice D is incorrect because periodic coastal migration to highland regions would not explain the key pattern described: finished highland products (woven textiles, highland-made ceramics) appearing at the coastal site. Migration for material acquisition would more likely result in raw materials being transported back and processed locally, but the text emphasizes that highland goods arrived in finished form, indicating trade between settled communities rather than migration.</p>
+                            <p>Choice B is the best answer because it presents the conclusion that most logically completes the text's discussion of the archaeological evidence from the Peruvian settlement. The text describes a pattern where the coastal site contained both coastal and highland materials, but crucially, the highland materials arrived in processed forms: the alpaca wool "appeared to have arrived already woven" rather than as raw wool that would be processed locally, and 30% of ceramics were "manufactured using clay sources found only in highland regions" rather than made locally from highland clay. This pattern indicates an exchange of finished, specialized products between communities.</p>
+                            <p>Choice A is incorrect because the text indicates that the wool "appeared to have arrived already woven," meaning coastal communities were receiving finished textiles rather than producing them locally. Choice C is incorrect because the evidence doesn't support permanent highland settlement in coastal areas. Choice D is incorrect because periodic coastal migration to highland regions would not explain the key pattern described: finished highland products appearing at the coastal site.</p>
                             <p class="difficulty">Question Difficulty: Hard</p>
                         </div>
                     </div>
@@ -1188,8 +1241,8 @@
                         <span class="answer-label">✓ Correct Answer: B</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer. It most logically completes the text. The text establishes that brief breaks during study sessions lead to better outcomes (feeling refreshed and better test performance). Chen suspected that "the timing of these breaks was crucial to their effectiveness," and designed an experiment with breaks at "regular 25-minute intervals." If timing is crucial, we can infer that Chen anticipated that scheduled, regular breaks would be more effective than breaks taken only when students felt tired (which would be irregular and potentially too late to prevent mental fatigue). Thus, students with regularly scheduled breaks would demonstrate better retention than those taking breaks based on feeling tired.</p>
-                            <p>Choice A is incorrect. It doesn't logically complete the text. Chen's hypothesis was that timing matters for break effectiveness. If he anticipated that regular intervals would make students more fatigued than irregular intervals, this would contradict his observation that breaks improve outcomes and his belief that timing is crucial to effectiveness. Choice C is incorrect. It doesn't logically complete the text. The text establishes that breaks improve study outcomes, so Chen would not anticipate that effective breaks would lead students to prefer studying without breaks in the future. Choice D is incorrect. It doesn't logically complete the text. Chen's hypothesis was specifically that "timing of these breaks was crucial," which suggests he believed multiple regular breaks would be more effective than different break patterns. If he anticipated similar performance between regular intervals and a single extended break, this would contradict his premise that timing is crucial.</p>
+                            <p>Choice B is the best answer. It most logically completes the text. The text establishes that brief breaks during study sessions lead to better outcomes (feeling refreshed and better test performance). Chen suspected that "the timing of these breaks was crucial to their effectiveness," and designed an experiment with breaks at "regular 25-minute intervals." If timing is crucial, we can infer that Chen anticipated that scheduled, regular breaks would be more effective than breaks taken only when students felt tired.</p>
+                            <p>Choice A is incorrect because Chen's hypothesis was that timing matters for break effectiveness. Choice C is incorrect because the text establishes that breaks improve study outcomes. Choice D is incorrect because Chen's hypothesis was specifically that "timing of these breaks was crucial."</p>
                             <p class="difficulty">Question Difficulty: Medium</p>
                         </div>
                     </div>
@@ -1209,20 +1262,15 @@
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 5: COMMAND OF EVIDENCE -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type5">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 5</span>
-                    Command of Evidence
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 5: COMMAND OF EVIDENCE -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type5">
+                <div class="content-header">
+                    <span class="type-badge">Type 5</span>
+                    <h2>Command of Evidence</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1241,7 +1289,7 @@
                         <li><strong>Textual Evidence:</strong> Evaluate multiple potential findings and determine which one most directly supports a textual argument or hypothesis presented in the passage.</li>
                         <li><strong>Quantitative Evidence:</strong> Interpret data from tables, charts, or graphs and identify which specific data points support or contradict a given hypothesis or claim.</li>
                     </ul>
-                    <p>Success on these Digital SAT Reading & Writing questions requires understanding the logical relationship between claims and evidence, distinguishing between relevant and irrelevant support, and recognizing when evidence directly addresses the specific point being made. This is a critical skill for Digital SAT preparation and academic reasoning.</p>
+                    <p>Success on these Digital SAT Reading & Writing questions requires understanding the logical relationship between claims and evidence, distinguishing between relevant and irrelevant support, and recognizing when evidence directly addresses the specific point being made.</p>
                 </div>
 
                 <div class="section-divider">
@@ -1271,39 +1319,9 @@
                         <span class="answer-label">✓ Correct Answer: B</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer because it presents a finding that, if true, would most directly support Martinez's hypothesis. The passage states that Martinez hypothesized bilingualism's cognitive benefits might extend specifically to creative problem-solving, and she theorized that switching between languages could enhance "the brain's ability to approach problems from multiple perspectives, a key component of creative thinking." Choice B directly addresses this hypothesis by showing that bilingual participants "generated significantly more diverse solution strategies" for open-ended problems. Generating diverse solution strategies is precisely what "approaching problems from multiple perspectives" means in practice, and this finding demonstrates enhanced creative problem-solving ability in bilingual individuals, which is exactly what Martinez's hypothesis predicted.</p>
-                            <p>Choice A is incorrect because while it shows bilingual advantages in task-switching (an executive function), it doesn't address Martinez's specific hypothesis about creative problem-solving. The passage acknowledges that bilingual advantages in executive function were already established by previous research; Martinez's hypothesis was specifically about extending these findings to creativity. Faster reaction times on standard executive function tests don't demonstrate the creative problem-solving enhancement that Martinez predicted. Choice C is incorrect because similar levels of motivation and engagement between the groups doesn't support the hypothesis that bilingualism enhances creative problem-solving. This finding suggests the groups were comparable on a confounding variable (motivation), but it doesn't provide evidence that bilingual individuals show enhanced creativity. Choice D is incorrect because it addresses a comparison within the bilingual group (early vs. late learners) on memory tests, not a comparison between bilingual and monolingual groups on creative problem-solving. Martinez's hypothesis was about bilingualism's effect on creativity, not about when the second language was learned or about memory performance.</p>
+                            <p>Choice B is the best answer because it presents a finding that, if true, would most directly support Martinez's hypothesis. The passage states that Martinez hypothesized bilingualism's cognitive benefits might extend specifically to creative problem-solving, and she theorized that switching between languages could enhance "the brain's ability to approach problems from multiple perspectives." Choice B directly addresses this hypothesis by showing that bilingual participants "generated significantly more diverse solution strategies" for open-ended problems.</p>
+                            <p>Choice A is incorrect because while it shows bilingual advantages in task-switching, it doesn't address Martinez's specific hypothesis about creative problem-solving. Choice C is incorrect because similar levels of motivation doesn't support the hypothesis. Choice D is incorrect because it addresses memory tests, not creative problem-solving.</p>
                             <p class="difficulty">Question Difficulty: Medium</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 2</span>
-                    
-                    <div class="passage">
-                        When primatologist Jane Goodall began her research at Gombe Stream National Park in Tanzania in 1960, the scientific establishment maintained strict protocols that emphasized emotional detachment and prohibited attributing human-like qualities to animal subjects. Researchers were expected to refer to animals by numbers rather than names and to describe behaviors in purely mechanical terms. Goodall, however, rejected these conventions. She named the chimpanzees she studied, described their distinct personalities, and documented complex emotional behaviors like grief, joy, and familial bonds. Critics argued this approach was unscientific and overly anthropomorphic. According to science historian Rebecca Klein, Goodall's willingness to challenge these established protocols ultimately transformed primatology by demonstrating that recognizing animals' individual personalities and emotional lives could lead to deeper scientific insights rather than compromising objectivity.
-                    </div>
-
-                    <div class="question-text">
-                        Which finding from Goodall's research, if true, would most directly support Klein's claim?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. Goodall's observations revealed that chimpanzees in the Gombe community lived longer on average than chimpanzees in other documented populations in East Africa.</div>
-                        <div class="choice">B. Goodall's documentation of a chimpanzee named David Greybeard using modified twigs as tools to extract termites led to the redefinition of what distinguishes humans from other animals, as tool use was previously considered uniquely human.</div>
-                        <div class="choice">C. Goodall's long-term presence at Gombe allowed her to observe the same individuals over decades, providing longitudinal data unavailable in shorter studies.</div>
-                        <div class="choice">D. Goodall's approach of tracking individual chimpanzees she had named enabled her to identify that a female named Flo's nurturing parenting style directly influenced her offspring's social success, revealing how individual behavioral differences affect evolutionary outcomes.</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: D</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice D is the best answer because it presents a finding that most directly supports Klein's claim that recognizing individual personalities could lead to deeper scientific insights. Klein's claim specifically addresses Goodall's controversial practice of naming animals and documenting their "distinct personalities" and "emotional behaviors," arguing this approach led to deeper insights rather than compromising science. Choice D describes a discovery that directly resulted from Goodall's individualized approach: by tracking and naming specific chimpanzees (Flo and her offspring), Goodall was able to connect an individual's personality trait (Flo's "nurturing parenting style") to significant scientific insights about social success and evolutionary outcomes. This finding demonstrates that recognizing individual personalities wasn't just acceptable but actually enabled scientific discoveries about how behavioral differences affect evolution—precisely the "deeper scientific insights" Klein claims resulted from Goodall's approach. The discovery wouldn't have been possible with the traditional numbered, depersonalized approach because researchers wouldn't have tracked individuals closely enough to notice personality-based parenting differences and their long-term effects.</p>
-                            <p>Choice A is incorrect because while this represents a factual finding about the Gombe chimpanzees, it doesn't support Klein's specific claim about Goodall's methodology. The observation that Gombe chimpanzees lived longer doesn't demonstrate that recognizing individual personalities and emotional lives led to deeper insights; lifespan data could have been collected using traditional numbered identification methods without any attention to personality or emotion. This finding relates to the success of the Gombe site but not to the value of Goodall's controversial individualized approach. Choice B is incorrect because although this was indeed one of Goodall's most significant scientific contributions, it doesn't support Klein's claim about the value of recognizing individual personalities and emotions. The tool-use discovery—while revolutionary—could theoretically have been observed and documented using traditional methods with numbered subjects and mechanical behavioral descriptions. The finding doesn't demonstrate that naming animals or recognizing their personalities led to deeper insights; any careful observer using standard protocols could have documented tool use. Klein's claim is specifically about how Goodall's personalized approach enabled discoveries, not about the general importance of her findings. Choice C is incorrect because this describes an advantage of Goodall's long-term commitment to the site, not an advantage of her specific practice of naming individuals and recognizing their personalities. Longitudinal data could be collected using traditional scientific protocols with numbered subjects observed over time. This finding doesn't demonstrate that recognizing individual personalities and emotional lives led to deeper insights; it only shows that studying the same population over many years provided valuable data, which wasn't the controversial aspect of Goodall's methodology that Klein is defending.</p>
-                            <p class="difficulty">Question Difficulty: Hard</p>
                         </div>
                     </div>
                 </div>
@@ -1312,9 +1330,9 @@
                     <h3>Part B: Quantitative Evidence</h3>
                 </div>
 
-                <!-- Question 3 -->
+                <!-- Question 2 -->
                 <div class="question-card">
-                    <span class="question-number">Practice Question 3</span>
+                    <span class="question-number">Practice Question 2</span>
                     
                     <div class="passage">
                         <strong>Average Test Scores by Sleep Duration and Study Group</strong>
@@ -1346,7 +1364,7 @@
                             </tbody>
                         </table>
                         <br>
-                        Educational psychologist Dr. Sarah Kim hypothesized that adequate sleep is more critical for academic performance than study time. She predicted that students who get sufficient sleep (8+ hours) would outperform students who study extensively but sleep less, even when those sleep-deprived students dedicate more time to studying. Dr. Kim surveyed 1,200 high school students about their sleep patterns and study habits, then analyzed their semester exam scores across multiple subjects.
+                        Educational psychologist Dr. Sarah Kim hypothesized that adequate sleep is more critical for academic performance than study time. She predicted that students who get sufficient sleep (8+ hours) would outperform students who study extensively but sleep less, even when those sleep-deprived students dedicate more time to studying.
                     </div>
 
                     <div class="question-text">
@@ -1364,44 +1382,34 @@
                         <span class="answer-label">✓ Correct Answer: A</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice A is the best answer because it describes data from the table that directly support Dr. Kim's hypothesis. The hypothesis specifically states that "adequate sleep is more critical for academic performance than study time" and predicts that well-rested students would "outperform students who study extensively but sleep less." Choice A describes exactly this pattern: students who slept 8+ hours but studied less than 2 hours daily scored 78, which is higher than students who slept less than 6 hours but studied 2+ hours daily (who scored 68). This 10-point difference demonstrates that sufficient sleep with less study time produced better results than extensive study time with insufficient sleep, directly supporting the hypothesis that sleep is more critical than study time.</p>
-                            <p>Choice B is incorrect because while this describes accurate data from the table (the 8+ sleep/2+ study group scored 87, the highest), it doesn't support the specific hypothesis being tested. Dr. Kim's hypothesis wasn't about what combination produces the best scores overall, but rather whether adequate sleep is more important than study time. The fact that students who have both high sleep and high study time score highest doesn't test whether sleep is more critical than study time. Choice C is incorrect because this describes a pattern that would actually contradict, not support, Dr. Kim's hypothesis. If students who studied more consistently scored higher regardless of sleep, this would suggest study time is the critical factor, not sleep. Moreover, this pattern isn't entirely accurate: while it's true within each sleep category that higher study time correlates with higher scores, the hypothesis is specifically about the relative importance of sleep versus study time. Choice D is incorrect because this data pattern doesn't directly address whether sleep is more critical than study time. The hypothesis concerns whether adequate sleep can compensate for less study time (comparing across different combinations of sleep and study), not whether the study-time effect varies by sleep level. Additionally, this choice describes the difference between study groups at different sleep levels, which relates to an interaction effect rather than the main question of which factor is more critical.</p>
+                            <p>Choice A is the best answer because it describes data from the table that directly support Dr. Kim's hypothesis. The hypothesis specifically states that "adequate sleep is more critical for academic performance than study time." Choice A describes exactly this pattern: students who slept 8+ hours but studied less than 2 hours daily scored 78, which is higher than students who slept less than 6 hours but studied 2+ hours daily (who scored 68). This 10-point difference demonstrates that sufficient sleep with less study time produced better results than extensive study time with insufficient sleep.</p>
+                            <p>Choice B is incorrect because it doesn't test whether sleep is more critical than study time. Choice C is incorrect because this pattern would contradict Dr. Kim's hypothesis. Choice D is incorrect because this doesn't directly address which factor is more critical.</p>
                             <p class="difficulty">Question Difficulty: Medium</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Combined Takeaways -->
+                <!-- Takeaways -->
                 <div class="takeaways-box">
                     <h3>Key Digital SAT Takeaways: Command of Evidence</h3>
                     <ul>
                         <li><strong>For Textual Evidence:</strong> Carefully identify the specific claim or hypothesis before looking at answer choices</li>
                         <li><strong>For Textual Evidence:</strong> The correct answer must directly address the main point of the claim, not just relate to the general topic</li>
-                        <li><strong>For Textual Evidence:</strong> Eliminate findings that support related but different claims—they must support the specific hypothesis stated</li>
-                        <li><strong>For Textual Evidence:</strong> The strongest evidence directly demonstrates the predicted relationship or outcome</li>
                         <li><strong>For Quantitative Evidence:</strong> Read the hypothesis carefully before looking at the data—understand exactly what prediction is being made</li>
-                        <li><strong>For Quantitative Evidence:</strong> Examine the table/graph systematically to understand what each row, column, or axis represents</li>
-                        <li><strong>For Quantitative Evidence:</strong> Check each answer choice against the actual numbers in the table—eliminate choices with inaccurate data descriptions</li>
+                        <li><strong>For Quantitative Evidence:</strong> Check each answer choice against the actual numbers in the table</li>
                         <li><strong>Both types:</strong> Watch for answers that provide interesting information but don't actually test the hypothesis</li>
-                        <li><strong>Both types:</strong> Pay attention to key terms in the hypothesis and look for evidence that addresses those exact concepts</li>
-                        <li><strong>Both types:</strong> Practice distinguishing between data/findings that support a claim versus those that contradict it</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 6: CROSS-TEXT CONNECTIONS -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type6">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 6</span>
-                    Cross-Text Connections
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 6: CROSS-TEXT CONNECTIONS -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type6">
+                <div class="content-header">
+                    <span class="type-badge">Type 6</span>
+                    <h2>Cross-Text Connections</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1415,25 +1423,23 @@
 
                 <div class="explanation-box">
                     <h3>What This Digital SAT Question Type Tests</h3>
-                    <p>Cross-Text Connections questions on the Digital SAT Reading & Writing section assess your ability to synthesize information from two related texts and identify relationships between them. These Digital SAT practice questions require you to compare perspectives, find areas of agreement, or determine how one author would respond to another's claims.</p>
-                    <p>These questions present two short texts (Text 1 and Text 2) followed by a question in one of these formats:</p>
+                    <p>Cross-Text Connections questions on the Digital SAT Reading & Writing section assess your ability to synthesize information from two related texts and identify relationships between them. These questions require you to compare perspectives, find areas of agreement, or determine how one author would respond to another's claims.</p>
                     <ul>
-                        <li><strong>"Both would agree..." format:</strong> "Based on the texts, both [author in Text 1] and [author in Text 2] would most likely agree with which statement?" - You must identify claims that both texts support.</li>
-                        <li><strong>"How would X respond..." format:</strong> "Based on the texts, how would [author of Text 2] most likely respond to [claim in Text 1]?" - You must determine whether Text 2 supports, contradicts, or qualifies Text 1's argument.</li>
+                        <li><strong>"Both would agree..." format:</strong> Identify claims that both texts support.</li>
+                        <li><strong>"How would X respond..." format:</strong> Determine whether Text 2 supports, contradicts, or qualifies Text 1's argument.</li>
                     </ul>
-                    <p>Success on these Digital SAT Reading & Writing questions requires reading both texts carefully, understanding each author's main argument, identifying points of overlap or disagreement, and avoiding answers that only relate to one text. This is an essential skill for Digital SAT preparation as it tests higher-level comprehension and synthesis abilities.</p>
                 </div>
 
-                <!-- Question 1: Both agree format -->
+                <!-- Question 1 -->
                 <div class="question-card">
                     <span class="question-number">Practice Question 1</span>
                     
                     <div class="passage">
                         <strong>Text 1</strong><br>
-                        Psychologist Ellen Langer conducted a famous 1979 experiment in which elderly men lived for a week in an environment designed to replicate 1959. Participants were surrounded by magazines, music, and television programs from twenty years earlier and were instructed to discuss events from that period in the present tense. Langer found that after one week, the men showed measurable improvements in physical flexibility, grip strength, and cognitive function. She concluded that psychological state—specifically, how old people believe themselves to be—can directly influence physical aging processes.
+                        Psychologist Ellen Langer conducted a famous 1979 experiment in which elderly men lived for a week in an environment designed to replicate 1959. Langer found that after one week, the men showed measurable improvements in physical flexibility, grip strength, and cognitive function. She concluded that psychological state—specifically, how old people believe themselves to be—can directly influence physical aging processes.
                         <br><br>
                         <strong>Text 2</strong><br>
-                        Gerontologist David Sinclair argues that aging is primarily a biological process driven by cellular damage and genetic factors, not psychological beliefs. While acknowledging that stress reduction and positive mental states can influence health outcomes, Sinclair emphasizes that the fundamental mechanisms of aging—DNA damage, cellular senescence, and mitochondrial dysfunction—operate independently of a person's subjective sense of their age. However, he notes that environmental factors, including mental engagement and social interaction, can affect the rate at which these biological processes unfold.
+                        Gerontologist David Sinclair argues that aging is primarily a biological process driven by cellular damage and genetic factors, not psychological beliefs. However, he notes that environmental factors, including mental engagement and social interaction, can affect the rate at which these biological processes unfold.
                     </div>
 
                     <div class="question-text">
@@ -1451,43 +1457,9 @@
                         <span class="answer-label">✓ Correct Answer: B</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer because it presents a statement that both Langer and Sinclair would agree with based on their respective texts. Text 1 describes Langer's experiment demonstrating that elderly men showed "measurable improvements in physical flexibility, grip strength, and cognitive function" when their psychological state was altered through environmental manipulation, supporting the idea that mental state affects physical health. Text 2 states that while Sinclair views aging as primarily biological, he "notes that environmental factors, including mental engagement and social interaction, can affect the rate at which these biological processes unfold," which also acknowledges that mental state and environment influence physical health during aging. Both texts thus support the claim that mental state and environment have measurable health effects, even though they disagree about the extent and mechanisms of this influence.</p>
-                            <p>Choice A is incorrect because neither text supports the claim that psychological beliefs can "completely reverse" cellular aging mechanisms. While Text 1 emphasizes psychological influence on aging, it describes improvements in function, not complete reversal of cellular aging. Text 2 explicitly states that fundamental aging mechanisms "operate independently of a person's subjective sense of their age," directly contradicting this claim. Choice C is incorrect because neither text agrees that aging is "entirely determined by genetic factors that cannot be modified." Text 1 argues that psychological state directly influences aging, which contradicts this deterministic view. Text 2, while emphasizing biological mechanisms, acknowledges that "environmental factors...can affect the rate" of aging processes, indicating that genetic factors are not the sole determinants. Choice D is incorrect because only Text 1 might partially support this, while Text 2 explicitly disagrees. Sinclair argues that aging mechanisms operate "independently of a person's subjective sense of their age," directly contradicting the claim that physical changes are "solely the result of their expectations." Even Text 1 doesn't claim expectations are the "sole" cause—it demonstrates that psychological state is one influential factor.</p>
+                            <p>Choice B is the best answer because both Langer and Sinclair acknowledge that mental state and environment influence physical health during aging. Text 1 shows measurable improvements from psychological intervention. Text 2 acknowledges that "environmental factors, including mental engagement and social interaction, can affect the rate" of biological aging processes.</p>
+                            <p>Choice A is incorrect because neither text supports "completely reverse." Choice C is incorrect because both texts acknowledge non-genetic factors matter. Choice D is incorrect because Sinclair explicitly disagrees.</p>
                             <p class="difficulty">Question Difficulty: Medium</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2: Response format -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 2</span>
-                    
-                    <div class="passage">
-                        <strong>Text 1</strong><br>
-                        Economist Marina Duarte has studied the relationship between minimum wage increases and employment rates in several countries. Her research indicates that modest increases in minimum wage—those that bring wages up to approximately 50% of the median wage—do not result in job losses. Duarte argues that higher wages improve worker productivity and reduce employee turnover, which offsets the increased labor costs for employers. She concludes that policymakers should not fear employment consequences when implementing reasonable minimum wage increases.
-                        <br><br>
-                        <strong>Text 2</strong><br>
-                        Labor economist James Chen examined minimum wage policies across multiple industries and found that the employment effects vary significantly depending on the sector. In industries with thin profit margins, such as food service and retail, even moderate wage increases led to measurable reductions in hiring and increased automation. Chen notes that while some sectors can absorb higher labor costs through improved efficiency, others cannot do so without reducing their workforce. He emphasizes that blanket minimum wage policies fail to account for these important sectoral differences.
-                    </div>
-
-                    <div class="question-text">
-                        Based on the texts, how would Chen (Text 2) most likely respond to Duarte's conclusion in Text 1?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. He would argue that minimum wage increases always lead to significant job losses regardless of the industry or wage level.</div>
-                        <div class="choice">B. He would suggest that the employment effects of minimum wage increases depend on industry characteristics, so uniform policies may be problematic.</div>
-                        <div class="choice">C. He would agree that policymakers should implement minimum wage increases without considering any potential employment consequences.</div>
-                        <div class="choice">D. He would claim that all industries can offset increased labor costs through improved worker productivity and reduced turnover.</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: B</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer because it accurately represents how Chen would respond to Duarte's conclusion based on Text 2. Duarte concludes that "policymakers should not fear employment consequences when implementing reasonable minimum wage increases," presenting this as a general recommendation. Chen's research, however, found that "employment effects vary significantly depending on the sector" and that in some industries (food service, retail) "even moderate wage increases led to measurable reductions in hiring." Chen explicitly "emphasizes that blanket minimum wage policies fail to account for these important sectoral differences." Therefore, Chen would likely respond to Duarte's broad conclusion by pointing out that employment effects are industry-dependent and that uniform policies (like those Duarte seems to recommend) are problematic because they don't account for sectoral variation.</p>
-                            <p>Choice A is incorrect because Text 2 does not support such an absolute position. Chen found that employment effects "vary significantly depending on the sector," meaning some industries experience job losses while others may not. Text 2 states "some sectors can absorb higher labor costs," indicating Chen doesn't believe wage increases always cause job losses. This extreme position contradicts the nuanced, sector-specific findings Chen presents. Choice C is incorrect because Text 2 directly contradicts this statement. Chen found that in certain industries, wage increases "led to measurable reductions in hiring and increased automation," which are clear employment consequences. Chen would not agree that policymakers should ignore potential employment consequences, as his research specifically documents such consequences in some sectors. Choice D is incorrect because Text 2 explicitly rejects this claim. While Text 1 (Duarte) argues that higher wages improve productivity and reduce turnover to offset costs, Text 2 (Chen) states that "while some sectors can absorb higher labor costs through improved efficiency, others cannot do so without reducing their workforce." This directly contradicts the idea that all industries can offset increased labor costs through these mechanisms.</p>
-                            <p class="difficulty">Question Difficulty: Easy</p>
                         </div>
                     </div>
                 </div>
@@ -1496,30 +1468,22 @@
                 <div class="takeaways-box">
                     <h3>Key Digital SAT Takeaways: Cross-Text Connections</h3>
                     <ul>
-                        <li>Read BOTH texts completely before looking at the answer choices—you need information from both to answer correctly</li>
-                        <li>For "both agree" questions, the correct answer must be supported by evidence in BOTH texts, not just one</li>
+                        <li>Read BOTH texts completely before looking at the answer choices</li>
+                        <li>For "both agree" questions, the correct answer must be supported by evidence in BOTH texts</li>
                         <li>For "how would X respond" questions, identify whether Text 2 supports, contradicts, or qualifies Text 1's claims</li>
-                        <li>Eliminate answers that are only supported by one text or that misrepresent either author's position</li>
-                        <li>Watch for extreme language ("always," "never," "completely") that goes beyond what the texts actually state</li>
-                        <li>Understand each author's main argument before trying to synthesize—don't focus only on minor details</li>
-                        <li>Practice identifying points of agreement even when authors have different overall perspectives</li>
+                        <li>Watch for extreme language ("always," "never," "completely") that goes beyond what the texts state</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 7: TRANSITIONS -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type7">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 7</span>
-                    Transitions
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 7: TRANSITIONS -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type7">
+                <div class="content-header">
+                    <span class="type-badge">Type 7</span>
+                    <h2>Transitions</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1533,22 +1497,15 @@
 
                 <div class="explanation-box">
                     <h3>What This Digital SAT Question Type Tests</h3>
-                    <p>Transitions questions on the Digital SAT Reading & Writing section assess your ability to identify the logical relationship between sentences and choose the appropriate transitional word or phrase to connect ideas. These Digital SAT practice questions require you to understand how ideas flow within a passage and select transitions that accurately signal the relationship between consecutive sentences.</p>
-                    <p>These questions follow a consistent format:</p>
-                    <ul>
-                        <li><strong>A passage with a blank between sentences:</strong> You'll see two sentences with "______" between them, indicating where a transition should go</li>
-                        <li><strong>The question asks:</strong> "Which choice completes the text with the most logical transition?"</li>
-                        <li><strong>Four transitional words or phrases:</strong> Each answer choice presents a different transition that signals a different logical relationship</li>
-                    </ul>
+                    <p>Transitions questions assess your ability to identify the logical relationship between sentences and choose the appropriate transitional word or phrase to connect ideas.</p>
                     <p>Common transition types include:</p>
                     <ul>
-                        <li><strong>Addition:</strong> "In addition," "Furthermore," "Moreover" - signal that the sentence adds to previous information</li>
-                        <li><strong>Contrast:</strong> "However," "By contrast," "Nevertheless" - signal that the sentence contrasts with or contradicts previous information</li>
-                        <li><strong>Clarification:</strong> "That is," "In other words," "Specifically" - signal that the sentence explains or clarifies previous information</li>
-                        <li><strong>Cause/Effect:</strong> "Therefore," "Thus," "Consequently" - signal that the sentence presents a result or consequence</li>
-                        <li><strong>Example:</strong> "For example," "For instance" - signal that the sentence provides an example of previous information</li>
+                        <li><strong>Addition:</strong> "In addition," "Furthermore," "Moreover"</li>
+                        <li><strong>Contrast:</strong> "However," "By contrast," "Nevertheless"</li>
+                        <li><strong>Clarification:</strong> "That is," "In other words," "Specifically"</li>
+                        <li><strong>Cause/Effect:</strong> "Therefore," "Thus," "Consequently"</li>
+                        <li><strong>Example:</strong> "For example," "For instance"</li>
                     </ul>
-                    <p>Success on these Digital SAT Reading & Writing questions requires understanding the logical flow of ideas, not just memorizing transition definitions. This is a fundamental skill for Digital SAT preparation and academic writing.</p>
                 </div>
 
                 <!-- Question 1 -->
@@ -1556,7 +1513,7 @@
                     <span class="question-number">Practice Question 1</span>
                     
                     <div class="passage">
-                        Physicist Marie Curie's discovery of radium revolutionized medical treatment in the early twentieth century. Doctors began using radium-based therapies to target cancerous tumors, marking one of the first applications of radioactive materials in medicine. <strong>______</strong> Curie's work on radioactivity laid the foundation for modern nuclear physics, influencing fields far beyond medicine, including energy production and materials science.
+                        Physicist Marie Curie's discovery of radium revolutionized medical treatment in the early twentieth century. Doctors began using radium-based therapies to target cancerous tumors, marking one of the first applications of radioactive materials in medicine. <strong>______</strong> Curie's work on radioactivity laid the foundation for modern nuclear physics, influencing fields far beyond medicine.
                     </div>
 
                     <div class="question-text">
@@ -1574,39 +1531,9 @@
                         <span class="answer-label">✓ Correct Answer: B</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer. "In addition," logically signals that the detail in the sentence after the blank—that Curie's work laid the foundation for modern nuclear physics and influenced multiple fields—adds to the information in the previous sentence. Specifically, the previous sentence describes one important impact of Curie's discovery (revolutionizing medical treatment), and the sentence after the blank presents a second, additional impact (influencing nuclear physics and other fields beyond medicine). The transition "in addition" accurately signals this relationship of providing another significant contribution of Curie's work.</p>
-                            <p>Choice A is incorrect because "for instance" illogically signals that the detail in this sentence is an example of the information in the previous sentence. Instead, the previous sentence discusses medical applications, while the sentence after the blank discusses entirely different applications in nuclear physics, energy, and materials science—this is additional information, not an example of medical treatment. Choice C is incorrect because "however" illogically signals that the detail in this sentence contrasts with the information in the previous sentence. Instead, both sentences present positive impacts of Curie's work; the sentence after the blank doesn't contradict the previous sentence but rather adds to it by describing impacts in different fields. Choice D is incorrect because "as a result" illogically signals that the detail in this sentence is a consequence of the information in the previous sentence. Instead, the sentence after the blank presents another simultaneous contribution of Curie's work, not a result of the medical applications mentioned previously. Both the medical impact and the influence on nuclear physics stemmed from Curie's discovery, rather than one causing the other.</p>
+                            <p>Choice B is the best answer. "In addition," logically signals that the sentence adds another impact of Curie's work (nuclear physics) to the previously mentioned impact (medical treatment).</p>
+                            <p>Choice A is incorrect because nuclear physics is not an example of medical treatment. Choice C is incorrect because there's no contrast. Choice D is incorrect because nuclear physics wasn't a result of medical applications.</p>
                             <p class="difficulty">Question Difficulty: Easy</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 2</span>
-                    
-                    <div class="passage">
-                        Contemporary art critics frequently debate whether digital art should be valued equally with traditional painting and sculpture. Some argue that the use of digital tools diminishes the "authenticity" of artistic creation. <strong>______</strong> these critics claim that art produced through computer software lacks the physical craftsmanship and direct material engagement that characterize traditional art forms.
-                    </div>
-
-                    <div class="question-text">
-                        Which choice completes the text with the most logical transition?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. Specifically,</div>
-                        <div class="choice">B. Conversely,</div>
-                        <div class="choice">C. Therefore,</div>
-                        <div class="choice">D. Similarly,</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: A</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice A is the best answer. "Specifically," logically signals that the detail in the sentence after the blank clarifies or provides more specific information about the claim in the previous sentence. The previous sentence states that some critics argue digital tools diminish artistic "authenticity," and the sentence after the blank elaborates on what these critics mean by this claim—namely, that digital art lacks physical craftsmanship and direct material engagement. The transition "specifically" accurately signals that the second sentence is explaining in more precise terms the general concern about authenticity mentioned first.</p>
-                            <p>Choice B is incorrect because "conversely" illogically signals that the detail in this sentence presents an opposing viewpoint to the information in the previous sentence. Instead, both sentences describe the same critics' perspective—the previous sentence introduces their general concern about authenticity, and the sentence after the blank elaborates on that same concern by explaining what they mean. There is no contrast between the sentences; they work together to present one coherent argument. Choice C is incorrect because "therefore" illogically signals that the detail in this sentence is a logical conclusion or result drawn from the information in the previous sentence. Instead, the sentence after the blank doesn't present a consequence of the authenticity concern but rather explains what that concern entails. The lack of physical craftsmanship is not a result of the authenticity argument—it is the reason for the authenticity argument. Choice D is incorrect because "similarly" illogically signals that the detail in this sentence is comparable to or parallels the information in the previous sentence. Instead, the sentence after the blank doesn't present a similar but separate point; rather, it provides specific details about the same point introduced in the previous sentence. The relationship is one of elaboration and clarification, not similarity or comparison.</p>
-                            <p class="difficulty">Question Difficulty: Medium</p>
                         </div>
                     </div>
                 </div>
@@ -1615,30 +1542,21 @@
                 <div class="takeaways-box">
                     <h3>Key Digital SAT Takeaways: Transitions</h3>
                     <ul>
-                        <li>Read both the sentence before and after the blank carefully—the transition must connect both ideas logically</li>
-                        <li>Identify the relationship between sentences: Does the second sentence add information, contrast, clarify, show cause/effect, or provide an example?</li>
-                        <li>Don't just rely on memorized definitions—focus on the logical flow of ideas in context</li>
-                        <li>Addition transitions (in addition, furthermore, moreover) signal that new information is being added to previous information</li>
-                        <li>Contrast transitions (however, by contrast, nevertheless) signal that the second sentence contradicts or differs from the first</li>
-                        <li>Clarification transitions (that is, specifically, in other words) signal that the second sentence explains or elaborates on the first</li>
-                        <li>Eliminate transitions that signal the wrong relationship—even if you know what the transition means, it must fit the specific context</li>
+                        <li>Read both the sentence before and after the blank carefully</li>
+                        <li>Identify the relationship: Does the second sentence add, contrast, clarify, show cause/effect, or provide an example?</li>
+                        <li>Don't just rely on memorized definitions—focus on the logical flow in context</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 8: RHETORICAL SYNTHESIS -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type8">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 8</span>
-                    Rhetorical Synthesis
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 8: RHETORICAL SYNTHESIS -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type8">
+                <div class="content-header">
+                    <span class="type-badge">Type 8</span>
+                    <h2>Rhetorical Synthesis</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1652,23 +1570,13 @@
 
                 <div class="explanation-box">
                     <h3>What This Digital SAT Question Type Tests</h3>
-                    <p>Rhetorical Synthesis questions on the Digital SAT Reading & Writing section assess your ability to effectively combine information from research notes to accomplish a specific rhetorical goal. These Digital SAT practice questions require you to synthesize multiple pieces of information and select the statement that best fulfills the writer's intended purpose.</p>
-                    <p>These questions follow a consistent format:</p>
-                    <ul>
-                        <li><strong>Student research notes are presented:</strong> You'll see a list of bullet points containing information a student gathered while researching a topic</li>
-                        <li><strong>A specific rhetorical goal is stated:</strong> The question identifies what the student wants to accomplish (e.g., "present the primary aim," "emphasize a key finding," "explain a disadvantage")</li>
-                        <li><strong>The question asks:</strong> "Which choice most effectively uses relevant information from the notes to accomplish this goal?"</li>
-                        <li><strong>Four answer choices present different syntheses:</strong> Each combines information differently, but only one effectively accomplishes the specific goal</li>
-                    </ul>
+                    <p>Rhetorical Synthesis questions assess your ability to effectively combine information from research notes to accomplish a specific rhetorical goal.</p>
                     <p>Common rhetorical goals include:</p>
                     <ul>
-                        <li><strong>Present the primary aim:</strong> Identify the main research objective or purpose of a study</li>
-                        <li><strong>Emphasize a key finding:</strong> Highlight the most significant result or discovery</li>
+                        <li><strong>Present the primary aim:</strong> Identify the main research objective</li>
+                        <li><strong>Emphasize a key finding:</strong> Highlight the most significant result</li>
                         <li><strong>Explain an advantage or disadvantage:</strong> Describe a specific benefit or limitation</li>
-                        <li><strong>Make a generalization:</strong> State a broad conclusion supported by the evidence</li>
-                        <li><strong>Acknowledge a limitation:</strong> Recognize constraints or weaknesses in methodology or findings</li>
                     </ul>
-                    <p>Success on these Digital SAT Reading & Writing questions requires identifying which pieces of information are relevant to the specific goal, eliminating irrelevant details, and recognizing which synthesis directly addresses what the writer wants to accomplish. This is an essential skill for Digital SAT preparation and academic writing.</p>
                 </div>
 
                 <!-- Question 1 -->
@@ -1678,56 +1586,19 @@
                     <div class="passage">
                         While researching a topic, a student has taken the following notes:
                         <ul style="margin-top: 15px; margin-left: 25px;">
-                            <li>Physicist Chien-Shiung Wu conducted experiments on beta decay in the 1950s.</li>
-                            <li>Her experiments demonstrated that parity is not conserved in weak nuclear interactions.</li>
-                            <li>This discovery contradicted a fundamental assumption in physics that had been held for over thirty years.</li>
-                            <li>Theoretical physicists Tsung-Dao Lee and Chen-Ning Yang had predicted this violation of parity conservation.</li>
-                            <li>Lee and Yang received the Nobel Prize in Physics in 1957 for their theoretical work.</li>
-                            <li>Wu's experimental confirmation was essential to validating their theory, yet she did not share the Nobel Prize.</li>
-                        </ul>
-                        <br>
-                        The student wants to present the primary aim of Wu's experiments. Which choice most effectively uses relevant information from the notes to accomplish this goal?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. Physicist Chien-Shiung Wu worked in the 1950s to validate theoretical predictions made by Lee and Yang, who later received the Nobel Prize in Physics in 1957.</div>
-                        <div class="choice">B. Chien-Shiung Wu conducted experiments on beta decay to test whether parity is conserved in weak nuclear interactions, a fundamental assumption in physics.</div>
-                        <div class="choice">C. Although Wu's experimental work was essential to validating Lee and Yang's theory about parity violation, she did not share their 1957 Nobel Prize in Physics.</div>
-                        <div class="choice">D. Wu's experiments in the 1950s successfully demonstrated that parity is not conserved in weak nuclear interactions, contradicting thirty years of assumptions.</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: B</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer because it most effectively presents the primary aim of Wu's experiments. The goal asks specifically for the aim (purpose/objective) of the experiments, not the results or consequences. Choice B clearly states what Wu set out to do: "to test whether parity is conserved in weak nuclear interactions." This identifies the research question Wu was investigating and provides context by noting this was "a fundamental assumption in physics," which explains why testing it was important. The phrase "conducted experiments on beta decay" identifies her method, and "to test whether" clearly indicates the experimental objective.</p>
-                            <p>Choice A is incorrect because while it mentions Wu's work in the 1950s and references the theoretical predictions, it focuses more on validating Lee and Yang's predictions and their Nobel Prize rather than clearly stating Wu's experimental aim. The primary focus is on the aftermath (the Nobel Prize) rather than the research objective itself. Choice C is incorrect because it emphasizes the Nobel Prize controversy rather than the experimental aim. While this information is historically interesting, the question asks for the primary aim of the experiments, not the recognition Wu did or didn't receive. This choice focuses on an injustice rather than the research purpose. Choice D is incorrect because it presents the results and findings of Wu's experiments ("successfully demonstrated that parity is not conserved") rather than their aim. The question asks what Wu set out to investigate, not what she discovered. Results and aims are different—this choice describes the outcome rather than the objective.</p>
-                            <p class="difficulty">Question Difficulty: Medium</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 2</span>
-                    
-                    <div class="passage">
-                        While researching a topic, a student has taken the following notes:
-                        <ul style="margin-top: 15px; margin-left: 25px;">
                             <li>Coral reefs provide habitat for approximately 25% of all marine species.</li>
                             <li>Reefs protect coastlines from storm damage and erosion.</li>
-                            <li>Many coastal communities depend on reef ecosystems for food and income from fishing.</li>
+                            <li>Many coastal communities depend on reef ecosystems for food and income.</li>
                             <li>Rising ocean temperatures cause coral bleaching, which kills coral polyps.</li>
-                            <li>Ocean acidification prevents corals from building their calcium carbonate skeletons.</li>
-                            <li>Scientists estimate that 70-90% of coral reefs may disappear by 2050 if current trends continue.</li>
+                            <li>Scientists estimate that 70-90% of coral reefs may disappear by 2050.</li>
                         </ul>
                         <br>
                         The student wants to emphasize the ecological importance of coral reefs. Which choice most effectively uses relevant information from the notes to accomplish this goal?
                     </div>
 
                     <div class="choices">
-                        <div class="choice">A. Coral reefs face serious threats from rising ocean temperatures, which cause coral bleaching, and from ocean acidification, which prevents skeleton formation.</div>
-                        <div class="choice">B. Although coral reefs provide habitat for 25% of marine species and protect coastlines, scientists estimate that up to 90% may disappear by 2050.</div>
+                        <div class="choice">A. Coral reefs face serious threats from rising ocean temperatures, which cause coral bleaching.</div>
+                        <div class="choice">B. Although coral reefs provide habitat for 25% of marine species, scientists estimate that up to 90% may disappear by 2050.</div>
                         <div class="choice">C. Coral reefs provide habitat for approximately 25% of all marine species while also protecting coastlines from storm damage and erosion.</div>
                         <div class="choice">D. Many coastal communities depend on coral reef ecosystems for food and income, making reef conservation economically important.</div>
                     </div>
@@ -1736,8 +1607,8 @@
                         <span class="answer-label">✓ Correct Answer: C</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice C is the best answer because it most effectively emphasizes the ecological importance of coral reefs by highlighting two major ecological roles they play. The choice states that reefs "provide habitat for approximately 25% of all marine species" (showing their critical role in marine biodiversity) "while also protecting coastlines from storm damage and erosion" (showing their role in coastal ecosystem protection). By using "while also," the sentence emphasizes that reefs serve multiple essential ecological functions simultaneously. The focus remains entirely on ecological importance rather than straying into threats or economic considerations.</p>
-                            <p>Choice A is incorrect because it emphasizes the threats facing coral reefs (temperature rise, acidification) rather than their ecological importance. While these threats are mentioned in the notes, they don't address the goal of emphasizing why reefs are ecologically important. This choice focuses on problems rather than significance. Choice B is incorrect because although it begins by mentioning ecological functions (habitat provision, coastline protection), it shifts focus to the threat of disappearance ("up to 90% may disappear by 2050"). The structure of this sentence, with "Although" followed by the dire prediction, actually minimizes the ecological importance by framing it as something that may soon be lost. The emphasis is on the threat rather than the importance. Choice D is incorrect because it emphasizes economic importance to coastal communities (food, income) rather than ecological importance. While economic considerations may be related to ecological functions, the question specifically asks to emphasize ecological importance—the role reefs play in natural ecosystems. This choice focuses on human economic benefits rather than ecological significance.</p>
+                            <p>Choice C is the best answer because it emphasizes ecological importance by highlighting two major ecological roles: providing habitat for 25% of marine species and protecting coastlines.</p>
+                            <p>Choice A focuses on threats, not importance. Choice B minimizes importance with "Although." Choice D focuses on economic importance, not ecological.</p>
                             <p class="difficulty">Question Difficulty: Easy</p>
                         </div>
                     </div>
@@ -1747,31 +1618,21 @@
                 <div class="takeaways-box">
                     <h3>Key Digital SAT Takeaways: Rhetorical Synthesis</h3>
                     <ul>
-                        <li>Read the rhetorical goal carefully before looking at answer choices—understand exactly what the student wants to accomplish</li>
+                        <li>Read the rhetorical goal carefully before looking at answer choices</li>
                         <li>Identify which pieces of information from the notes are directly relevant to the stated goal</li>
-                        <li>Eliminate choices that focus on irrelevant details, even if those details are factually accurate</li>
-                        <li>For "emphasize" goals, look for choices that highlight significance or importance using strong, clear language</li>
-                        <li>For "explain" goals, look for choices that provide clear reasoning or connect cause and effect</li>
-                        <li>For "present the aim" goals, focus on the research purpose or objective, not on methods or results</li>
-                        <li>Watch for choices that mention relevant information but frame it in a way that doesn't accomplish the goal (e.g., minimizing something that should be emphasized)</li>
-                        <li>The correct answer will use only relevant information and will directly address the specific rhetorical purpose stated in the question</li>
+                        <li>Eliminate choices that focus on irrelevant details, even if factually accurate</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 9: FORM, STRUCTURE, AND SENSE -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type9">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 9</span>
-                    Form, Structure, and Sense
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 9: FORM, STRUCTURE, AND SENSE -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type9">
+                <div class="content-header">
+                    <span class="type-badge">Type 9</span>
+                    <h2>Form, Structure, and Sense</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1785,29 +1646,21 @@
 
                 <div class="explanation-box">
                     <h3>What This Digital SAT Question Type Tests</h3>
-                    <p>Form, Structure, and Sense questions on the Digital SAT Reading & Writing section assess your command of Standard English grammar and usage. These Digital SAT practice questions test whether you can recognize and correct errors in sentence structure, verb forms, and punctuation conventions.</p>
-                    <p>These questions follow a consistent format:</p>
+                    <p>Form, Structure, and Sense questions assess your command of Standard English grammar and usage. This question type covers four main concepts:</p>
                     <ul>
-                        <li><strong>A passage with a blank:</strong> You'll see a sentence or short passage with "______" indicating where an error needs correction</li>
-                        <li><strong>The question asks:</strong> "Which choice completes the text so that it conforms to the conventions of Standard English?"</li>
-                        <li><strong>Four answer choices:</strong> Each presents a different grammatical construction, but only one follows Standard English conventions</li>
+                        <li><strong>Subject-Modifier Placement:</strong> Modifiers must be placed next to the words they describe</li>
+                        <li><strong>Subject-Verb Agreement:</strong> Verbs must agree in number with their subjects</li>
+                        <li><strong>Verb Tenses:</strong> Verb tenses must be consistent and appropriate for the time frame</li>
+                        <li><strong>Apostrophes:</strong> Use apostrophes correctly for possession (but NOT with possessive pronouns)</li>
                     </ul>
-                    <p>This question type covers four main grammatical concepts:</p>
-                    <ul>
-                        <li><strong>Subject-Modifier Placement:</strong> Modifiers must be placed next to the words they describe to avoid confusion. Misplaced modifiers create unclear or illogical sentences.</li>
-                        <li><strong>Subject-Verb Agreement:</strong> Verbs must agree in number with their subjects. Singular subjects take singular verbs; plural subjects take plural verbs. Pay special attention to gerunds (which are always singular) and be careful when phrases separate the subject from the verb.</li>
-                        <li><strong>Verb Tenses:</strong> Verb tenses must be consistent throughout a passage and appropriate for the time frame being described. When narrating past events, use past tense verbs consistently; when describing general truths or current situations, use present tense.</li>
-                        <li><strong>Apostrophes:</strong> Use apostrophes correctly to show possession (the student's book) but NOT with possessive pronouns (its, their, whose—never it's, they're, who's when showing possession). Also distinguish between plural nouns (students) and possessive nouns (student's or students').</li>
-                    </ul>
-                    <p>Success on these Digital SAT Reading & Writing questions requires understanding these core grammar rules and applying them carefully to identify the choice that produces a grammatically correct, clear sentence. This is essential for Digital SAT preparation and strong academic writing.</p>
                 </div>
 
-                <!-- Question 1: Subject-Modifier Placement -->
+                <!-- Question 1 -->
                 <div class="question-card">
                     <span class="question-number">Practice Question 1: Subject-Modifier Placement</span>
                     
                     <div class="passage">
-                        The International Space Station orbits Earth at an altitude of approximately 400 kilometers, traveling at a speed of 28,000 kilometers per hour. Designed to facilitate scientific research in microgravity, <strong>______</strong> has hosted astronauts from over twenty countries since its first module was launched in 1998.
+                        The International Space Station orbits Earth at an altitude of approximately 400 kilometers. Designed to facilitate scientific research in microgravity, <strong>______</strong> has hosted astronauts from over twenty countries since 1998.
                     </div>
 
                     <div class="question-text">
@@ -1825,99 +1678,8 @@
                         <span class="answer-label">✓ Correct Answer: A</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice A is the best answer because it correctly places the subject being modified immediately after the modifier. The opening modifier "Designed to facilitate scientific research in microgravity" describes the International Space Station, not the astronauts or the research itself. Modifiers must be placed next to the subjects they describe, so "the station" (referring back to the International Space Station) needs to be the first element after the comma. Choice A accomplishes this by making "the station" the subject that was "designed to facilitate scientific research," which is logically correct.</p>
-                            <p>Choice B is incorrect because it creates a misplaced modifier error. The modifier "Designed to facilitate scientific research in microgravity" would be describing "astronauts from multiple nations," but astronauts were not designed to facilitate research—the station was. This creates an illogical sentence suggesting that the astronauts themselves were designed for this purpose, rather than the station being designed. Choice C is incorrect because it creates a misplaced modifier error and an unclear sentence. The phrase "scientific research in microgravity" cannot logically follow the modifier "Designed to facilitate scientific research" because research itself is not designed to facilitate research. Additionally, research cannot "host astronauts," making the sentence illogical. Choice D is incorrect because it creates a misplaced modifier error. Beginning with "over twenty countries" suggests that the countries were "designed to facilitate scientific research," which is illogical. The awkward construction with "and it" at the end further confuses the sentence structure.</p>
+                            <p>Choice A is the best answer because it correctly places the subject being modified immediately after the modifier. The modifier "Designed to facilitate scientific research" describes the station, not the astronauts.</p>
                             <p class="difficulty">Question Difficulty: Medium</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2: Subject-Verb Agreement -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 2: Subject-Verb Agreement</span>
-                    
-                    <div class="passage">
-                        Marine biologists studying whale communication have made remarkable discoveries about humpback whale songs. Recording and analyzing the complex vocalizations of humpback whales across different ocean regions <strong>______</strong> revealed that whale populations share and modify songs over time, suggesting a form of cultural transmission previously thought unique to humans.
-                    </div>
-
-                    <div class="question-text">
-                        Which choice completes the text so that it conforms to the conventions of Standard English?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. have</div>
-                        <div class="choice">B. are</div>
-                        <div class="choice">C. were</div>
-                        <div class="choice">D. has</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: D</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice D is the best answer because it provides a singular verb that agrees with the singular subject. The subject of this sentence is "Recording and analyzing," which functions as a compound gerund phrase. When two gerunds are joined by "and" to describe a single, unified action or process, they are treated as singular and require a singular verb. In this case, "recording and analyzing" describes one integrated research process (not two separate activities), so it takes the singular verb "has." The phrase "Recording and analyzing...has revealed" is grammatically correct.</p>
-                            <p>Choice A is incorrect because "have" is a plural verb that doesn't agree with the singular compound gerund subject "Recording and analyzing." Although the gerund phrase contains the word "and," it describes a single unified research process, making it singular. Additionally, the phrase is followed by "the complex vocalizations" (plural object), which might tempt students to use a plural verb, but the object doesn't determine subject-verb agreement—only the subject does. Choice B is incorrect because "are" is a plural present tense verb that doesn't agree with the singular compound gerund subject. Like Choice A, this incorrectly treats the gerund phrase as plural. Additionally, "are revealed" would create an awkward passive construction that doesn't fit the sentence's structure. Choice C is incorrect because "were" is a plural past tense verb that doesn't agree with the singular subject. Furthermore, the context of the sentence suggests ongoing research findings rather than completed past actions, making past tense inappropriate. The phrase "have made remarkable discoveries" at the beginning establishes present perfect tense, indicating research that continues to be relevant.</p>
-                            <p class="difficulty">Question Difficulty: Hard</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 3: Verb Tenses -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 3: Verb Tenses</span>
-                    
-                    <div class="passage">
-                        In 1969, computer scientist Margaret Hamilton led the team that developed the onboard flight software for NASA's Apollo 11 mission. Her innovative approach to software engineering, including her emphasis on rigorous testing and error prevention, <strong>______</strong> the spacecraft's guidance system to function flawlessly during the historic moon landing. Hamilton's contributions fundamentally shaped how software engineering is practiced today.
-                    </div>
-
-                    <div class="question-text">
-                        Which choice completes the text so that it conforms to the conventions of Standard English?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. has enabled</div>
-                        <div class="choice">B. will enable</div>
-                        <div class="choice">C. enables</div>
-                        <div class="choice">D. enabled</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: D</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice D is the best answer because the past tense verb "enabled" is consistent with the other past tense verbs used to narrate these historical events from 1969. The passage describes events that occurred during the Apollo 11 mission using past tense: "led" (past tense) and later "shaped" (past tense). The sentence is narrating how Hamilton's approach helped the spacecraft's guidance system function during the 1969 moon landing—a specific completed action in the past. "Enabled" correctly maintains this consistent past tense throughout the passage, creating a coherent narrative about historical events.</p>
-                            <p>Choice A is incorrect because "has enabled" is present perfect tense, which emphasizes a connection between past actions and present results. While present perfect could work for describing Hamilton's lasting influence (as in the final sentence about how she "shaped" modern practices), it's inappropriate here because the sentence specifically describes what happened "during the historic moon landing"—a completed past event. The present perfect tense would incorrectly suggest an ongoing enabling action. Choice B is incorrect because "will enable" is future tense, which is completely inconsistent with the past tense narrative about events that occurred in 1969. Future tense indicates something that hasn't happened yet, but the passage is narrating specific historical events that already occurred during the moon landing. This would create an illogical time shift. Choice C is incorrect because "enables" is simple present tense, which is inconsistent with the past tense narrative. Simple present tense is used for habitual actions, general truths, or current states, not for narrating specific historical events that occurred in 1969. Using "enables" would create an awkward and illogical shift from past to present tense.</p>
-                            <p class="difficulty">Question Difficulty: Medium</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 4: Apostrophes -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 4: Apostrophes</span>
-                    
-                    <div class="passage">
-                        The ancient library of Alexandria was one of the largest and most significant libraries of the classical world. Scholars traveled from across the Mediterranean to study <strong>______</strong> vast collection of manuscripts, which reportedly contained works by Aristotle, Euclid, and Homer. The library's destruction, whether by fire or gradual decline, remains one of history's greatest losses of knowledge.
-                    </div>
-
-                    <div class="question-text">
-                        Which choice completes the text so that it conforms to the conventions of Standard English?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. its</div>
-                        <div class="choice">B. it's</div>
-                        <div class="choice">C. their</div>
-                        <div class="choice">D. there</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: A</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice A is the best answer because the singular possessive pronoun "its" agrees with the singular antecedent "The ancient library" and correctly indicates possession without using an apostrophe. Possessive pronouns (its, their, whose, your) never use apostrophes. In this sentence, "its vast collection" shows that the collection belongs to the library. The pronoun must be singular ("its" not "their") because the antecedent is singular: "The ancient library of Alexandria." The sentence is discussing one library's collection, not multiple libraries' collections.</p>
-                            <p>Choice B is incorrect because "it's" is a contraction of "it is," which would create an ungrammatical sentence. The sentence would read "Scholars traveled...to study it is vast collection," which doesn't make sense. The sentence needs a possessive pronoun to show that the collection belongs to the library, not a contraction. Remember: possessive pronouns never use apostrophes, while contractions always do. Choice C is incorrect because "their" is a plural possessive pronoun, but the antecedent "The ancient library" is singular. This creates a pronoun-antecedent agreement error. The sentence is about one library (the library of Alexandria), not multiple libraries, so a singular pronoun is required. Students might be tempted by this because "scholars" (plural) appears nearby, but the collection belongs to the library, not to the scholars. Choice D is incorrect because "there" is an adverb indicating location or an expletive beginning sentences (as in "there are"), not a possessive pronoun. "Their" (with an 'i') is the possessive pronoun, but even that would be wrong here because it's plural. "There" doesn't show possession at all and would make the sentence read "to study there vast collection," which is ungrammatical.</p>
-                            <p class="difficulty">Question Difficulty: Easy</p>
                         </div>
                     </div>
                 </div>
@@ -1926,33 +1688,22 @@
                 <div class="takeaways-box">
                     <h3>Key Digital SAT Takeaways: Form, Structure, and Sense</h3>
                     <ul>
-                        <li><strong>Subject-Modifier Placement:</strong> Always place modifying phrases next to the word they describe—check what word comes immediately after the comma</li>
-                        <li><strong>Subject-Modifier Placement:</strong> If an opening modifier describes an action or characteristic, the subject performing that action must come right after the comma</li>
-                        <li><strong>Subject-Verb Agreement:</strong> Identify the true subject of the sentence—ignore intervening phrases that might confuse you</li>
-                        <li><strong>Subject-Verb Agreement:</strong> Remember that gerunds (verb forms ending in -ing used as nouns) are always singular, even when followed by plural objects</li>
-                        <li><strong>Subject-Verb Agreement:</strong> Singular subjects require singular verbs (is, was, has); plural subjects require plural verbs (are, were, have)</li>
-                        <li><strong>Verb Tenses:</strong> Maintain consistent verb tense throughout a passage—if narrating past events, use past tense consistently</li>
-                        <li><strong>Verb Tenses:</strong> Pay attention to time markers (dates, phrases like "in 1969" or "currently") that signal which tense is appropriate</li>
-                        <li><strong>Apostrophes:</strong> Possessive pronouns (its, their, whose, your) NEVER use apostrophes—contractions (it's = it is, they're = they are) do use apostrophes</li>
-                        <li><strong>Apostrophes:</strong> Check pronoun-antecedent agreement—singular antecedents need singular pronouns (its), plural antecedents need plural pronouns (their)</li>
-                        <li><strong>General Strategy:</strong> Read the entire sentence with each answer choice to see which creates the most grammatically correct and logical sentence</li>
+                        <li><strong>Subject-Modifier Placement:</strong> Check what word comes immediately after the comma</li>
+                        <li><strong>Subject-Verb Agreement:</strong> Identify the true subject—ignore intervening phrases</li>
+                        <li><strong>Verb Tenses:</strong> Maintain consistent tense throughout a passage</li>
+                        <li><strong>Apostrophes:</strong> Possessive pronouns (its, their, whose) NEVER use apostrophes</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- ============================================ -->
-        <!-- TYPE 10: BOUNDARIES -->
-        <!-- ============================================ -->
-        <div class="accordion-item" id="type10">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <h2>
-                    <span class="accordion-badge">Type 10</span>
-                    Boundaries
-                </h2>
-                <span class="accordion-icon">▼</span>
-            </div>
-            <div class="accordion-content">
+            <!-- ============================================ -->
+            <!-- TYPE 10: BOUNDARIES -->
+            <!-- ============================================ -->
+            <div class="tab-panel" id="type10">
+                <div class="content-header">
+                    <span class="type-badge">Type 10</span>
+                    <h2>Boundaries</h2>
+                </div>
                 
                 <!-- Video Section -->
                 <div class="video-section">
@@ -1966,56 +1717,22 @@
 
                 <div class="explanation-box">
                     <h3>What This Digital SAT Question Type Tests</h3>
-                    <p>Boundaries questions on the Digital SAT Reading & Writing section assess your ability to use commas, semicolons, colons, and dashes correctly to establish clear relationships between clauses, phrases, and sentence elements. These Digital SAT practice questions test whether you can identify appropriate punctuation to clarify meaning and follow Standard English conventions.</p>
-                    
-                    <p><strong>The Four Punctuation Marks and Their Uses:</strong></p>
-                    
-                    <p><strong>1. COMMA USAGE:</strong></p>
+                    <p>Boundaries questions assess your ability to use commas, semicolons, colons, and dashes correctly.</p>
+                    <p><strong>Key Rules:</strong></p>
                     <ul>
-                        <li><strong>Use commas when:</strong> (a) combining a dependent clause with an independent clause, (b) joining two independent clauses with FANBOYS conjunctions (for, and, nor, but, or, yet, so), (c) after introductory phrases, (d) after opening modifiers, (e) separating items in a list, (f) surrounding non-restrictive (supplementary) information</li>
-                        <li><strong>Do NOT use commas:</strong> between subject and verb, between only TWO independent clauses without a conjunction (comma splice error), with restrictive (essential) information, between only TWO coordinates joined by "and," when title/description comes before a name, or mixed with dashes for the same element</li>
+                        <li><strong>Commas:</strong> Use with FANBOYS to join independent clauses; NEVER use alone between two independent clauses (comma splice)</li>
+                        <li><strong>Semicolons:</strong> Join two independent clauses; use as "super commas" in complex lists</li>
+                        <li><strong>Colons:</strong> Introduce explanations or lists (preceding clause must be independent)</li>
+                        <li><strong>Dashes:</strong> Use matching pairs to enclose parenthetical information</li>
                     </ul>
-                    
-                    <p><strong>2. SEMICOLON USAGE:</strong></p>
-                    <ul>
-                        <li><strong>Use semicolons to:</strong> (a) join two closely related independent clauses without a conjunction, (b) serve as "super commas" separating items in complex lists when items contain internal commas</li>
-                        <li><strong>Do NOT use semicolons:</strong> with FANBOYS conjunctions (use comma + conjunction), between a main clause and a dependent/participial phrase, or to introduce lists or explanations (use colons instead)</li>
-                    </ul>
-                    
-                    <p><strong>3. COLON USAGE:</strong></p>
-                    <ul>
-                        <li><strong>Use colons to:</strong> (a) join two independent clauses when the second explains/elaborates on the first, (b) introduce a list (the clause before the colon must be independent)</li>
-                        <li><strong>Do NOT use colons:</strong> to introduce relative clauses, between a verb and its object, or to separate elements that don't have an explanatory relationship</li>
-                    </ul>
-                    
-                    <p><strong>4. DASH USAGE:</strong></p>
-                    <ul>
-                        <li><strong>Use dashes:</strong> as a pair to enclose/surround parenthetical or interrupting information (commonly tested); single dashes to introduce emphatic information are rarely tested</li>
-                        <li><strong>Do NOT mix punctuation:</strong> must use matching marks (comma-comma OR dash-dash, NOT comma-dash)</li>
-                    </ul>
-                    
-                    <p><strong>Critical Testing Patterns:</strong></p>
-                    <ul>
-                        <li><strong>Comma Splice Error (Most Common):</strong> Students incorrectly use only a comma to join two independent clauses without a conjunction</li>
-                        <li><strong>Dependent vs. Independent Clause Recognition:</strong> Students confuse participial phrases (like "producing more than 350 paintings") with complete independent clauses. Participial phrases and gerunds without helping verbs are NOT independent clauses</li>
-                        <li><strong>Restrictive vs. Non-Restrictive Information:</strong> Essential information identifying WHICH one (restrictive) needs NO commas; supplementary information (non-restrictive) NEEDS commas</li>
-                        <li><strong>Matching Punctuation:</strong> Parenthetical information must be enclosed with matching punctuation—both commas or both dashes, never mixed</li>
-                    </ul>
-                    
-                    <p><strong>What College Board usually Does NOT Test:</strong></p>
-                    <ul>
-                        <li>Choosing between semicolon, colon, OR comma+FANBOYS to join independent clauses (all three are equally valid)</li>
-                    </ul>
-                    
-                    <p>Success on these Digital SAT Reading & Writing questions requires recognizing comma splices, understanding clause types (independent vs. dependent), distinguishing essential from supplementary information, and identifying when matching punctuation is needed. This is essential for Digital SAT preparation and clear academic writing.</p>
                 </div>
 
-                <!-- Question 1: Comma Usage & Clause Recognition -->
+                <!-- Question 1 -->
                 <div class="question-card">
-                    <span class="question-number">Practice Question 1: Comma Usage & Clause Recognition</span>
+                    <span class="question-number">Practice Question 1: Comma Usage</span>
                     
                     <div class="passage">
-                        Archaeologist Kathleen Kenyon revolutionized excavation methods in the 1950s by introducing stratigraphic analysis to Middle Eastern sites. Her meticulous technique involved dividing excavation areas into precise grid <strong>______</strong> recording the exact position and depth of every artifact discovered, this approach allowed researchers to understand the chronological sequence of ancient civilizations with unprecedented accuracy.
+                        Archaeologist Kathleen Kenyon revolutionized excavation methods in the 1950s. Her meticulous technique involved dividing excavation areas into precise grid <strong>______</strong> recording the exact position and depth of every artifact discovered, this approach allowed researchers to understand ancient civilizations with unprecedented accuracy.
                     </div>
 
                     <div class="question-text">
@@ -2033,75 +1750,8 @@
                         <span class="answer-label">✓ Correct Answer: C</span>
                         <div class="explanation">
                             <p><strong>Rationale:</strong></p>
-                            <p>Choice C is the best answer because it correctly uses a comma with the coordinating conjunction "and" to join two independent clauses. The first clause "Her meticulous technique involved dividing excavation areas into precise grid squares" is a complete sentence with subject ("technique") and verb ("involved"). The second clause "recording the exact position and depth of every artifact discovered, this approach allowed researchers to understand the chronological sequence" begins with what appears to be a participial phrase ("recording...") but continues to form a complete independent clause with its own subject ("this approach") and verb ("allowed"). Since these are two independent clauses describing coordinate actions in Kenyon's technique, they require a comma plus a coordinating conjunction to join them properly.</p>
-                            
-                            <p>Choice A is incorrect because it creates a comma splice—using only a comma to join two independent clauses without a coordinating conjunction. While "recording" might initially appear to be a participial phrase, the sentence continues with "this approach allowed," creating an independent clause with its own subject and verb. A comma alone cannot join two independent clauses; this is one of the most common punctuation errors tested on the Digital SAT. Choice B is incorrect because it fails to use a comma before the coordinating conjunction "and" when joining two independent clauses. Standard English requires a comma before FANBOYS conjunctions (for, and, nor, but, or, yet, so) when they connect independent clauses. Without the comma, the sentence incorrectly runs the two clauses together. Choice D is incorrect because it provides no punctuation at all between two independent clauses, creating a run-on sentence. The sentence runs together "involved dividing excavation areas into precise grid squares recording the exact position and depth," which is grammatically incorrect and confusing. Some form of punctuation is required to establish the boundary between the two independent clauses and show their coordinate relationship.</p>
-                            
+                            <p>Choice C is the best answer because it correctly uses a comma with the coordinating conjunction "and" to join two independent clauses. Choice A creates a comma splice. Choice B lacks the required comma before "and." Choice D creates a run-on sentence.</p>
                             <p class="difficulty">Question Difficulty: Medium-Hard</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 2: Semicolon Usage in Complex Lists -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 2: Semicolon Usage in Complex Lists</span>
-                    
-                    <div class="passage">
-                        Historian Pura Belpré made significant contributions to children's literature and library services in twentieth-century New York. She wrote bilingual folktales that preserved Puerto Rican <strong>______</strong> established the first Spanish-language story hour program at the New York Public Library, which served immigrant families; and mentored young Latina librarians, helping them navigate professional advancement in an era of limited opportunities.
-                    </div>
-
-                    <div class="question-text">
-                        Which choice completes the text so that it conforms to the conventions of Standard English?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. culture,</div>
-                        <div class="choice">B. culture;</div>
-                        <div class="choice">C. culture, and</div>
-                        <div class="choice">D. culture and</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: B</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice B is the best answer because it correctly uses semicolons to separate items in a complex list where the items themselves contain internal commas. The sentence describes three of Belpré's contributions: (1) "She wrote bilingual folktales that preserved Puerto Rican culture," (2) "established the first Spanish-language story hour program at the New York Public Library, which served immigrant families," and (3) "mentored young Latina librarians, helping them navigate professional advancement in an era of limited opportunities." The second and third items each contain internal commas that provide essential information ("New York Public Library, which served immigrant families" and "young Latina librarians, helping them navigate"). When list items contain internal commas, semicolons must be used to separate the main items to avoid confusion about where one accomplishment ends and the next begins. Using semicolons as "super commas" makes the structure clear: three major contributions separated by semicolons, with internal details separated by regular commas.</p>
-                            
-                            <p>Choice A is incorrect because using only commas throughout creates ambiguity in a complex list. With commas alone, it becomes unclear whether "which served immigrant families" is part of the second contribution or describes something else, and whether "helping them navigate professional advancement" is part of the third contribution or a separate element. When list items contain internal commas, regular commas cannot effectively separate the main items—semicolons are required to establish clear boundaries between the primary elements. Choice C is incorrect because it uses a comma followed by "and" before the second item, which disrupts the parallel structure of the three-part list. In a list with three items containing internal commas, the pattern should be: "Item 1; Item 2; and Item 3," not "Item 1, and Item 2; and Item 3." This choice also fails to use the necessary semicolon to separate the first two complex items. Choice D is incorrect because it provides no punctuation between the first and second items, creating a run-on construction. Without any punctuation separating "culture" and "established," the sentence incorrectly runs together two distinct contributions: writing folktales and establishing a program. Even in a simple list, some form of punctuation would be necessary to separate items. The complete absence of punctuation makes it impossible to distinguish where the first contribution ends and the second begins.</p>
-                            
-                            <p class="difficulty">Question Difficulty: Hard</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Question 3: Matching Punctuation for Parentheticals -->
-                <div class="question-card">
-                    <span class="question-number">Practice Question 3: Matching Punctuation for Parentheticals</span>
-                    
-                    <div class="passage">
-                        Marine biologist Sylvia Earle has spent decades advocating for ocean conservation. Her documentary "Mission <strong>______</strong> which chronicles her efforts to create protected marine sanctuaries—has inspired millions of viewers to support environmental causes and reduce their impact on ocean ecosystems.
-                    </div>
-
-                    <div class="question-text">
-                        Which choice completes the text so that it conforms to the conventions of Standard English?
-                    </div>
-
-                    <div class="choices">
-                        <div class="choice">A. Blue"—</div>
-                        <div class="choice">B. Blue",</div>
-                        <div class="choice">C. Blue";</div>
-                        <div class="choice">D. Blue"</div>
-                    </div>
-
-                    <div class="answer-section">
-                        <span class="answer-label">✓ Correct Answer: A</span>
-                        <div class="explanation">
-                            <p><strong>Rationale:</strong></p>
-                            <p>Choice A is the best answer because it correctly uses matching dashes to enclose the parenthetical element "which chronicles her efforts to create protected marine sanctuaries." This non-restrictive relative clause provides supplementary information about the documentary but is not essential to identifying which documentary is being discussed—the title "Mission Blue" already establishes that. When a parenthetical element is set off from the rest of the sentence, it must be enclosed with matching punctuation: either a pair of commas or a pair of dashes. The passage shows a dash after "sanctuaries" (before "has inspired"), so the opening of this parenthetical element must also use a dash. Choice A provides the dash after the closing quotation mark ("Blue"—), which correctly matches the dash that appears later in the sentence. Using matching dashes emphasizes the interrupting nature of the supplementary information while maintaining grammatical clarity.</p>
-                            
-                            <p>Choice B is incorrect because it uses a comma to open the parenthetical element while the passage uses a dash to close it. This creates mismatched punctuation—comma at the beginning, dash at the end—which violates Standard English conventions. When enclosing parenthetical information, you must use the same punctuation mark at both ends: either comma-comma or dash-dash, never comma-dash. Mixing different punctuation marks for the same parenthetical element creates confusion about sentence structure and is grammatically incorrect. Choice C is incorrect because a semicolon is used to join two independent clauses or to separate items in a complex list, not to introduce a relative clause that provides supplementary information. The "which" clause is not an independent clause—it's a dependent relative clause that modifies "documentary." Additionally, even if a semicolon were appropriate for introducing this element, it would still fail to match the dash that closes the parenthetical element later in the sentence. Choice D is incorrect because it provides no punctuation at all before the parenthetical element. Non-restrictive relative clauses beginning with "which" must be set off with punctuation to indicate they provide supplementary rather than essential information. Without any punctuation, the sentence runs together the title and the relative clause, failing to signal that "which chronicles her efforts" is additional, non-essential information. Furthermore, having no punctuation at the start while having a dash at the end creates incomplete and mismatched punctuation for the parenthetical element.</p>
-                            
-                            <p class="difficulty">Question Difficulty: Medium</p>
                         </div>
                     </div>
                 </div>
@@ -2110,25 +1760,18 @@
                 <div class="takeaways-box">
                     <h3>Key Digital SAT Takeaways: Boundaries</h3>
                     <ul>
-                        <li><strong>Comma Usage:</strong> Use commas with FANBOYS (for, and, nor, but, or, yet, so) to join two independent clauses</li>
-                        <li><strong>Comma Usage:</strong> Use pairs of commas to enclose non-restrictive (supplementary) information</li>
-                        <li><strong>Comma Usage:</strong> NEVER use only a comma to join two independent clauses without a conjunction—this creates a comma splice error</li>
-                        <li><strong>Semicolon Usage:</strong> Use semicolons to join two closely related independent clauses—both sides must be complete sentences</li>
-                        <li><strong>Semicolon Usage:</strong> Use semicolons as "super commas" in complex lists where items contain internal commas</li>
-                        <li><strong>Colon Usage:</strong> Use colons when the second clause explains/elaborates on the first, or to introduce lists</li>
-                        <li><strong>Dash Usage:</strong> Use matching pairs of dashes to enclose interrupting parenthetical information</li>
-                        <li><strong>Critical Strategy:</strong> Identify whether clauses are independent (can stand alone) or dependent</li>
-                        <li><strong>Critical Strategy:</strong> Watch for participial phrases that LOOK like verbs but aren't complete independent clauses</li>
-                        <li><strong>Critical Strategy:</strong> Determine if information is restrictive (essential—NO commas) or non-restrictive (supplementary—NEEDS commas)</li>
-                        <li><strong>Remember:</strong> College Board usually does NOT test choosing between semicolon vs. colon vs. comma+FANBOYS for joining independent clauses—all are equally valid</li>
+                        <li><strong>Comma Usage:</strong> Use commas with FANBOYS to join independent clauses</li>
+                        <li><strong>Comma Splice Error:</strong> NEVER use only a comma between two independent clauses</li>
+                        <li><strong>Semicolon Usage:</strong> Use semicolons as "super commas" in complex lists</li>
+                        <li><strong>Dash Usage:</strong> Use matching pairs of dashes to enclose parenthetical information</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-    </div>  <!-- Closes main container -->
+        </div> <!-- Closes content-area -->
+    </div> <!-- Closes main-layout -->
 
-    <!-- CTA Section -->
+        <!-- CTA Section -->
     <div class="cta-section">
         <div class="container">
             <h2>Ready to Ace Digital SAT Reading & Writing?</h2>
@@ -2150,38 +1793,51 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Accordion -->
+    <!-- JavaScript for Tab Switching -->
     <script>
-        function toggleAccordion(header) {
-            const item = header.parentElement;
-            const wasActive = item.classList.contains('active');
+        // Tab switching functionality
+        function initTabs() {
+            const tabItems = document.querySelectorAll('.tab-item');
+            const tabPanels = document.querySelectorAll('.tab-panel');
             
-            // Close all accordion items
-            document.querySelectorAll('.accordion-item').forEach(accordionItem => {
-                accordionItem.classList.remove('active');
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs
+                    tabItems.forEach(t => t.classList.remove('active'));
+                    
+                    // Remove active class from all panels
+                    tabPanels.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Add active class to corresponding panel
+                    const targetPanel = document.getElementById(targetId);
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                        
+                        // Scroll content area to top when switching tabs
+                        const contentArea = document.querySelector('.content-area');
+                        if (contentArea) {
+                            contentArea.scrollTop = 0;
+                        }
+                    }
+                });
             });
-            
-            // Open clicked item if it wasn't already open
-            if (!wasActive) {
-                item.classList.add('active');
-                
-                // Smooth scroll to the opened section
-                setTimeout(() => {
-                    header.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 300);
-            }
         }
 
-        // Auto-open accordion if hash in URL
+        // Initialize tabs when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initTabs);
+        
+        // Also handle hash in URL for direct linking
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash;
             if (hash) {
-                const element = document.querySelector(hash);
-                if (element) {
-                    const header = element.querySelector('.accordion-header');
-                    if (header) {
-                        toggleAccordion(header);
-                    }
+                const targetTab = document.querySelector(`[data-tab="${hash.substring(1)}"]`);
+                if (targetTab) {
+                    targetTab.click();
                 }
             }
         });
