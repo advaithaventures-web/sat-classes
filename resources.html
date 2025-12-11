@@ -34,13 +34,13 @@
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
 
         .logo {
             flex: 0 0 auto;
@@ -67,26 +67,24 @@
         .contact-info a:hover {
             text-decoration: underline;
         }
+/* Header Navigation */
+.header-nav {
+    display: flex;
+    gap: 10px;
+}
 
-        /* Navigation */
-        .nav {
-            background-color: #1A2332;
-            padding: 15px 0;
-            text-align: center;
-        }
+.header-nav a {
+    color: #1A2332;
+    text-decoration: none;
+    padding: 8px 15px;
+    font-size: 0.95em;
+    transition: color 0.3s;
+}
 
-        .nav a {
-            color: #F5F5DC;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            display: inline-block;
-            transition: color 0.3s;
-        }
-
-        .nav a:hover {
-            color: #B8860B;
-        }
+.header-nav a:hover {
+    color: #B8860B;
+}
+        
 
         /* Page Header */
         .page-header {
@@ -673,26 +671,24 @@
 </head>
 <body>
     <!-- Top Header -->
-    <div class="top-header">
-        <div class="header-content">
-            <div class="logo">
-                <img src="prepcool_logo.jpg" alt="Prepcool Logo" onerror="this.style.display='none'">
-            </div>
-            <div class="contact-info">
-                <a href="mailto:raj@prepcool.com">raj@prepcool.com</a>
-                <a href="tel:+918106461788">+91 8106461788</a>
-                <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
-            </div>
+<div class="top-header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="prepcool_logo.jpg" alt="Prepcool Logo" onerror="this.style.display='none'">
+        </div>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">Free Digital SAT Practice</a>
+            <a href="get-started.html">Get Started</a>
+        </nav>
+        <div class="contact-info">
+            <a href="mailto:raj@prepcool.com">raj@prepcool.com</a>
+            <a href="tel:+918106461788">+91 8106461788</a>
+            <a href="https://www.prepcool.com" target="_blank">www.prepcool.com</a>
         </div>
     </div>
-
-    <!-- Navigation -->
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="resources.html">Free Digital SAT Practice</a>
-        <a href="get-started.html">Get Started</a>
-    </div>
+</div>
 
     <!-- Page Header -->
     <div class="page-header">
