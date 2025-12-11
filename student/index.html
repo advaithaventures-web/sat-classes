@@ -533,6 +533,193 @@
             text-align: right;
         }
 
+        /* Review Modal */
+        .review-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .review-modal-overlay.active {
+            display: flex;
+        }
+
+        .review-modal {
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .review-modal-header {
+            background: #1a2332;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-modal-header h3 {
+            margin: 0;
+        }
+
+        .review-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .review-modal-body {
+            padding: 25px;
+        }
+
+        .review-result-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .review-result-badge.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .review-result-badge.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .review-passage {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            border-left: 4px solid #B8860B;
+        }
+
+        .review-question {
+            font-size: 17px;
+            color: #1a2332;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .review-options {
+            margin-bottom: 20px;
+        }
+
+        .review-option {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .review-option.selected {
+            border-color: #B8860B;
+            background: #fdf8e8;
+        }
+
+        .review-option.correct-answer {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .review-option.selected.wrong {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .review-option-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+
+        .review-option.correct-answer .review-option-letter {
+            background: #28a745;
+            color: white;
+        }
+
+        .review-option.selected.wrong .review-option-letter {
+            background: #dc3545;
+            color: white;
+        }
+
+        .review-explanation {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .review-explanation h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .review-explanation p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .review-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            border-top: 1px solid #eee;
+            background: #f8f9fa;
+        }
+
+        .review-nav button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .review-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .review-item {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .review-item:hover {
+            transform: translateX(5px);
+        }
+
         /* Dashboard visible state */
         .dashboard {
             display: none;
@@ -692,8 +879,33 @@
                 <button class="btn btn-primary btn-large" onclick="showDashboard()">Back to Topics</button>
 
                 <div class="review-section">
-                    <h3>Review Answers</h3>
+                    <h3>Review Answers (Click to see details)</h3>
                     <div id="reviewList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Modal -->
+        <div class="review-modal-overlay" id="reviewModalOverlay" onclick="closeReviewModal(event)">
+            <div class="review-modal" onclick="event.stopPropagation()">
+                <div class="review-modal-header">
+                    <h3 id="reviewModalTitle">Question 1</h3>
+                    <button class="review-modal-close" onclick="closeReviewModal()">&times;</button>
+                </div>
+                <div class="review-modal-body">
+                    <div id="reviewResultBadge" class="review-result-badge"></div>
+                    <div id="reviewPassage" class="review-passage"></div>
+                    <div id="reviewQuestion" class="review-question"></div>
+                    <div id="reviewOptions" class="review-options"></div>
+                    <div id="reviewExplanation" class="review-explanation">
+                        <h4>💡 Explanation</h4>
+                        <p id="reviewExplanationText"></p>
+                    </div>
+                </div>
+                <div class="review-nav">
+                    <button class="btn btn-secondary" id="reviewPrevBtn" onclick="reviewPrevQuestion()">← Previous</button>
+                    <span id="reviewCounter">1 / 15</span>
+                    <button class="btn btn-primary" id="reviewNextBtn" onclick="reviewNextQuestion()">Next →</button>
                 </div>
             </div>
         </div>
@@ -1097,13 +1309,14 @@
                 const answer = answers[q.id] || {};
                 const isCorrect = answer.is_correct;
                 return `
-                    <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}">
+                    <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}" onclick="openReviewModal(${i})">
                         <div class="question-preview">
                             <strong>Q${i + 1}:</strong> ${q.question_text.substring(0, 60)}...
                         </div>
                         <div class="answers">
                             <span>Your answer: <strong>${answer.selected || '-'}</strong></span>
                             ${!isCorrect ? `<span> | Correct: <strong>${answer.correct_answer}</strong></span>` : ''}
+                            <span style="margin-left: 10px; color: #666;">👁️ View</span>
                         </div>
                     </div>
                 `;
@@ -1151,6 +1364,122 @@
                 timerInterval = null;
             }
         }
+
+        // Review Modal Functions
+        let currentReviewIndex = 0;
+
+        function openReviewModal(index) {
+            currentReviewIndex = index;
+            renderReviewModal();
+            document.getElementById('reviewModalOverlay').classList.add('active');
+        }
+
+        function closeReviewModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('reviewModalOverlay').classList.remove('active');
+        }
+
+        function renderReviewModal() {
+            const q = currentQuestions[currentReviewIndex];
+            const answer = answers[q.id] || {};
+            const total = currentQuestions.length;
+
+            // Title
+            document.getElementById('reviewModalTitle').textContent = `Question ${currentReviewIndex + 1} of ${total}`;
+            
+            // Counter
+            document.getElementById('reviewCounter').textContent = `${currentReviewIndex + 1} / ${total}`;
+
+            // Result badge
+            const badgeEl = document.getElementById('reviewResultBadge');
+            if (answer.is_correct) {
+                badgeEl.className = 'review-result-badge correct';
+                badgeEl.textContent = '✓ Correct';
+            } else {
+                badgeEl.className = 'review-result-badge incorrect';
+                badgeEl.textContent = '✗ Incorrect';
+            }
+
+            // Passage
+            const passageEl = document.getElementById('reviewPassage');
+            if (q.passage) {
+                passageEl.style.display = 'block';
+                passageEl.textContent = q.passage;
+            } else {
+                passageEl.style.display = 'none';
+            }
+
+            // Question
+            document.getElementById('reviewQuestion').textContent = q.question_text;
+
+            // Options
+            const options = [
+                { letter: 'A', text: q.option_a },
+                { letter: 'B', text: q.option_b },
+                { letter: 'C', text: q.option_c },
+                { letter: 'D', text: q.option_d }
+            ];
+
+            const optionsEl = document.getElementById('reviewOptions');
+            optionsEl.innerHTML = options.map(opt => {
+                let classes = 'review-option';
+                const isSelected = answer.selected === opt.letter;
+                const isCorrectAnswer = answer.correct_answer === opt.letter;
+                
+                if (isCorrectAnswer) {
+                    classes += ' correct-answer';
+                }
+                if (isSelected && !answer.is_correct) {
+                    classes += ' selected wrong';
+                } else if (isSelected && answer.is_correct) {
+                    classes += ' correct-answer';
+                }
+
+                return `
+                    <div class="${classes}">
+                        <span class="review-option-letter">${opt.letter}</span>
+                        <span>${opt.text}</span>
+                        ${isSelected ? '<span style="margin-left: auto; font-weight: 500;">(Your answer)</span>' : ''}
+                        ${isCorrectAnswer && !isSelected ? '<span style="margin-left: auto; font-weight: 500; color: #28a745;">(Correct answer)</span>' : ''}
+                    </div>
+                `;
+            }).join('');
+
+            // Explanation
+            const explanationEl = document.getElementById('reviewExplanation');
+            const explanationText = answer.explanation || 'No explanation available for this question.';
+            document.getElementById('reviewExplanationText').textContent = explanationText;
+            explanationEl.style.display = 'block';
+
+            // Navigation buttons
+            document.getElementById('reviewPrevBtn').disabled = currentReviewIndex === 0;
+            document.getElementById('reviewNextBtn').disabled = currentReviewIndex === total - 1;
+        }
+
+        function reviewPrevQuestion() {
+            if (currentReviewIndex > 0) {
+                currentReviewIndex--;
+                renderReviewModal();
+            }
+        }
+
+        function reviewNextQuestion() {
+            if (currentReviewIndex < currentQuestions.length - 1) {
+                currentReviewIndex++;
+                renderReviewModal();
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeReviewModal();
+            }
+            if (document.getElementById('reviewModalOverlay').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') reviewPrevQuestion();
+                if (e.key === 'ArrowRight') reviewNextQuestion();
+            }
+        });
     </script>
 </body>
 </html>
