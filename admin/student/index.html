@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT by Raj - Student Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h1 {
+            color: #1a2332;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #B8860B;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #B8860B;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #9a7209;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Header */
+        .header {
+            background: #1a2332;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            color: #B8860B;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-user span {
+            color: #aaa;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+        }
+
+        .page-title h2 {
+            color: #1a2332;
+            font-size: 28px;
+        }
+
+        .page-title p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Topics Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .topic-header {
+            background: #1a2332;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .topic-header h3 {
+            font-size: 16px;
+        }
+
+        .topic-header .topic-number {
+            color: #B8860B;
+            font-weight: bold;
+        }
+
+        .topic-body {
+            padding: 20px;
+        }
+
+        .topic-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .practice-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .practice-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .practice-btn.untimed {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+
+        .practice-btn.untimed:hover {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .practice-btn.timed {
+            background: #fff3e0;
+            color: #e65100;
+            border: 2px solid #e65100;
+        }
+
+        .practice-btn.timed:hover {
+            background: #e65100;
+            color: white;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .progress-info .best-score {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        /* Practice Page */
+        .practice-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .practice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .practice-info h2 {
+            color: #1a2332;
+            font-size: 20px;
+        }
+
+        .practice-info p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .timer {
+            background: #fff3e0;
+            color: #e65100;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .timer.warning {
+            background: #ffebee;
+            color: #c62828;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .question-progress {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .question-progress-bar {
+            background: #B8860B;
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            color: #B8860B;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .passage {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            border-left: 4px solid #B8860B;
+        }
+
+        .question-text {
+            font-size: 18px;
+            color: #1a2332;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #B8860B;
+            background: #fdf8e8;
+        }
+
+        .option.selected {
+            border-color: #B8860B;
+            background: #fdf8e8;
+        }
+
+        .option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .option-letter {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .option.selected .option-letter {
+            background: #B8860B;
+            color: white;
+        }
+
+        .option.correct .option-letter {
+            background: #28a745;
+            color: white;
+        }
+
+        .option.incorrect .option-letter {
+            background: #dc3545;
+            color: white;
+        }
+
+        .explanation-box {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .explanation-box h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .explanation-box p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .practice-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Results Page */
+        .results-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .results-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .results-score {
+            font-size: 72px;
+            font-weight: bold;
+            color: #1a2332;
+            margin: 20px 0;
+        }
+
+        .results-score span {
+            font-size: 36px;
+            color: #666;
+        }
+
+        .results-message {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .results-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .results-stat {
+            text-align: center;
+        }
+
+        .results-stat .number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a2332;
+        }
+
+        .results-stat .label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .review-section {
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .review-section h3 {
+            margin-bottom: 20px;
+            color: #1a2332;
+        }
+
+        .review-item {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-item.correct {
+            background: #d4edda;
+        }
+
+        .review-item.incorrect {
+            background: #f8d7da;
+        }
+
+        .review-item .question-preview {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .review-item .answers {
+            text-align: right;
+        }
+
+        /* Dashboard visible state */
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .practice-container.active {
+            display: block;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .practice-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .results-details {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-btn:hover {
+            color: #1a2332;
+        }
+
+        /* Hide sections by default */
+        #loginPage { display: flex; }
+        #appContainer { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h1>🎓 SAT by Raj</h1>
+            <p>Student Portal - Login to Practice</p>
+            <div class="error-message" id="loginError"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App Container -->
+    <div id="appContainer">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎓 SAT by Raj</h1>
+            <div class="header-user">
+                <span>Welcome, <strong id="userName"></strong></span>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Dashboard -->
+        <div class="dashboard active" id="dashboard">
+            <div class="main-content">
+                <div class="page-title">
+                    <h2>Practice Topics</h2>
+                    <p>Select a topic to start practicing. Each topic has 15 questions in untimed and timed modes.</p>
+                </div>
+                <div class="topics-grid" id="topicsGrid">
+                    <!-- Topics will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Practice Page -->
+        <div class="practice-container" id="practiceContainer">
+            <div class="practice-header">
+                <div>
+                    <button class="back-btn" onclick="exitPractice()">← Back to Topics</button>
+                    <div class="practice-info">
+                        <h2 id="practiceTopicName"></h2>
+                        <p id="practiceMode"></p>
+                    </div>
+                </div>
+                <div class="timer" id="timer" style="display: none;">00:00</div>
+            </div>
+
+            <div class="question-progress">
+                <div class="question-progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-number" id="questionNumber"></div>
+                <div class="passage" id="passage"></div>
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="options"></div>
+                <div class="explanation-box" id="explanationBox">
+                    <h4>Explanation</h4>
+                    <p id="explanationText"></p>
+                </div>
+            </div>
+
+            <div class="practice-actions">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">← Previous</button>
+                <button class="btn btn-primary btn-large" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                <button class="btn btn-success btn-large" id="submitBtn" onclick="submitPractice()" style="display:none;">Submit</button>
+            </div>
+        </div>
+
+        <!-- Results Page -->
+        <div class="results-container" id="resultsContainer">
+            <div class="results-card">
+                <h2>Practice Complete!</h2>
+                <div class="results-score">
+                    <span id="scoreNum">0</span><span>/15</span>
+                </div>
+                <div class="results-message" id="resultsMessage"></div>
+                <div class="results-details">
+                    <div class="results-stat">
+                        <div class="number" id="correctCount">0</div>
+                        <div class="label">Correct</div>
+                    </div>
+                    <div class="results-stat">
+                        <div class="number" id="incorrectCount">0</div>
+                        <div class="label">Incorrect</div>
+                    </div>
+                    <div class="results-stat">
+                        <div class="number" id="timeSpent">-</div>
+                        <div class="label">Time</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="showDashboard()">Back to Topics</button>
+
+                <div class="review-section">
+                    <h3>Review Answers</h3>
+                    <div id="reviewList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://satbyraj-backend.onrender.com/api';
+        let token = localStorage.getItem('studentToken');
+        let currentUser = null;
+        let topics = [];
+        let currentAttempt = null;
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let timerInterval = null;
+        let startTime = null;
+        let isTimedMode = false;
+
+        // Check if already logged in
+        if (token) {
+            checkAuth();
+        }
+
+        async function checkAuth() {
+            try {
+                const res = await fetch(`${API_URL}/auth/me`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    currentUser = data.user;
+                    showApp();
+                } else {
+                    logout();
+                }
+            } catch (error) {
+                logout();
+            }
+        }
+
+        // Login form
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorDiv = document.getElementById('loginError');
+
+            try {
+                const res = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || 'Login failed');
+                }
+
+                if (data.user.role === 'admin') {
+                    throw new Error('Please use the admin panel for admin login');
+                }
+
+                localStorage.setItem('studentToken', data.token);
+                token = data.token;
+                currentUser = data.user;
+                showApp();
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        function logout() {
+            localStorage.removeItem('studentToken');
+            token = null;
+            currentUser = null;
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('appContainer').style.display = 'none';
+        }
+
+        async function showApp() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('appContainer').style.display = 'block';
+            document.getElementById('userName').textContent = currentUser.name;
+            await loadTopics();
+        }
+
+        async function apiCall(endpoint, options = {}) {
+            const res = await fetch(`${API_URL}${endpoint}`, {
+                ...options,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    ...options.headers
+                }
+            });
+            if (!res.ok) {
+                const data = await res.json();
+                throw new Error(data.error || 'API error');
+            }
+            return res.json();
+        }
+
+        async function loadTopics() {
+            try {
+                topics = await apiCall('/student/topics');
+                renderTopics();
+            } catch (error) {
+                console.error('Failed to load topics:', error);
+            }
+        }
+
+        function renderTopics() {
+            const grid = document.getElementById('topicsGrid');
+            grid.innerHTML = topics.map((t, index) => `
+                <div class="topic-card">
+                    <div class="topic-header">
+                        <h3><span class="topic-number">${index + 1}.</span> ${t.name}</h3>
+                    </div>
+                    <div class="topic-body">
+                        <p class="topic-description">${t.description || 'Practice questions for this topic'}</p>
+                        <div class="practice-options">
+                            <button class="practice-btn untimed" onclick="startPractice(${t.id}, 'untimed', '${t.name}')">
+                                📖 Untimed
+                            </button>
+                            <button class="practice-btn timed" onclick="startPractice(${t.id}, 'timed', '${t.name}')">
+                                ⏱️ Timed
+                            </button>
+                        </div>
+                        <div class="progress-info">
+                            <span>Untimed: ${t.untimed_attempts || 0} attempts ${t.best_untimed_score ? `(Best: ${t.best_untimed_score}/15)` : ''}</span>
+                            <span>Timed: ${t.timed_attempts || 0} attempts ${t.best_timed_score ? `(Best: ${t.best_timed_score}/15)` : ''}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function startPractice(topicId, setType, topicName) {
+            try {
+                // Load questions
+                currentQuestions = await apiCall(`/student/topics/${topicId}/questions/${setType}`);
+                
+                if (currentQuestions.length === 0) {
+                    alert('No questions available for this topic yet. Please check back later.');
+                    return;
+                }
+
+                // Create attempt
+                currentAttempt = await apiCall('/student/attempts', {
+                    method: 'POST',
+                    body: JSON.stringify({ topic_id: topicId, set_type: setType })
+                });
+
+                isTimedMode = setType === 'timed';
+                currentQuestionIndex = 0;
+                answers = {};
+                startTime = Date.now();
+
+                // Setup UI
+                document.getElementById('practiceTopicName').textContent = topicName;
+                document.getElementById('practiceMode').textContent = isTimedMode ? 'Timed Mode - 15 minutes' : 'Untimed Mode - Take your time';
+
+                // Show/hide timer
+                const timerEl = document.getElementById('timer');
+                if (isTimedMode) {
+                    timerEl.style.display = 'block';
+                    startTimer(15 * 60); // 15 minutes
+                } else {
+                    timerEl.style.display = 'none';
+                }
+
+                showPractice();
+                renderQuestion();
+            } catch (error) {
+                alert('Error starting practice: ' + error.message);
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById('dashboard').classList.add('active');
+            document.getElementById('practiceContainer').classList.remove('active');
+            document.getElementById('resultsContainer').classList.remove('active');
+            stopTimer();
+            loadTopics(); // Refresh progress
+        }
+
+        function showPractice() {
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('practiceContainer').classList.add('active');
+            document.getElementById('resultsContainer').classList.remove('active');
+        }
+
+        function showResults() {
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('practiceContainer').classList.remove('active');
+            document.getElementById('resultsContainer').classList.add('active');
+            stopTimer();
+        }
+
+        function renderQuestion() {
+            const q = currentQuestions[currentQuestionIndex];
+            const total = currentQuestions.length;
+
+            // Progress bar
+            document.getElementById('progressBar').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+
+            // Question number
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${total}`;
+
+            // Passage
+            const passageEl = document.getElementById('passage');
+            if (q.passage) {
+                passageEl.style.display = 'block';
+                passageEl.textContent = q.passage;
+            } else {
+                passageEl.style.display = 'none';
+            }
+
+            // Question text
+            document.getElementById('questionText').textContent = q.question_text;
+
+            // Options
+            const optionsEl = document.getElementById('options');
+            const options = [
+                { letter: 'A', text: q.option_a },
+                { letter: 'B', text: q.option_b },
+                { letter: 'C', text: q.option_c },
+                { letter: 'D', text: q.option_d }
+            ];
+
+            const savedAnswer = answers[q.id];
+            const showResult = !isTimedMode && savedAnswer && savedAnswer.submitted;
+
+            optionsEl.innerHTML = options.map(opt => {
+                let classes = 'option';
+                if (savedAnswer && savedAnswer.selected === opt.letter) {
+                    classes += ' selected';
+                    if (showResult) {
+                        classes += savedAnswer.is_correct ? ' correct' : ' incorrect';
+                    }
+                }
+                if (showResult && opt.letter === savedAnswer.correct_answer && !savedAnswer.is_correct) {
+                    classes += ' correct';
+                }
+                return `
+                    <div class="${classes}" onclick="selectOption('${opt.letter}')" ${showResult ? 'style="pointer-events:none;"' : ''}>
+                        <span class="option-letter">${opt.letter}</span>
+                        <span>${opt.text}</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Explanation (for untimed mode after answering)
+            const explanationBox = document.getElementById('explanationBox');
+            if (showResult && savedAnswer.explanation) {
+                document.getElementById('explanationText').textContent = savedAnswer.explanation;
+                explanationBox.style.display = 'block';
+            } else {
+                explanationBox.style.display = 'none';
+            }
+
+            // Navigation buttons
+            document.getElementById('prevBtn').style.display = currentQuestionIndex > 0 ? 'block' : 'none';
+            
+            const isLastQuestion = currentQuestionIndex === total - 1;
+            document.getElementById('nextBtn').style.display = isLastQuestion ? 'none' : 'block';
+            document.getElementById('submitBtn').style.display = isLastQuestion ? 'block' : 'none';
+        }
+
+        async function selectOption(letter) {
+            const q = currentQuestions[currentQuestionIndex];
+            
+            // If already answered in untimed mode, don't allow change
+            if (!isTimedMode && answers[q.id] && answers[q.id].submitted) {
+                return;
+            }
+
+            answers[q.id] = { selected: letter, submitted: false };
+
+            if (!isTimedMode) {
+                // Submit immediately in untimed mode
+                try {
+                    const result = await apiCall(`/student/attempts/${currentAttempt.id}/responses`, {
+                        method: 'POST',
+                        body: JSON.stringify({ question_id: q.id, selected_answer: letter })
+                    });
+                    answers[q.id] = {
+                        selected: letter,
+                        submitted: true,
+                        is_correct: result.is_correct,
+                        correct_answer: result.correct_answer,
+                        explanation: result.explanation
+                    };
+                } catch (error) {
+                    console.error('Failed to submit answer:', error);
+                }
+            }
+
+            renderQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        }
+
+        async function submitPractice() {
+            const unanswered = currentQuestions.filter(q => !answers[q.id] || !answers[q.id].selected);
+            if (unanswered.length > 0 && !confirm(`You have ${unanswered.length} unanswered questions. Submit anyway?`)) {
+                return;
+            }
+
+            stopTimer();
+            const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+
+            try {
+                let results;
+                if (isTimedMode) {
+                    // Submit all at once for timed mode
+                    const responses = currentQuestions.map(q => ({
+                        question_id: q.id,
+                        selected_answer: answers[q.id]?.selected || null
+                    }));
+
+                    results = await apiCall(`/student/attempts/${currentAttempt.id}/submit-all`, {
+                        method: 'POST',
+                        body: JSON.stringify({ responses, time_taken_seconds: timeSpent })
+                    });
+
+                    // Store results for review
+                    results.results.forEach(r => {
+                        answers[r.question_id] = {
+                            selected: r.selected_answer,
+                            submitted: true,
+                            is_correct: r.is_correct,
+                            correct_answer: r.correct_answer,
+                            explanation: r.explanation
+                        };
+                    });
+                } else {
+                    // Complete untimed attempt
+                    await apiCall(`/student/attempts/${currentAttempt.id}/complete`, {
+                        method: 'PUT'
+                    });
+
+                    // Calculate score from answers
+                    const correct = Object.values(answers).filter(a => a.is_correct).length;
+                    results = {
+                        score: correct,
+                        total: currentQuestions.length,
+                        time_taken_seconds: timeSpent
+                    };
+                }
+
+                showResultsPage(results, timeSpent);
+            } catch (error) {
+                alert('Error submitting practice: ' + error.message);
+            }
+        }
+
+        function showResultsPage(results, timeSpent) {
+            const score = results.score;
+            const total = currentQuestions.length;
+            const incorrect = total - score;
+
+            document.getElementById('scoreNum').textContent = score;
+            document.getElementById('correctCount').textContent = score;
+            document.getElementById('incorrectCount').textContent = incorrect;
+
+            const minutes = Math.floor(timeSpent / 60);
+            const seconds = timeSpent % 60;
+            document.getElementById('timeSpent').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            // Message based on score
+            let message;
+            const percentage = (score / total) * 100;
+            if (percentage >= 90) message = "Excellent work! 🌟";
+            else if (percentage >= 70) message = "Good job! Keep practicing! 👍";
+            else if (percentage >= 50) message = "Nice effort! Room for improvement. 📚";
+            else message = "Keep practicing! You'll get better! 💪";
+            document.getElementById('resultsMessage').textContent = message;
+
+            // Review list
+            const reviewList = document.getElementById('reviewList');
+            reviewList.innerHTML = currentQuestions.map((q, i) => {
+                const answer = answers[q.id] || {};
+                const isCorrect = answer.is_correct;
+                return `
+                    <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}">
+                        <div class="question-preview">
+                            <strong>Q${i + 1}:</strong> ${q.question_text.substring(0, 60)}...
+                        </div>
+                        <div class="answers">
+                            <span>Your answer: <strong>${answer.selected || '-'}</strong></span>
+                            ${!isCorrect ? `<span> | Correct: <strong>${answer.correct_answer}</strong></span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            showResults();
+        }
+
+        function exitPractice() {
+            if (confirm('Are you sure you want to exit? Your progress will be lost.')) {
+                showDashboard();
+            }
+        }
+
+        // Timer functions
+        function startTimer(seconds) {
+            let remaining = seconds;
+            updateTimerDisplay(remaining);
+
+            timerInterval = setInterval(() => {
+                remaining--;
+                updateTimerDisplay(remaining);
+
+                if (remaining <= 60) {
+                    document.getElementById('timer').classList.add('warning');
+                }
+
+                if (remaining <= 0) {
+                    stopTimer();
+                    alert('Time is up! Submitting your answers...');
+                    submitPractice();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('timer').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+    </script>
+</body>
+</html>
