@@ -170,94 +170,206 @@
         }
 
         /* Topics Grid */
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
+        .topics-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .topic-card {
+        .topic-row {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
             overflow: hidden;
         }
 
-        .topic-header {
-            background: #1a2332;
-            color: white;
-            padding: 15px 20px;
-        }
-
-        .topic-header h3 {
-            font-size: 16px;
-        }
-
-        .topic-header .topic-number {
-            color: #B8860B;
-            font-weight: bold;
-        }
-
-        .topic-body {
-            padding: 20px;
-        }
-
-        .topic-description {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .practice-options {
+        .topic-main {
             display: flex;
-            gap: 10px;
+            align-items: center;
+            padding: 20px 25px;
+            gap: 20px;
         }
 
-        .practice-btn {
+        .topic-info {
             flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
+        }
+
+        .topic-info h3 {
+            font-size: 16px;
+            color: #1a2332;
+            margin: 0;
+        }
+
+        .topic-info h3 .chapter-num {
+            color: #666;
+            font-weight: 600;
+        }
+
+        .topic-progress-mini {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .topic-progress-mini span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .progress-dot.complete {
+            background: #28a745;
+        }
+
+        .progress-dot.partial {
+            background: #ffc107;
+        }
+
+        .progress-dot.none {
+            background: #ddd;
+        }
+
+        .topic-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .mode-btn {
+            padding: 10px 24px;
+            border: 2px solid;
+            border-radius: 6px;
+            background: white;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s;
+            font-size: 14px;
+            transition: all 0.2s;
+            min-width: 100px;
+            text-align: center;
         }
 
-        .practice-btn.untimed {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 2px solid #2e7d32;
+        .mode-btn.untimed {
+            border-color: #28a745;
+            color: #28a745;
         }
 
-        .practice-btn.untimed:hover {
-            background: #2e7d32;
+        .mode-btn.untimed:hover {
+            background: #28a745;
             color: white;
         }
 
-        .practice-btn.timed {
-            background: #fff3e0;
-            color: #e65100;
-            border: 2px solid #e65100;
+        .mode-btn.timed {
+            border-color: #dc3545;
+            color: #dc3545;
         }
 
-        .practice-btn.timed:hover {
-            background: #e65100;
+        .mode-btn.timed:hover {
+            background: #dc3545;
             color: white;
         }
 
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            padding-top: 15px;
+        .mode-btn .score-indicator {
+            display: block;
+            height: 3px;
+            margin-top: 5px;
+            border-radius: 2px;
+            background: currentColor;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .expand-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            color: #999;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .expand-btn.expanded {
+            transform: rotate(180deg);
+        }
+
+        .expand-btn:hover {
+            color: #333;
+        }
+
+        /* Expandable Content */
+        .topic-expandable {
+            display: none;
+            padding: 0 25px 25px 25px;
             border-top: 1px solid #eee;
-            font-size: 13px;
-            color: #666;
+            background: #fafafa;
         }
 
-        .progress-info .best-score {
-            color: #2e7d32;
-            font-weight: 500;
+        .topic-expandable.show {
+            display: block;
+        }
+
+        .expandable-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            padding-top: 20px;
+        }
+
+        .video-section h4, .explanation-section h4 {
+            color: #1a2332;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .video-placeholder {
+            background: #1a2332;
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .video-placeholder span {
+            color: #888;
+        }
+
+        .explanation-text {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            min-height: 120px;
+        }
+
+        @media (max-width: 768px) {
+            .topic-main {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topic-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .expandable-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Practice Page */
@@ -911,9 +1023,9 @@
             <div class="main-content">
                 <div class="page-title">
                     <h2>Practice Topics</h2>
-                    <p>Select a topic to start practicing. Each topic has 15 questions in untimed and timed modes.</p>
+                    <p>Select a topic to start practicing. Click the arrow to view lesson materials.</p>
                 </div>
-                <div class="topics-grid" id="topicsGrid">
+                <div class="topics-list" id="topicsGrid">
                     <!-- Topics will be loaded here -->
                 </div>
             </div>
@@ -1242,28 +1354,59 @@
 
         function renderTopics() {
             const grid = document.getElementById('topicsGrid');
-            grid.innerHTML = topics.map((t, index) => `
-                <div class="topic-card">
-                    <div class="topic-header">
-                        <h3><span class="topic-number">${index + 1}.</span> ${t.name}</h3>
-                    </div>
-                    <div class="topic-body">
-                        <p class="topic-description">${t.description || 'Practice questions for this topic'}</p>
-                        <div class="practice-options">
-                            <button class="practice-btn untimed" onclick="startPractice(${t.id}, 'untimed', '${t.name}')">
-                                📖 Untimed
-                            </button>
-                            <button class="practice-btn timed" onclick="startPractice(${t.id}, 'timed', '${t.name}')">
-                                ⏱️ Timed
-                            </button>
+            grid.innerHTML = topics.map((t, index) => {
+                // Determine progress indicators
+                const untimedProgress = t.best_untimed_score ? (t.best_untimed_score >= 12 ? 'complete' : 'partial') : 'none';
+                const timedProgress = t.best_timed_score ? (t.best_timed_score >= 12 ? 'complete' : 'partial') : 'none';
+                const untimedWidth = t.best_untimed_score ? Math.round((t.best_untimed_score / 15) * 100) : 0;
+                const timedWidth = t.best_timed_score ? Math.round((t.best_timed_score / 15) * 100) : 0;
+
+                return `
+                <div class="topic-row">
+                    <div class="topic-main">
+                        <div class="topic-info">
+                            <h3><span class="chapter-num">Chapter ${index + 1} :</span> ${t.name}</h3>
+                            <div class="topic-progress-mini">
+                                <span><span class="progress-dot ${untimedProgress}"></span> Untimed: ${t.untimed_attempts || 0} attempts</span>
+                                <span><span class="progress-dot ${timedProgress}"></span> Timed: ${t.timed_attempts || 0} attempts</span>
+                            </div>
                         </div>
-                        <div class="progress-info">
-                            <span>Untimed: ${t.untimed_attempts || 0} attempts ${t.best_untimed_score ? `(Best: ${t.best_untimed_score}/15)` : ''}</span>
-                            <span>Timed: ${t.timed_attempts || 0} attempts ${t.best_timed_score ? `(Best: ${t.best_timed_score}/15)` : ''}</span>
+                        <div class="topic-buttons">
+                            <button class="mode-btn untimed" onclick="startPractice(${t.id}, 'untimed', '${t.name.replace(/'/g, "\\'")}')">
+                                Untimed
+                                <span class="score-indicator" style="width: ${untimedWidth}%"></span>
+                            </button>
+                            <button class="mode-btn timed" onclick="startPractice(${t.id}, 'timed', '${t.name.replace(/'/g, "\\'")}')">
+                                Timed
+                                <span class="score-indicator" style="width: ${timedWidth}%"></span>
+                            </button>
+                            <button class="expand-btn" onclick="toggleExpand(${index}, this)">▼</button>
+                        </div>
+                    </div>
+                    <div class="topic-expandable" id="expand-${index}">
+                        <div class="expandable-content">
+                            <div class="video-section">
+                                <h4>📹 Recorded Lesson</h4>
+                                <div class="video-placeholder">
+                                    <span>Video coming soon</span>
+                                </div>
+                            </div>
+                            <div class="explanation-section">
+                                <h4>📝 Concept Explanation</h4>
+                                <div class="explanation-text">
+                                    ${t.description || 'Detailed explanation for this topic will be added soon. Check back later for comprehensive learning materials.'}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
+        }
+
+        function toggleExpand(index, btn) {
+            const expandable = document.getElementById(`expand-${index}`);
+            expandable.classList.toggle('show');
+            btn.classList.toggle('expanded');
         }
 
         async function startPractice(topicId, setType, topicName) {
