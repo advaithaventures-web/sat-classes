@@ -129,6 +129,43 @@
             color: #B8860B;
         }
 
+        .header-practice-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .back-btn-header {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+        }
+
+        .back-btn-header:hover {
+            color: white;
+        }
+
+        .header-topic {
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .header-mode {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .header-divider {
+            color: #555;
+            font-size: 16px;
+        }
+
         .header-user {
             display: flex;
             align-items: center;
@@ -386,37 +423,26 @@
             display: flex;
         }
 
-        .practice-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            flex-shrink: 0;
-        }
-
-        .practice-header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .practice-header-left h2 {
-            color: #1a2332;
+        /* Timer in header */
+        .timer {
+            background: #fff3e0;
+            color: #e65100;
+            padding: 6px 14px;
+            border-radius: 5px;
             font-size: 18px;
-            margin: 0;
+            font-weight: bold;
+            margin-left: 15px;
         }
 
-        .practice-header-left p {
-            color: #666;
-            margin: 0;
-            font-size: 14px;
+        .timer.warning {
+            background: #ffebee;
+            color: #c62828;
+            animation: pulse 1s infinite;
         }
 
-        .header-divider {
-            color: #ddd;
-            font-size: 18px;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         /* Two Column Layout */
@@ -424,7 +450,7 @@
             display: flex;
             flex: 1;
             gap: 0;
-            margin: 20px 0;
+            margin-top: 10px;
             min-height: 0;
             overflow: hidden;
         }
@@ -604,26 +630,6 @@
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
-        }
-
-        .timer {
-            background: #fff3e0;
-            color: #e65100;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .timer.warning {
-            background: #ffebee;
-            color: #c62828;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
 
         /* Responsive for smaller screens */
@@ -1117,6 +1123,15 @@
         <!-- Header -->
         <header class="header">
             <h1>🎓 SAT by Raj</h1>
+            <!-- Practice Info (shown during practice) -->
+            <div class="header-practice-info" id="headerPracticeInfo" style="display: none;">
+                <button class="back-btn-header" onclick="exitPractice()">← Back to Topics</button>
+                <span class="header-divider">|</span>
+                <span class="header-topic" id="practiceTopicName"></span>
+                <span class="header-divider">|</span>
+                <span class="header-mode" id="practiceMode"></span>
+                <div class="timer" id="timer" style="display: none;">00:00</div>
+            </div>
             <div class="header-user">
                 <span>Welcome, <strong id="userName"></strong></span>
                 <button class="logout-btn" id="logoutBtn">Logout</button>
@@ -1138,17 +1153,6 @@
 
         <!-- Practice Page -->
         <div class="practice-container" id="practiceContainer">
-            <div class="practice-header">
-                <div class="practice-header-left">
-                    <button class="back-btn" onclick="exitPractice()">← Back to Topics</button>
-                    <span class="header-divider">|</span>
-                    <h2 id="practiceTopicName"></h2>
-                    <span class="header-divider">|</span>
-                    <p id="practiceMode"></p>
-                </div>
-                <div class="timer" id="timer" style="display: none;">00:00</div>
-            </div>
-
             <div class="question-layout">
                 <!-- Left Panel: Passage -->
                 <div class="passage-panel">
@@ -1572,6 +1576,7 @@
             document.getElementById('dashboard').classList.add('active');
             document.getElementById('practiceContainer').classList.remove('active');
             document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('headerPracticeInfo').style.display = 'none';
             stopTimer();
             loadTopics(); // Refresh progress
         }
@@ -1580,12 +1585,14 @@
             document.getElementById('dashboard').classList.remove('active');
             document.getElementById('practiceContainer').classList.add('active');
             document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('headerPracticeInfo').style.display = 'flex';
         }
 
         function showResults() {
             document.getElementById('dashboard').classList.remove('active');
             document.getElementById('practiceContainer').classList.remove('active');
             document.getElementById('resultsContainer').classList.add('active');
+            document.getElementById('headerPracticeInfo').style.display = 'none';
             stopTimer();
         }
 
