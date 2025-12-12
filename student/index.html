@@ -618,23 +618,27 @@
 
         /* Bottom Navigation */
         .practice-nav-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            flex-shrink: 0;
-        }
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    flex-shrink: 0;
+}
 
         .question-counter {
-            background: #1a2332;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
+    background: #1a2332;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+#nextBtn, #submitBtn {
+    min-width: 100px;
+}
         /* Responsive for smaller screens */
         @media (max-width: 900px) {
             .question-layout {
