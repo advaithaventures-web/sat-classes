@@ -384,19 +384,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
         }
 
-        .practice-info h2 {
+        .practice-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .practice-header-left h2 {
             color: #1a2332;
-            font-size: 20px;
+            font-size: 18px;
+            margin: 0;
         }
 
-        .practice-info p {
+        .practice-header-left p {
             color: #666;
-            margin-top: 5px;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .header-divider {
+            color: #ddd;
+            font-size: 18px;
         }
 
         .timer {
@@ -880,10 +894,11 @@
             border: none;
             color: #666;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             display: flex;
             align-items: center;
             gap: 5px;
+            padding: 0;
         }
 
         .back-btn:hover {
@@ -1034,12 +1049,12 @@
         <!-- Practice Page -->
         <div class="practice-container" id="practiceContainer">
             <div class="practice-header">
-                <div>
+                <div class="practice-header-left">
                     <button class="back-btn" onclick="exitPractice()">← Back to Topics</button>
-                    <div class="practice-info">
-                        <h2 id="practiceTopicName"></h2>
-                        <p id="practiceMode"></p>
-                    </div>
+                    <span class="header-divider">|</span>
+                    <h2 id="practiceTopicName"></h2>
+                    <span class="header-divider">|</span>
+                    <p id="practiceMode"></p>
                 </div>
                 <div class="timer" id="timer" style="display: none;">00:00</div>
             </div>
