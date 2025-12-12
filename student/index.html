@@ -372,21 +372,27 @@
             }
         }
 
-        /* Practice Page */
+        /* Practice Page - Bluebook Style */
         .practice-container {
             display: none;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 20px 30px;
+            height: calc(100vh - 60px);
+            flex-direction: column;
+        }
+
+        .practice-container.active {
+            display: flex;
         }
 
         .practice-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
+            flex-shrink: 0;
         }
 
         .practice-header-left {
@@ -413,6 +419,193 @@
             font-size: 18px;
         }
 
+        /* Two Column Layout */
+        .question-layout {
+            display: flex;
+            flex: 1;
+            gap: 0;
+            margin: 20px 0;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .passage-panel {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: #fff;
+        }
+
+        .panel-divider {
+            width: 2px;
+            background: linear-gradient(to bottom, #ddd 0%, #ddd 50%, transparent 50%, transparent 100%);
+            background-size: 2px 8px;
+            margin: 0 5px;
+        }
+
+        .question-panel {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: #fff;
+        }
+
+        .passage {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            background: none;
+            padding: 0;
+            border: none;
+            margin: 0;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #1a2332;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            color: #1a2332;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 14px 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: #1a2332;
+            background: #f8f9fa;
+        }
+
+        .option.selected {
+            border-color: #1a2332;
+            background: #f0f4f8;
+        }
+
+        .option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-letter {
+            background: #1a2332;
+            border-color: #1a2332;
+            color: white;
+        }
+
+        .option.correct .option-letter {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .option.incorrect .option-letter {
+            background: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+
+        .explanation-box {
+            background: #e8f4fd;
+            border-left: 4px solid #2196f3;
+            border-radius: 0 8px 8px 0;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+
+        .explanation-box h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .explanation-box p {
+            color: #333;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* Progress Bar */
+        .question-progress {
+            height: 6px;
+            background: linear-gradient(to right, #B8860B 50%, #ddd 50%);
+            border-radius: 3px;
+            margin-bottom: 15px;
+            flex-shrink: 0;
+        }
+
+        .question-progress-bar {
+            height: 100%;
+            background: #B8860B;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        /* Bottom Navigation */
+        .practice-nav-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .question-counter {
+            background: #1a2332;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
         .timer {
             background: #fff3e0;
             color: #e65100;
@@ -433,6 +626,25 @@
             50% { opacity: 0.7; }
         }
 
+        /* Responsive for smaller screens */
+        @media (max-width: 900px) {
+            .question-layout {
+                flex-direction: column;
+            }
+
+            .panel-divider {
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(to right, #ddd 0%, #ddd 50%, transparent 50%, transparent 100%);
+                background-size: 8px 2px;
+                margin: 10px 0;
+            }
+
+            .passage-panel, .question-panel {
+                flex: none;
+            }
+        }
+
         .question-progress {
             background: #e0e0e0;
             height: 8px;
@@ -445,124 +657,6 @@
             background: #B8860B;
             height: 100%;
             transition: width 0.3s;
-        }
-
-        .question-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-
-        .question-number {
-            color: #B8860B;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .passage {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            border-left: 4px solid #B8860B;
-        }
-
-        .question-text {
-            font-size: 18px;
-            color: #1a2332;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .option {
-            padding: 15px 20px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .option:hover {
-            border-color: #B8860B;
-            background: #fdf8e8;
-        }
-
-        .option.selected {
-            border-color: #B8860B;
-            background: #fdf8e8;
-        }
-
-        .option.correct {
-            border-color: #28a745;
-            background: #d4edda;
-        }
-
-        .option.incorrect {
-            border-color: #dc3545;
-            background: #f8d7da;
-        }
-
-        .option-letter {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-
-        .option.selected .option-letter {
-            background: #B8860B;
-            color: white;
-        }
-
-        .option.correct .option-letter {
-            background: #28a745;
-            color: white;
-        }
-
-        .option.incorrect .option-letter {
-            background: #dc3545;
-            color: white;
-        }
-
-        .explanation-box {
-            background: #e3f2fd;
-            border: 1px solid #2196f3;
-            border-radius: 5px;
-            padding: 20px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .explanation-box h4 {
-            color: #1565c0;
-            margin-bottom: 10px;
-        }
-
-        .explanation-box p {
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .practice-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
         }
 
         /* Results Page */
@@ -864,10 +958,6 @@
             display: block;
         }
 
-        .practice-container.active {
-            display: block;
-        }
-
         .results-container.active {
             display: block;
         }
@@ -1059,25 +1149,38 @@
                 <div class="timer" id="timer" style="display: none;">00:00</div>
             </div>
 
+            <div class="question-layout">
+                <!-- Left Panel: Passage -->
+                <div class="passage-panel">
+                    <div class="passage" id="passage"></div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="panel-divider"></div>
+                
+                <!-- Right Panel: Question & Options -->
+                <div class="question-panel">
+                    <div class="question-number" id="questionNumber"></div>
+                    <div class="question-text" id="questionText"></div>
+                    <div class="options" id="options"></div>
+                    <div class="explanation-box" id="explanationBox">
+                        <h4>💡 Explanation</h4>
+                        <p id="explanationText"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
             <div class="question-progress">
                 <div class="question-progress-bar" id="progressBar"></div>
             </div>
 
-            <div class="question-card">
-                <div class="question-number" id="questionNumber"></div>
-                <div class="passage" id="passage"></div>
-                <div class="question-text" id="questionText"></div>
-                <div class="options" id="options"></div>
-                <div class="explanation-box" id="explanationBox">
-                    <h4>Explanation</h4>
-                    <p id="explanationText"></p>
-                </div>
-            </div>
-
-            <div class="practice-actions">
+            <!-- Bottom Navigation -->
+            <div class="practice-nav-bottom">
                 <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">← Previous</button>
-                <button class="btn btn-primary btn-large" id="nextBtn" onclick="nextQuestion()">Next →</button>
-                <button class="btn btn-success btn-large" id="submitBtn" onclick="submitPractice()" style="display:none;">Submit</button>
+                <div class="question-counter" id="questionCounter">Question 1 of 15</div>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                <button class="btn btn-success" id="submitBtn" onclick="submitPractice()" style="display:none;">Submit</button>
             </div>
         </div>
 
@@ -1493,16 +1596,22 @@
             // Progress bar
             document.getElementById('progressBar').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
 
-            // Question number
-            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${total}`;
+            // Question number (just the number in circle)
+            document.getElementById('questionNumber').textContent = currentQuestionIndex + 1;
+
+            // Question counter at bottom
+            document.getElementById('questionCounter').textContent = `Question ${currentQuestionIndex + 1} of ${total}`;
 
             // Passage
             const passageEl = document.getElementById('passage');
+            const passagePanel = document.querySelector('.passage-panel');
             if (q.passage) {
-                passageEl.style.display = 'block';
                 passageEl.textContent = q.passage;
+                passagePanel.style.display = 'block';
+                document.querySelector('.panel-divider').style.display = 'block';
             } else {
-                passageEl.style.display = 'none';
+                passagePanel.style.display = 'none';
+                document.querySelector('.panel-divider').style.display = 'none';
             }
 
             // Question text
@@ -1549,11 +1658,11 @@
             }
 
             // Navigation buttons
-            document.getElementById('prevBtn').style.display = currentQuestionIndex > 0 ? 'block' : 'none';
+            document.getElementById('prevBtn').style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
             
             const isLastQuestion = currentQuestionIndex === total - 1;
-            document.getElementById('nextBtn').style.display = isLastQuestion ? 'none' : 'block';
-            document.getElementById('submitBtn').style.display = isLastQuestion ? 'block' : 'none';
+            document.getElementById('nextBtn').style.display = isLastQuestion ? 'none' : 'inline-block';
+            document.getElementById('submitBtn').style.display = isLastQuestion ? 'inline-block' : 'none';
         }
 
         async function selectOption(letter) {
