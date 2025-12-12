@@ -582,9 +582,93 @@
             <section class="section" id="attemptsSection">
                 <div class="page-header">
                     <h1>Student Progress</h1>
-                    <p>View student attempts and submissions.</p>
+                    <p>View detailed progress for each student.</p>
                 </div>
-                <div class="card">
+                
+                <!-- Student Selector -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-body">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label><strong>Select Student:</strong></label>
+                            <select id="studentSelector" onchange="loadStudentProgress()" style="max-width: 400px;">
+                                <option value="">-- Choose a student --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Overview (hidden until student selected) -->
+                <div id="studentOverview" style="display: none;">
+                    <!-- Stats Cards -->
+                    <div class="stats-row" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
+                        <div class="stat-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #1a2332;" id="statTotalAttempts">0</div>
+                            <div style="color: #666; font-size: 14px;">Total Attempts</div>
+                        </div>
+                        <div class="stat-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #28a745;" id="statAvgScore">0%</div>
+                            <div style="color: #666; font-size: 14px;">Average Score</div>
+                        </div>
+                        <div class="stat-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #B8860B;" id="statTopicsStarted">0/10</div>
+                            <div style="color: #666; font-size: 14px;">Topics Started</div>
+                        </div>
+                        <div class="stat-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;">
+                            <div style="font-size: 32px; font-weight: bold; color: #17a2b8;" id="statBestScore">0/15</div>
+                            <div style="color: #666; font-size: 14px;">Best Score</div>
+                        </div>
+                    </div>
+
+                    <!-- Topic-wise Progress -->
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-header">
+                            <h2>📊 Topic-wise Progress</h2>
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Topic</th>
+                                        <th>Untimed Best</th>
+                                        <th>Untimed Attempts</th>
+                                        <th>Timed Best</th>
+                                        <th>Timed Attempts</th>
+                                        <th>Progress</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="topicProgressBody">
+                                    <tr><td colspan="6" class="empty-state">Select a student to view progress</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Recent Attempts -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>📝 Recent Attempts</h2>
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Topic</th>
+                                        <th>Set</th>
+                                        <th>Score</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentAttemptsBody">
+                                    <tr><td colspan="5" class="empty-state">No attempts yet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- All Attempts (shown when no student selected) -->
+                <div class="card" id="allAttemptsCard">
                     <div class="card-header">
                         <h2>All Attempts</h2>
                     </div>
@@ -933,13 +1017,31 @@
             }
         }
 
+        let allAttempts = [];
+        let allStudentsList = [];
+        let allTopicsList = [];
+
         async function loadAttempts() {
             try {
-                const attempts = await apiCall('/admin/attempts');
+                // Load attempts
+                allAttempts = await apiCall('/admin/attempts');
+                
+                // Load students for selector
+                const users = await apiCall('/admin/users');
+                allStudentsList = users.filter(u => u.role !== 'admin');
+                
+                // Load topics
+                allTopicsList = await apiCall('/admin/topics');
 
+                // Populate student selector
+                const selector = document.getElementById('studentSelector');
+                selector.innerHTML = '<option value="">-- Choose a student --</option>' +
+                    allStudentsList.map(s => `<option value="${s.id}">${s.name} (${s.email})</option>`).join('');
+
+                // Show all attempts table
                 const tbody = document.getElementById('attemptsTableBody');
-                tbody.innerHTML = attempts.length > 0 
-                    ? attempts.map(a => `
+                tbody.innerHTML = allAttempts.length > 0 
+                    ? allAttempts.map(a => `
                         <tr>
                             <td>${a.student_name}<br><small>${a.student_email}</small></td>
                             <td>${a.topic_name}</td>
@@ -955,6 +1057,97 @@
             } catch (error) {
                 console.error('Failed to load attempts:', error);
             }
+        }
+
+        function loadStudentProgress() {
+            const studentId = document.getElementById('studentSelector').value;
+            
+            if (!studentId) {
+                document.getElementById('studentOverview').style.display = 'none';
+                document.getElementById('allAttemptsCard').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('studentOverview').style.display = 'block';
+            document.getElementById('allAttemptsCard').style.display = 'none';
+
+            // Filter attempts for selected student
+            const studentAttempts = allAttempts.filter(a => a.user_id == studentId);
+            const completedAttempts = studentAttempts.filter(a => a.score !== null);
+
+            // Calculate stats
+            const totalAttempts = completedAttempts.length;
+            const avgScore = totalAttempts > 0 
+                ? Math.round((completedAttempts.reduce((sum, a) => sum + a.score, 0) / totalAttempts / 15) * 100) 
+                : 0;
+            const topicsStarted = new Set(studentAttempts.map(a => a.topic_id)).size;
+            const bestScore = completedAttempts.length > 0 
+                ? Math.max(...completedAttempts.map(a => a.score)) 
+                : 0;
+
+            // Update stat cards
+            document.getElementById('statTotalAttempts').textContent = totalAttempts;
+            document.getElementById('statAvgScore').textContent = avgScore + '%';
+            document.getElementById('statTopicsStarted').textContent = topicsStarted + '/10';
+            document.getElementById('statBestScore').textContent = bestScore + '/15';
+
+            // Build topic-wise progress
+            const topicProgress = allTopicsList.map(topic => {
+                const topicAttempts = completedAttempts.filter(a => a.topic_id === topic.id);
+                const untimedAttempts = topicAttempts.filter(a => a.set_type === 'untimed');
+                const timedAttempts = topicAttempts.filter(a => a.set_type === 'timed');
+                
+                const untimedBest = untimedAttempts.length > 0 ? Math.max(...untimedAttempts.map(a => a.score)) : null;
+                const timedBest = timedAttempts.length > 0 ? Math.max(...timedAttempts.map(a => a.score)) : null;
+                
+                // Progress: 0-25% (not started), 25-50% (started), 50-75% (good progress), 75-100% (excellent)
+                const maxPossible = 30; // 15 untimed + 15 timed
+                const achieved = (untimedBest || 0) + (timedBest || 0);
+                const progressPercent = Math.round((achieved / maxPossible) * 100);
+
+                return {
+                    ...topic,
+                    untimedBest,
+                    untimedCount: untimedAttempts.length,
+                    timedBest,
+                    timedCount: timedAttempts.length,
+                    progressPercent
+                };
+            });
+
+            // Render topic progress table
+            const topicBody = document.getElementById('topicProgressBody');
+            topicBody.innerHTML = topicProgress.map(t => `
+                <tr>
+                    <td><strong>${t.name}</strong></td>
+                    <td>${t.untimedBest !== null ? `<span class="badge badge-success">${t.untimedBest}/15</span>` : '<span style="color:#999;">-</span>'}</td>
+                    <td>${t.untimedCount}</td>
+                    <td>${t.timedBest !== null ? `<span class="badge badge-warning">${t.timedBest}/15</span>` : '<span style="color:#999;">-</span>'}</td>
+                    <td>${t.timedCount}</td>
+                    <td>
+                        <div style="background: #eee; border-radius: 10px; height: 20px; width: 100%; overflow: hidden;">
+                            <div style="background: ${t.progressPercent >= 70 ? '#28a745' : t.progressPercent >= 40 ? '#ffc107' : '#dc3545'}; height: 100%; width: ${t.progressPercent}%; transition: width 0.3s;"></div>
+                        </div>
+                        <small style="color: #666;">${t.progressPercent}%</small>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Render recent attempts for this student
+            const studentAttemptsBody = document.getElementById('studentAttemptsBody');
+            studentAttemptsBody.innerHTML = studentAttempts.length > 0
+                ? studentAttempts.slice(0, 20).map(a => `
+                    <tr>
+                        <td>${a.topic_name}</td>
+                        <td><span class="badge ${a.set_type === 'timed' ? 'badge-warning' : 'badge-success'}">${a.set_type}</span></td>
+                        <td>${a.score !== null ? `<strong>${a.score}</strong>/15` : '<em>In Progress</em>'}</td>
+                        <td>${new Date(a.started_at).toLocaleString()}</td>
+                        <td>
+                            <button class="btn btn-sm btn-secondary" onclick="viewAttempt(${a.id})">View</button>
+                        </td>
+                    </tr>
+                `).join('')
+                : '<tr><td colspan="5" class="empty-state">No attempts yet</td></tr>';
         }
 
         // Modal functions
