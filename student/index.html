@@ -81,9 +81,9 @@
         }
 
         .btn-primary {
-    background: #B8860B;
-    color: white;
-}
+            background: #B8860B;
+            color: white;
+        }
 
         .btn-primary:hover {
             background: #9a7209;
@@ -203,6 +203,269 @@
         .page-title p {
             color: #666;
             margin-top: 5px;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #1a2332;
+            border-bottom-color: #B8860B;
+        }
+
+        .tab-btn:hover {
+            color: #1a2332;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Course Summary Card */
+        .summary-card {
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .summary-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #B8860B;
+        }
+
+        .stat-item .label {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .overall-progress {
+            text-align: right;
+        }
+
+        .overall-progress .percentage {
+            font-size: 36px;
+            font-weight: bold;
+            color: #B8860B;
+        }
+
+        .overall-progress .label {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Phase Divider */
+        .phase-divider {
+            background: linear-gradient(90deg, #1a2332, #2c3e50);
+            color: white;
+            padding: 12px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phase-divider .icon {
+            font-size: 20px;
+        }
+
+        /* Class Cards */
+        .course-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .class-card {
+            display: flex;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: white;
+            transition: box-shadow 0.3s;
+        }
+
+        .class-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .class-card.locked {
+            opacity: 0.7;
+        }
+
+        .class-number {
+            background: #1a2332;
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+        }
+
+        .class-number .num {
+            font-size: 28px;
+            font-weight: bold;
+            color: #B8860B;
+        }
+
+        .class-number .label {
+            font-size: 12px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .class-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .class-info h3 {
+            font-size: 16px;
+            color: #1a2332;
+            margin-bottom: 8px;
+        }
+
+        .class-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .topic-tag {
+            background: #f0f4f8;
+            color: #555;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .class-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .hw-btn {
+            background: #B8860B;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hw-btn:hover {
+            background: #9a7209;
+        }
+
+        .hw-btn.completed {
+            background: #28a745;
+        }
+
+        .hw-btn.in-progress {
+            background: #e65100;
+        }
+
+        .hw-btn.locked {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .hw-status {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .hw-status.completed {
+            color: #28a745;
+        }
+
+        .question-count {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Progress Badge */
+        .progress-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .progress-badge.not-started {
+            background: #f0f0f0;
+            color: #888;
+        }
+
+        .progress-badge.in-progress {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .progress-badge.completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .progress-badge.locked {
+            background: #f0f0f0;
+            color: #888;
         }
 
         /* Topics Grid */
@@ -392,20 +655,290 @@
             min-height: 120px;
         }
 
-        @media (max-width: 768px) {
-            .topic-main {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        /* Homework Modal */
+        .hw-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
 
-            .topic-buttons {
-                width: 100%;
-                justify-content: space-between;
-            }
+        .hw-modal-overlay.active {
+            display: flex;
+        }
 
-            .expandable-content {
-                grid-template-columns: 1fr;
-            }
+        .hw-modal {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .hw-modal-header {
+            background: #1a2332;
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hw-modal-header h2 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .hw-modal-header .class-badge {
+            background: #B8860B;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .hw-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .hw-modal-body {
+            padding: 25px;
+        }
+
+        .hw-intro {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #B8860B;
+        }
+
+        .hw-intro p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .hw-intro strong {
+            color: #1a2332;
+        }
+
+        /* Drill Section */
+        .drill-section {
+            margin-bottom: 20px;
+        }
+
+        .drill-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .drill-section-title {
+            font-size: 15px;
+            color: #1a2332;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .drill-section-title .section-label {
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .drill-section-title .section-label.review {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .drill-section-title .section-label.new {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .drill-section-title .section-label.test {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .drill-section-progress {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .drill-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .drill-btn {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            background: white;
+        }
+
+        .drill-btn .btn-label {
+            font-size: 13px;
+        }
+
+        .drill-btn .btn-count {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .drill-btn.untimed {
+            border-color: #28a745;
+            color: #28a745;
+        }
+
+        .drill-btn.untimed:hover {
+            background: #28a745;
+            color: white;
+        }
+
+        .drill-btn.timed {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .drill-btn.timed:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+        .drill-btn.completed {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            cursor: default;
+        }
+
+        .drill-btn.completed .score {
+            font-weight: bold;
+        }
+
+        .drill-btn.test {
+            border-color: #B8860B;
+            color: #B8860B;
+        }
+
+        .drill-btn.test:hover {
+            background: #B8860B;
+            color: white;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px dashed #ddd;
+            margin: 20px 0;
+        }
+
+        /* Progress Summary in Modal */
+        .hw-progress-summary {
+            background: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .hw-progress-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .hw-progress-text strong {
+            color: #1a2332;
+        }
+
+        .hw-progress-bar-container {
+            width: 150px;
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .hw-progress-bar {
+            height: 100%;
+            background: #B8860B;
+            border-radius: 4px;
+        }
+
+        /* Test Info Box */
+        .test-info {
+            background: #fff3e0;
+            border: 1px solid #ffcc80;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .test-info h4 {
+            color: #e65100;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .test-info ul {
+            margin-left: 20px;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .start-test-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #B8860B, #d4a017);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s;
+        }
+
+        .start-test-btn:hover {
+            transform: scale(1.02);
         }
 
         /* Practice Page - Bluebook Style */
@@ -497,11 +1030,12 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 0;
-             margin-right: 12px;
-    vertical-align: middle;
+            margin-right: 12px;
+            vertical-align: middle;
         }
-.question-text {
-    display: inline;
+
+        .question-text {
+            display: inline;
             font-size: 16px;
             color: #1a2332;
             margin-bottom: 25px;
@@ -601,80 +1135,49 @@
 
         /* Progress Bar */
         .question-progress {
-            height: 6px;
-            background: linear-gradient(to right, #B8860B 50%, #ddd 50%);
-            border-radius: 3px;
-            margin-bottom: 15px;
-            flex-shrink: 0;
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
         }
 
         .question-progress-bar {
-            height: 100%;
             background: #B8860B;
-            border-radius: 3px;
+            height: 100%;
             transition: width 0.3s;
         }
 
         /* Bottom Navigation */
         .practice-nav-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 8px;
-    border-top: 1px solid #eee;
-    flex-shrink: 0;
-}
-
-        .question-counter {
-    background: #1a2332;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-#nextBtn, #submitBtn {
-    min-width: 100px;
-}
-        .practice-nav-bottom .btn {
-    width: auto;
-}
-
-.login-box .btn-primary {
-    width: 100%;
-}
-        /* Responsive for smaller screens */
-        @media (max-width: 900px) {
-            .question-layout {
-                flex-direction: column;
-            }
-
-            .panel-divider {
-                width: 100%;
-                height: 2px;
-                background: linear-gradient(to right, #ddd 0%, #ddd 50%, transparent 50%, transparent 100%);
-                background-size: 8px 2px;
-                margin: 10px 0;
-            }
-
-            .passage-panel, .question-panel {
-                flex: none;
-            }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+            flex-shrink: 0;
         }
 
-        .question-progress {
-    background: #e0e0e0;
-    height: 8px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    overflow: hidden;
-}
+        .question-counter {
+            background: #1a2332;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
 
-        .question-progress-bar {
-            background: #B8860B;
-            height: 100%;
-            transition: width 0.3s;
+        #nextBtn, #submitBtn {
+            min-width: 100px;
+        }
+
+        .practice-nav-bottom .btn {
+            width: auto;
+        }
+
+        .login-box .btn-primary {
+            width: 100%;
         }
 
         /* Results Page */
@@ -752,6 +1255,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .review-item:hover {
+            transform: translateX(5px);
         }
 
         .review-item.correct {
@@ -958,15 +1467,6 @@
             cursor: not-allowed;
         }
 
-        .review-item {
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .review-item:hover {
-            transform: translateX(5px);
-        }
-
         /* Dashboard visible state */
         .dashboard {
             display: none;
@@ -978,39 +1478,6 @@
 
         .results-container.active {
             display: block;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .topics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .practice-header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .results-details {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-
-        .back-btn {
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0;
-        }
-
-        .back-btn:hover {
-            color: #1a2332;
         }
 
         /* Hide sections by default */
@@ -1054,6 +1521,91 @@
 
         .back-to-login a:hover {
             color: #1a2332;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .question-layout {
+                flex-direction: column;
+            }
+
+            .panel-divider {
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(to right, #ddd 0%, #ddd 50%, transparent 50%, transparent 100%);
+                background-size: 8px 2px;
+                margin: 10px 0;
+            }
+
+            .passage-panel, .question-panel {
+                flex: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topic-main {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topic-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .expandable-content {
+                grid-template-columns: 1fr;
+            }
+
+            .class-card {
+                flex-direction: column;
+            }
+
+            .class-number {
+                flex-direction: row;
+                padding: 15px 20px;
+                gap: 10px;
+            }
+
+            .class-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .class-actions {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .summary-card {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .summary-stats {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .overall-progress {
+                text-align: center;
+            }
+
+            .results-details {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .drill-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -1137,7 +1689,7 @@
             <h1>🎓 SAT by Raj</h1>
             <!-- Practice Info (shown during practice) -->
             <div class="header-practice-info" id="headerPracticeInfo" style="display: none;">
-                <button class="back-btn-header" onclick="exitPractice()">← Back to Topics</button>
+                <button class="back-btn-header" onclick="exitPractice()">← Back</button>
                 <span class="header-divider">|</span>
                 <span class="header-topic" id="practiceTopicName"></span>
                 <span class="header-divider">|</span>
@@ -1153,12 +1705,72 @@
         <!-- Dashboard -->
         <div class="dashboard active" id="dashboard">
             <div class="main-content">
-                <div class="page-title">
-                    <h2>Practice Topics</h2>
-                    <p>Select a topic to start practicing. Click the arrow to view lesson materials.</p>
+                <!-- Tab Navigation -->
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab('course')">📚 My Course</button>
+                    <button class="tab-btn" onclick="switchTab('topics')">📝 Practice Topics</button>
                 </div>
-                <div class="topics-list" id="topicsGrid">
-                    <!-- Topics will be loaded here -->
+
+                <!-- Course Tab Content -->
+                <div class="tab-content active" id="courseTab">
+                    <!-- Summary Card -->
+                    <div class="summary-card">
+                        <div class="summary-stats">
+                            <div class="stat-item">
+                                <div class="number" id="classesCompleted">0</div>
+                                <div class="label">Classes Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number" id="totalQuestionsHW">0</div>
+                                <div class="label">Questions Done</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="number" id="avgAccuracy">-</div>
+                                <div class="label">Avg. Accuracy</div>
+                            </div>
+                        </div>
+                        <div class="overall-progress">
+                            <div class="percentage" id="courseProgress">0%</div>
+                            <div class="label">Course Progress</div>
+                        </div>
+                    </div>
+
+                    <!-- Section Title -->
+                    <div class="page-title">
+                        <h2>Course Schedule & Homework</h2>
+                        <p>Complete homework after each class to reinforce your learning</p>
+                    </div>
+
+                    <!-- Phase 1 -->
+                    <div class="phase-divider">
+                        <span class="icon">📖</span>
+                        <span>PHASE 1: Topic Mastery (Classes 1-4)</span>
+                    </div>
+
+                    <div class="course-timeline" id="phase1Classes">
+                        <!-- Classes 1-4 will be rendered here -->
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-divider">
+                        <span class="icon">🎯</span>
+                        <span>PHASE 2: Integration & Mastery (Classes 5-8)</span>
+                    </div>
+
+                    <div class="course-timeline" id="phase2Classes">
+                        <!-- Classes 5-8 will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Topics Tab Content -->
+                <div class="tab-content" id="topicsTab">
+                    <div class="page-title">
+                        <h2>Practice Topics</h2>
+                        <p>Select a topic to start practicing. Click the arrow to view lesson materials.</p>
+                    </div>
+                    <div class="topics-list" id="topicsGrid">
+                        <!-- Topics will be loaded here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -1205,7 +1817,7 @@
             <div class="results-card">
                 <h2>Practice Complete!</h2>
                 <div class="results-score">
-                    <span id="scoreNum">0</span><span>/15</span>
+                    <span id="scoreNum">0</span><span id="scoreDenom">/15</span>
                 </div>
                 <div class="results-message" id="resultsMessage"></div>
                 <div class="results-details">
@@ -1222,7 +1834,7 @@
                         <div class="label">Time</div>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-large" onclick="showDashboard()">Back to Topics</button>
+                <button class="btn btn-primary btn-large" onclick="showDashboard()">Back to Dashboard</button>
 
                 <div class="review-section">
                     <h3>Review Answers (Click to see details)</h3>
@@ -1255,6 +1867,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- Homework Modal -->
+        <div class="hw-modal-overlay" id="hwModalOverlay" onclick="closeHwModal(event)">
+            <div class="hw-modal" onclick="event.stopPropagation()">
+                <div class="hw-modal-header">
+                    <h2>
+                        <span class="class-badge" id="hwClassBadge">Class 1</span>
+                        <span id="hwModalTitle">Homework</span>
+                    </h2>
+                    <button class="hw-modal-close" onclick="closeHwModal()">&times;</button>
+                </div>
+                <div class="hw-modal-body" id="hwModalBody">
+                    <!-- Homework content will be rendered here -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1262,6 +1890,7 @@
         let token = localStorage.getItem('studentToken');
         let currentUser = null;
         let topics = [];
+        let courseProgress = [];
         let currentAttempt = null;
         let currentQuestions = [];
         let currentQuestionIndex = 0;
@@ -1269,6 +1898,60 @@
         let timerInterval = null;
         let startTime = null;
         let isTimedMode = false;
+        let currentTab = 'course';
+
+        // Homework context
+        let currentHwClass = null;
+        let currentHwSection = null;
+        let currentHwDrillType = null;
+
+        // Class definitions
+        const classDefinitions = {
+            1: {
+                title: 'Punctuation & Grammar Foundations',
+                topics: ['Boundaries', 'Form, Structure & Sense'],
+                totalQuestions: 30
+            },
+            2: {
+                title: 'Expression of Ideas',
+                topics: ['Transitions', 'Rhetorical Synthesis', 'Cross-Text'],
+                totalQuestions: 60
+            },
+            3: {
+                title: 'Reading Comprehension I',
+                topics: ['Words in Context', 'Inferences', 'Text Structure'],
+                totalQuestions: 90
+            },
+            4: {
+                title: 'Reading Comprehension II',
+                topics: ['Central Ideas', 'Command of Evidence'],
+                totalQuestions: 120
+            },
+            5: {
+                title: 'Mixed Practice I',
+                topics: ['All Topics Mixed', 'Timed Drills'],
+                totalQuestions: 54,
+                isTest: true
+            },
+            6: {
+                title: 'Mixed Practice II',
+                topics: ['All Topics Mixed', 'Test Review'],
+                totalQuestions: 54,
+                isTest: true
+            },
+            7: {
+                title: 'Mixed Practice III',
+                topics: ['All Topics Mixed', 'Timed Drills'],
+                totalQuestions: 54,
+                isTest: true
+            },
+            8: {
+                title: 'Final Practice',
+                topics: ['All Topics Mixed', 'Final Assessment'],
+                totalQuestions: 54,
+                isTest: true
+            }
+        };
 
         // Check if already logged in
         if (token) {
@@ -1352,10 +2035,8 @@
                 successDiv.textContent = 'Reset code generated! Please contact your instructor to get the code.';
                 successDiv.style.display = 'block';
                 
-                // Pre-fill email in reset form
                 document.getElementById('resetEmail').value = email;
                 
-                // Show reset form after 2 seconds
                 setTimeout(() => {
                     showResetPassword();
                 }, 2000);
@@ -1407,7 +2088,6 @@
                 successDiv.textContent = 'Password reset successful! Redirecting to login...';
                 successDiv.style.display = 'block';
                 
-                // Redirect to login after 2 seconds
                 setTimeout(() => {
                     showLogin();
                 }, 2000);
@@ -1418,12 +2098,10 @@
             }
         });
 
-        // Navigation functions for forgot/reset password
         function showLogin() {
             document.getElementById('loginBox').style.display = 'block';
             document.getElementById('forgotBox').style.display = 'none';
             document.getElementById('resetBox').style.display = 'none';
-            // Clear messages
             document.getElementById('loginError').style.display = 'none';
             document.getElementById('forgotError').style.display = 'none';
             document.getElementById('forgotSuccess').style.display = 'none';
@@ -1443,7 +2121,6 @@
             document.getElementById('resetBox').style.display = 'block';
         }
 
-        // Logout
         document.getElementById('logoutBtn').addEventListener('click', logout);
 
         function logout() {
@@ -1458,6 +2135,7 @@
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('appContainer').style.display = 'block';
             document.getElementById('userName').textContent = currentUser.name;
+            await loadCourseProgress();
             await loadTopics();
         }
 
@@ -1477,6 +2155,282 @@
             return res.json();
         }
 
+        // Tab switching
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tab === 'course') {
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+                document.getElementById('courseTab').classList.add('active');
+            } else {
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+                document.getElementById('topicsTab').classList.add('active');
+            }
+        }
+
+        // Load course progress
+        async function loadCourseProgress() {
+            try {
+                courseProgress = await apiCall('/student/course/progress');
+                renderCourseProgress();
+            } catch (error) {
+                console.error('Failed to load course progress:', error);
+            }
+        }
+
+        function renderCourseProgress() {
+            // Calculate summary stats
+            const completedClasses = courseProgress.filter(c => c.is_completed).length;
+            const totalQuestions = courseProgress.reduce((sum, c) => sum + (parseInt(c.total_questions) || 0), 0);
+            const totalScore = courseProgress.reduce((sum, c) => sum + (parseInt(c.total_score) || 0), 0);
+            const accuracy = totalQuestions > 0 ? Math.round((totalScore / totalQuestions) * 100) : 0;
+            const progress = Math.round((completedClasses / 8) * 100);
+
+            document.getElementById('classesCompleted').textContent = completedClasses;
+            document.getElementById('totalQuestionsHW').textContent = totalQuestions;
+            document.getElementById('avgAccuracy').textContent = totalQuestions > 0 ? `${accuracy}%` : '-';
+            document.getElementById('courseProgress').textContent = `${progress}%`;
+
+            // Render Phase 1 classes (1-4)
+            const phase1Html = [1, 2, 3, 4].map(num => renderClassCard(num)).join('');
+            document.getElementById('phase1Classes').innerHTML = phase1Html;
+
+            // Render Phase 2 classes (5-8)
+            const phase2Html = [5, 6, 7, 8].map(num => renderClassCard(num)).join('');
+            document.getElementById('phase2Classes').innerHTML = phase2Html;
+        }
+
+        function renderClassCard(classNum) {
+            const classDef = classDefinitions[classNum];
+            const progress = courseProgress.find(p => p.class_number === classNum) || {};
+            
+            const isUnlocked = progress.is_unlocked || false;
+            const isCompleted = progress.is_completed || false;
+            const drillsCompleted = parseInt(progress.drills_completed) || 0;
+            const totalScore = parseInt(progress.total_score) || 0;
+            const totalQuestions = parseInt(progress.total_questions) || 0;
+
+            let statusBadge, hwBtnClass, hwBtnText, hwBtnDisabled;
+
+            if (isCompleted) {
+                statusBadge = '<span class="progress-badge completed">✓ Completed</span>';
+                hwBtnClass = 'hw-btn completed';
+                hwBtnText = '✓ HW Completed';
+                hwBtnDisabled = '';
+            } else if (isUnlocked && drillsCompleted > 0) {
+                statusBadge = '<span class="progress-badge in-progress">⏳ In Progress</span>';
+                hwBtnClass = 'hw-btn in-progress';
+                hwBtnText = '📝 Continue HW';
+                hwBtnDisabled = '';
+            } else if (isUnlocked) {
+                statusBadge = '<span class="progress-badge not-started">○ Not Started</span>';
+                hwBtnClass = 'hw-btn';
+                hwBtnText = '📝 Start HW';
+                hwBtnDisabled = '';
+            } else {
+                statusBadge = '<span class="progress-badge locked">🔒 Locked</span>';
+                hwBtnClass = 'hw-btn locked';
+                hwBtnText = '🔒 Locked';
+                hwBtnDisabled = 'disabled';
+            }
+
+            const hwStatus = isCompleted && totalQuestions > 0 
+                ? `<span class="hw-status completed">Score: ${totalScore}/${totalQuestions} (${Math.round((totalScore/totalQuestions)*100)}%)</span>`
+                : drillsCompleted > 0 
+                    ? `<span class="hw-status">${drillsCompleted} drills completed</span>`
+                    : `<span class="hw-status">${classDef.totalQuestions} questions</span>`;
+
+            return `
+                <div class="class-card ${!isUnlocked ? 'locked' : ''}">
+                    <div class="class-number">
+                        <span class="num">${classNum}</span>
+                        <span class="label">Class</span>
+                    </div>
+                    <div class="class-content">
+                        <div class="class-info">
+                            <h3>${classDef.title}</h3>
+                            <div class="class-topics">
+                                ${classDef.topics.map(t => `<span class="topic-tag">${t}</span>`).join('')}
+                            </div>
+                            <div class="question-count">${classDef.totalQuestions} questions${classDef.isTest ? ' (Full Test)' : ''}</div>
+                        </div>
+                        <div class="class-actions">
+                            ${statusBadge}
+                            <button class="${hwBtnClass}" onclick="openHomeworkModal(${classNum})" ${hwBtnDisabled}>${hwBtnText}</button>
+                            ${hwStatus}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Homework Modal
+        async function openHomeworkModal(classNum) {
+            currentHwClass = classNum;
+            
+            try {
+                const homework = await apiCall(`/student/course/class/${classNum}/homework`);
+                renderHomeworkModal(homework);
+                document.getElementById('hwModalOverlay').classList.add('active');
+            } catch (error) {
+                alert('Error loading homework: ' + error.message);
+            }
+        }
+
+        function renderHomeworkModal(homework) {
+            document.getElementById('hwClassBadge').textContent = `Class ${homework.class_number}`;
+            document.getElementById('hwModalTitle').textContent = `Homework: ${homework.title}`;
+
+            let bodyHtml = '';
+
+            if (homework.is_test) {
+                // Test format (Classes 5-8)
+                bodyHtml = `
+                    <div class="test-info">
+                        <h4>📋 Test Information</h4>
+                        <ul>
+                            <li>${homework.total_questions} questions across all topics (mixed)</li>
+                            <li>2 modules × 27 questions each</li>
+                            <li>Timed: ~32 minutes per module</li>
+                            <li>Simulates real SAT Reading & Writing section</li>
+                        </ul>
+                    </div>
+                    <button class="start-test-btn" onclick="startHomeworkDrill(${homework.class_number}, 1, 'test')">
+                        🚀 Start Full Test
+                    </button>
+                `;
+            } else {
+                // Regular homework format (Classes 1-4)
+                const topicsIntro = homework.sections.map(s => s.topics.join(', ')).join(' + ');
+                
+                bodyHtml = `
+                    <div class="hw-intro">
+                        <p><strong>Topics:</strong> ${topicsIntro}</p>
+                    </div>
+                `;
+
+                homework.sections.forEach((section, idx) => {
+                    const completedDrills = section.drills.filter(d => d.completed).length;
+                    const totalDrills = section.drills.length;
+                    const sectionProgress = section.drills.reduce((sum, d) => sum + (d.completed ? d.total_questions : 0), 0);
+                    const sectionTotal = section.drills.reduce((sum, d) => sum + d.questions, 0);
+
+                    if (idx > 0) {
+                        bodyHtml += '<hr class="section-divider">';
+                    }
+
+                    bodyHtml += `
+                        <div class="drill-section">
+                            <div class="drill-section-header">
+                                <span class="drill-section-title">
+                                    ${section.title}
+                                    <span class="section-label ${section.label.toLowerCase()}">${section.label}</span>
+                                </span>
+                                <span class="drill-section-progress">${completedDrills === totalDrills ? `${sectionProgress}/${sectionTotal} ✓` : `${sectionProgress}/${sectionTotal}`}</span>
+                            </div>
+                            <div class="drill-buttons">
+                                ${section.drills.map(drill => {
+                                    if (drill.completed) {
+                                        return `
+                                            <button class="drill-btn ${drill.type} completed">
+                                                <span class="btn-label">✓ ${drill.type === 'untimed' ? 'Untimed' : 'Timed'}</span>
+                                                <span class="score">${drill.score}/${drill.total_questions}</span>
+                                            </button>
+                                        `;
+                                    } else {
+                                        return `
+                                            <button class="drill-btn ${drill.type}" onclick="startHomeworkDrill(${homework.class_number}, ${section.number}, '${drill.type}')">
+                                                <span class="btn-label">${drill.type === 'untimed' ? '📝 Untimed Drill' : '⏱️ Timed Drill'}</span>
+                                                <span class="btn-count">${drill.questions} questions${drill.time_minutes ? ` • ${drill.time_minutes} min` : ''}</span>
+                                            </button>
+                                        `;
+                                    }
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Progress summary
+                const totalCompleted = homework.sections.reduce((sum, s) => 
+                    sum + s.drills.reduce((dsum, d) => dsum + (d.completed ? d.total_questions : 0), 0), 0);
+                const progressPercent = Math.round((totalCompleted / homework.total_questions) * 100);
+
+                bodyHtml += `
+                    <div class="hw-progress-summary">
+                        <span class="hw-progress-text"><strong>${totalCompleted}</strong> of <strong>${homework.total_questions}</strong> questions completed</span>
+                        <div class="hw-progress-bar-container">
+                            <div class="hw-progress-bar" style="width: ${progressPercent}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('hwModalBody').innerHTML = bodyHtml;
+        }
+
+        function closeHwModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('hwModalOverlay').classList.remove('active');
+        }
+
+        async function startHomeworkDrill(classNum, sectionNum, drillType) {
+            currentHwClass = classNum;
+            currentHwSection = sectionNum;
+            currentHwDrillType = drillType;
+
+            try {
+                const drillData = await apiCall('/student/course/drills/start', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        class_number: classNum,
+                        section_number: sectionNum,
+                        drill_type: drillType
+                    })
+                });
+
+                currentQuestions = drillData.questions;
+                
+                if (currentQuestions.length === 0) {
+                    alert('No questions available for this drill yet. Please check back later.');
+                    return;
+                }
+
+                isTimedMode = drillType === 'timed' || drillType === 'test';
+                currentQuestionIndex = 0;
+                answers = {};
+                startTime = Date.now();
+
+                // Setup UI
+                const classDef = classDefinitions[classNum];
+                document.getElementById('practiceTopicName').textContent = `Class ${classNum}: ${classDef.title}`;
+                document.getElementById('practiceMode').textContent = isTimedMode 
+                    ? `${drillType === 'test' ? 'Full Test' : 'Timed'} - ${drillType === 'test' ? '64' : '15'} minutes` 
+                    : 'Untimed Mode';
+
+                // Update score denominator
+                document.getElementById('scoreDenom').textContent = `/${currentQuestions.length}`;
+
+                // Show/hide timer
+                const timerEl = document.getElementById('timer');
+                if (isTimedMode) {
+                    timerEl.style.display = 'block';
+                    startTimer(drillType === 'test' ? 64 * 60 : 15 * 60);
+                } else {
+                    timerEl.style.display = 'none';
+                }
+
+                closeHwModal();
+                showPractice();
+                renderQuestion();
+            } catch (error) {
+                alert('Error starting drill: ' + error.message);
+            }
+        }
+
+        // Load topics
         async function loadTopics() {
             try {
                 topics = await apiCall('/student/topics');
@@ -1489,7 +2443,6 @@
         function renderTopics() {
             const grid = document.getElementById('topicsGrid');
             grid.innerHTML = topics.map((t, index) => {
-                // Determine progress indicators
                 const untimedProgress = t.best_untimed_score ? (t.best_untimed_score >= 12 ? 'complete' : 'partial') : 'none';
                 const timedProgress = t.best_timed_score ? (t.best_timed_score >= 12 ? 'complete' : 'partial') : 'none';
                 const untimedWidth = t.best_untimed_score ? Math.round((t.best_untimed_score / 15) * 100) : 0;
@@ -1544,8 +2497,12 @@
         }
 
         async function startPractice(topicId, setType, topicName) {
+            // Reset homework context
+            currentHwClass = null;
+            currentHwSection = null;
+            currentHwDrillType = null;
+
             try {
-                // Load questions
                 currentQuestions = await apiCall(`/student/topics/${topicId}/questions/${setType}`);
                 
                 if (currentQuestions.length === 0) {
@@ -1553,7 +2510,6 @@
                     return;
                 }
 
-                // Create attempt
                 currentAttempt = await apiCall('/student/attempts', {
                     method: 'POST',
                     body: JSON.stringify({ topic_id: topicId, set_type: setType })
@@ -1564,15 +2520,14 @@
                 answers = {};
                 startTime = Date.now();
 
-                // Setup UI
                 document.getElementById('practiceTopicName').textContent = topicName;
                 document.getElementById('practiceMode').textContent = isTimedMode ? 'Timed Mode - 15 minutes' : 'Untimed Mode - Take your time';
+                document.getElementById('scoreDenom').textContent = `/${currentQuestions.length}`;
 
-                // Show/hide timer
                 const timerEl = document.getElementById('timer');
                 if (isTimedMode) {
                     timerEl.style.display = 'block';
-                    startTimer(15 * 60); // 15 minutes
+                    startTimer(15 * 60);
                 } else {
                     timerEl.style.display = 'none';
                 }
@@ -1590,7 +2545,8 @@
             document.getElementById('resultsContainer').classList.remove('active');
             document.getElementById('headerPracticeInfo').style.display = 'none';
             stopTimer();
-            loadTopics(); // Refresh progress
+            loadCourseProgress();
+            loadTopics();
         }
 
         function showPractice() {
@@ -1612,16 +2568,10 @@
             const q = currentQuestions[currentQuestionIndex];
             const total = currentQuestions.length;
 
-            // Progress bar
             document.getElementById('progressBar').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
-
-            // Question number (just the number in circle)
             document.getElementById('questionNumber').textContent = currentQuestionIndex + 1;
-
-            // Question counter at bottom
             document.getElementById('questionCounter').textContent = `Question ${currentQuestionIndex + 1} of ${total}`;
 
-            // Passage
             const passageEl = document.getElementById('passage');
             const passagePanel = document.querySelector('.passage-panel');
             if (q.passage) {
@@ -1633,10 +2583,8 @@
                 document.querySelector('.panel-divider').style.display = 'none';
             }
 
-            // Question text
             document.getElementById('questionText').textContent = q.question_text;
 
-            // Options
             const optionsEl = document.getElementById('options');
             const options = [
                 { letter: 'A', text: q.option_a },
@@ -1667,7 +2615,6 @@
                 `;
             }).join('');
 
-            // Explanation (for untimed mode after answering)
             const explanationBox = document.getElementById('explanationBox');
             if (showResult && savedAnswer.explanation) {
                 document.getElementById('explanationText').textContent = savedAnswer.explanation;
@@ -1676,7 +2623,6 @@
                 explanationBox.style.display = 'none';
             }
 
-            // Navigation buttons
             document.getElementById('prevBtn').style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
             
             const isLastQuestion = currentQuestionIndex === total - 1;
@@ -1687,7 +2633,6 @@
         async function selectOption(letter) {
             const q = currentQuestions[currentQuestionIndex];
             
-            // If already answered in untimed mode, don't allow change
             if (!isTimedMode && answers[q.id] && answers[q.id].submitted) {
                 return;
             }
@@ -1695,12 +2640,22 @@
             answers[q.id] = { selected: letter, submitted: false };
 
             if (!isTimedMode) {
-                // Submit immediately in untimed mode
                 try {
-                    const result = await apiCall(`/student/attempts/${currentAttempt.id}/responses`, {
-                        method: 'POST',
-                        body: JSON.stringify({ question_id: q.id, selected_answer: letter })
-                    });
+                    let result;
+                    if (currentHwClass) {
+                        // For homework drills, we'll handle this differently
+                        // For now, just mark as correct/incorrect locally
+                        // In a full implementation, you'd have a separate endpoint
+                        result = await apiCall(`/student/attempts/${currentAttempt?.id || 0}/responses`, {
+                            method: 'POST',
+                            body: JSON.stringify({ question_id: q.id, selected_answer: letter })
+                        });
+                    } else {
+                        result = await apiCall(`/student/attempts/${currentAttempt.id}/responses`, {
+                            method: 'POST',
+                            body: JSON.stringify({ question_id: q.id, selected_answer: letter })
+                        });
+                    }
                     answers[q.id] = {
                         selected: letter,
                         submitted: true,
@@ -1741,8 +2696,30 @@
 
             try {
                 let results;
-                if (isTimedMode) {
-                    // Submit all at once for timed mode
+                
+                if (currentHwClass) {
+                    // Homework drill completion
+                    const correct = Object.values(answers).filter(a => a.is_correct).length;
+                    results = await apiCall('/student/course/drills/complete', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            class_number: currentHwClass,
+                            section_number: currentHwSection,
+                            drill_type: currentHwDrillType,
+                            score: correct,
+                            total_questions: currentQuestions.length,
+                            time_taken_seconds: timeSpent
+                        })
+                    });
+
+                    results = {
+                        score: correct,
+                        total: currentQuestions.length,
+                        time_taken_seconds: timeSpent,
+                        class_completed: results.class_completed,
+                        next_class_unlocked: results.next_class_unlocked
+                    };
+                } else if (isTimedMode) {
                     const responses = currentQuestions.map(q => ({
                         question_id: q.id,
                         selected_answer: answers[q.id]?.selected || null
@@ -1753,7 +2730,6 @@
                         body: JSON.stringify({ responses, time_taken_seconds: timeSpent })
                     });
 
-                    // Store results for review
                     results.results.forEach(r => {
                         answers[r.question_id] = {
                             selected: r.selected_answer,
@@ -1764,12 +2740,10 @@
                         };
                     });
                 } else {
-                    // Complete untimed attempt
                     await apiCall(`/student/attempts/${currentAttempt.id}/complete`, {
                         method: 'PUT'
                     });
 
-                    // Calculate score from answers
                     const correct = Object.values(answers).filter(a => a.is_correct).length;
                     results = {
                         score: correct,
@@ -1790,6 +2764,7 @@
             const incorrect = total - score;
 
             document.getElementById('scoreNum').textContent = score;
+            document.getElementById('scoreDenom').textContent = `/${total}`;
             document.getElementById('correctCount').textContent = score;
             document.getElementById('incorrectCount').textContent = incorrect;
 
@@ -1797,16 +2772,22 @@
             const seconds = timeSpent % 60;
             document.getElementById('timeSpent').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
 
-            // Message based on score
             let message;
             const percentage = (score / total) * 100;
             if (percentage >= 90) message = "Excellent work! 🌟";
             else if (percentage >= 70) message = "Good job! Keep practicing! 👍";
             else if (percentage >= 50) message = "Nice effort! Room for improvement. 📚";
             else message = "Keep practicing! You'll get better! 💪";
+            
+            if (results.class_completed) {
+                message += " Class homework completed!";
+            }
+            if (results.next_class_unlocked) {
+                message += " Next class unlocked! 🎉";
+            }
+            
             document.getElementById('resultsMessage').textContent = message;
 
-            // Review list
             const reviewList = document.getElementById('reviewList');
             reviewList.innerHTML = currentQuestions.map((q, i) => {
                 const answer = answers[q.id] || {};
@@ -1834,7 +2815,6 @@
             }
         }
 
-        // Timer functions
         function startTimer(seconds) {
             let remaining = seconds;
             updateTimerDisplay(remaining);
@@ -1887,13 +2867,9 @@
             const answer = answers[q.id] || {};
             const total = currentQuestions.length;
 
-            // Title
             document.getElementById('reviewModalTitle').textContent = `Question ${currentReviewIndex + 1} of ${total}`;
-            
-            // Counter
             document.getElementById('reviewCounter').textContent = `${currentReviewIndex + 1} / ${total}`;
 
-            // Result badge
             const badgeEl = document.getElementById('reviewResultBadge');
             if (answer.is_correct) {
                 badgeEl.className = 'review-result-badge correct';
@@ -1903,7 +2879,6 @@
                 badgeEl.textContent = '✗ Incorrect';
             }
 
-            // Passage
             const passageEl = document.getElementById('reviewPassage');
             if (q.passage) {
                 passageEl.style.display = 'block';
@@ -1912,10 +2887,8 @@
                 passageEl.style.display = 'none';
             }
 
-            // Question
             document.getElementById('reviewQuestion').textContent = q.question_text;
 
-            // Options
             const options = [
                 { letter: 'A', text: q.option_a },
                 { letter: 'B', text: q.option_b },
@@ -1948,13 +2921,11 @@
                 `;
             }).join('');
 
-            // Explanation
             const explanationEl = document.getElementById('reviewExplanation');
             const explanationText = answer.explanation || 'No explanation available for this question.';
             document.getElementById('reviewExplanationText').textContent = explanationText;
             explanationEl.style.display = 'block';
 
-            // Navigation buttons
             document.getElementById('reviewPrevBtn').disabled = currentReviewIndex === 0;
             document.getElementById('reviewNextBtn').disabled = currentReviewIndex === total - 1;
         }
@@ -1973,10 +2944,10 @@
             }
         }
 
-        // Close modal on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeReviewModal();
+                closeHwModal();
             }
             if (document.getElementById('reviewModalOverlay').classList.contains('active')) {
                 if (e.key === 'ArrowLeft') reviewPrevQuestion();
