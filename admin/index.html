@@ -132,6 +132,11 @@
             font-size: 12px;
         }
 
+        .btn-xs {
+            padding: 4px 8px;
+            font-size: 11px;
+        }
+
         .error-message {
             background: #f8d7da;
             color: #721c24;
@@ -323,6 +328,16 @@
             color: #721c24;
         }
 
+        .badge-info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .badge-secondary {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
         /* Modal */
         .modal-overlay {
             position: fixed;
@@ -345,6 +360,10 @@
             max-width: 600px;
             max-height: 90vh;
             overflow-y: auto;
+        }
+
+        .modal-lg {
+            max-width: 800px;
         }
 
         .modal h2 {
@@ -414,6 +433,113 @@
         .actions {
             display: flex;
             gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        /* Course Progress Styles */
+        .class-progress-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .class-progress-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .class-progress-card.unlocked {
+            border-color: #B8860B;
+            background: #fffbf0;
+        }
+
+        .class-progress-card.completed {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+
+        .class-progress-card.locked {
+            border-color: #ddd;
+            background: #f5f5f5;
+            opacity: 0.7;
+        }
+
+        .class-progress-card .class-num {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a2332;
+        }
+
+        .class-progress-card .class-status {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .class-progress-card .class-actions {
+            margin-top: 10px;
+        }
+
+        .unlock-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .unlock-btn:hover {
+            background: #218838;
+        }
+
+        .lock-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .lock-btn:hover {
+            background: #c82333;
+        }
+
+        /* Homework drills table */
+        .drills-summary {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .drill-badge {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .drill-badge.untimed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .drill-badge.timed {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .drill-badge.test {
+            background: #d1ecf1;
+            color: #0c5460;
         }
     </style>
 </head>
@@ -448,8 +574,9 @@
             <ul class="nav-menu">
                 <li class="active" data-section="overview">📊 <span>Overview</span></li>
                 <li data-section="students">👥 <span>Students</span></li>
+                <li data-section="course">📚 <span>Course Progress</span></li>
                 <li data-section="questions">📝 <span>Questions</span></li>
-                <li data-section="attempts">📈 <span>Student Progress</span></li>
+                <li data-section="attempts">📈 <span>Practice History</span></li>
             </ul>
             <button class="logout-btn" id="logoutBtn">Logout</button>
         </nav>
@@ -506,8 +633,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Role</th>
                                     <th>Status</th>
+                                    <th>Course Progress</th>
                                     <th>Created</th>
                                     <th>Actions</th>
                                 </tr>
@@ -516,6 +643,88 @@
                                 <tr><td colspan="6" class="loading">Loading...</td></tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Progress Section -->
+            <section class="section" id="courseSection">
+                <div class="page-header">
+                    <h1>Course Progress</h1>
+                    <p>View and manage student course progress. Unlock/lock classes manually.</p>
+                </div>
+
+                <!-- Student Selector -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="card-body">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label><strong>Select Student:</strong></label>
+                            <select id="courseStudentSelector" onchange="loadStudentCourseProgress()" style="max-width: 400px;">
+                                <option value="">-- Choose a student --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Overview (all students) -->
+                <div class="card" id="courseOverviewCard">
+                    <div class="card-header">
+                        <h2>All Students Course Overview</h2>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Current Class</th>
+                                    <th>Classes Completed</th>
+                                    <th>HW Score</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courseOverviewBody">
+                                <tr><td colspan="5" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Individual Student Course Progress -->
+                <div id="studentCourseDetail" style="display: none;">
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-header">
+                            <h2>📚 Class Progress for <span id="selectedStudentName"></span></h2>
+                        </div>
+                        <div class="card-body">
+                            <p style="margin-bottom: 15px; color: #666;">Click "Unlock" to manually give access to a class, or "Lock" to remove access.</p>
+                            <div class="class-progress-grid" id="classProgressGrid">
+                                <!-- Class cards will be rendered here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Homework Drills Detail -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>📝 Homework Drill Details</h2>
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Class</th>
+                                        <th>Section</th>
+                                        <th>Type</th>
+                                        <th>Score</th>
+                                        <th>Time</th>
+                                        <th>Completed</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="homeworkDrillsBody">
+                                    <tr><td colspan="6" class="empty-state">No homework drills completed yet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -541,7 +750,7 @@
                 <div class="card" style="margin-bottom: 20px;">
                     <div class="card-header">
                         <h2>📤 Bulk Upload Questions</h2>
-                        <a href="https://docs.google.com/spreadsheets/d/1placeholder/export?format=xlsx" class="btn btn-secondary" id="downloadTemplateBtn" onclick="downloadTemplate(event)">📥 Download Template</a>
+                        <a href="#" class="btn btn-secondary" id="downloadTemplateBtn" onclick="downloadTemplate(event)">📥 Download Template</a>
                     </div>
                     <div class="card-body">
                         <p style="margin-bottom: 15px; color: #666;">Upload an Excel file (.xlsx) with multiple questions. The file should have columns: topic_name, set_type, question_number, passage, question_text, option_a, option_b, option_c, option_d, correct_answer, explanation</p>
@@ -581,17 +790,17 @@
             <!-- Attempts Section -->
             <section class="section" id="attemptsSection">
                 <div class="page-header">
-                    <h1>Student Progress</h1>
-                    <p>View detailed progress for each student.</p>
+                    <h1>Practice History</h1>
+                    <p>View topic-based practice attempts (from "Practice Topics" tab).</p>
                 </div>
                 
                 <!-- Student Selector -->
                 <div class="card" style="margin-bottom: 20px;">
                     <div class="card-body">
                         <div class="form-group" style="margin-bottom: 0;">
-                            <label><strong>Select Student:</strong></label>
+                            <label><strong>Filter by Student:</strong></label>
                             <select id="studentSelector" onchange="loadStudentProgress()" style="max-width: 400px;">
-                                <option value="">-- Choose a student --</option>
+                                <option value="">-- All Students --</option>
                             </select>
                         </div>
                     </div>
@@ -670,7 +879,7 @@
                 <!-- All Attempts (shown when no student selected) -->
                 <div class="card" id="allAttemptsCard">
                     <div class="card-header">
-                        <h2>All Attempts</h2>
+                        <h2>All Practice Attempts</h2>
                     </div>
                     <div class="card-body">
                         <table>
@@ -808,6 +1017,7 @@
         const API_URL = 'https://satbyraj-backend.onrender.com/api';
         let token = localStorage.getItem('adminToken');
         let topics = [];
+        let allStudentsList = [];
 
         // Check if already logged in
         if (token) {
@@ -869,6 +1079,7 @@
 
                 // Load data for section
                 if (section === 'students') loadStudents();
+                if (section === 'course') loadCourseOverview();
                 if (section === 'questions') loadQuestions();
                 if (section === 'attempts') loadAttempts();
             });
@@ -878,6 +1089,7 @@
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
             await loadTopics();
+            await loadStudentsList();
             loadOverview();
         }
 
@@ -895,6 +1107,26 @@
                 throw new Error(data.error || 'API error');
             }
             return res.json();
+        }
+
+        async function loadStudentsList() {
+            try {
+                const users = await apiCall('/admin/users');
+                allStudentsList = users.filter(u => u.role !== 'admin');
+                
+                // Populate all student selectors
+                const selectors = ['courseStudentSelector', 'studentSelector'];
+                selectors.forEach(id => {
+                    const selector = document.getElementById(id);
+                    if (selector) {
+                        const firstOption = id === 'studentSelector' ? '<option value="">-- All Students --</option>' : '<option value="">-- Choose a student --</option>';
+                        selector.innerHTML = firstOption + 
+                            allStudentsList.map(s => `<option value="${s.id}">${s.name} (${s.email})</option>`).join('');
+                    }
+                });
+            } catch (error) {
+                console.error('Failed to load students list:', error);
+            }
         }
 
         async function loadTopics() {
@@ -962,14 +1194,30 @@
                 const users = await apiCall('/admin/users');
                 const students = users.filter(u => u.role !== 'admin');
 
+                // Try to get course overview for progress info
+                let courseOverview = [];
+                try {
+                    courseOverview = await apiCall('/admin/course-overview');
+                } catch (e) {
+                    console.log('Course overview not available');
+                }
+
                 const tbody = document.getElementById('studentsTableBody');
                 tbody.innerHTML = students.length > 0 
-                    ? students.map(s => `
+                    ? students.map(s => {
+                        const progress = courseOverview.find(c => c.user_id === s.id);
+                        const classesCompleted = progress ? (progress.classes_completed || 0) : 0;
+                        const currentClass = progress ? (progress.current_class || 1) : 1;
+                        
+                        return `
                         <tr>
                             <td>${s.name}</td>
                             <td>${s.email}</td>
-                            <td><span class="badge ${s.role === 'student' ? 'badge-success' : 'badge-warning'}">${s.role}</span></td>
                             <td><span class="badge ${s.is_active ? 'badge-success' : 'badge-danger'}">${s.is_active ? 'Active' : 'Inactive'}</span></td>
+                            <td>
+                                <span class="badge badge-info">Class ${currentClass}</span>
+                                <small style="color:#666;">(${classesCompleted}/8 done)</small>
+                            </td>
                             <td>${new Date(s.created_at).toLocaleDateString()}</td>
                             <td class="actions">
                                 <button class="btn btn-sm btn-secondary" onclick="editStudent(${s.id}, '${s.name.replace(/'/g, "\\'")}', '${s.email}', ${s.is_active})">Edit</button>
@@ -977,12 +1225,159 @@
                                 <button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.id}, '${s.name.replace(/'/g, "\\'")}')">Delete</button>
                             </td>
                         </tr>
-                    `).join('')
+                    `}).join('')
                     : '<tr><td colspan="6" class="empty-state">No students yet. Add your first student!</td></tr>';
             } catch (error) {
                 console.error('Failed to load students:', error);
             }
         }
+
+        // ==================== COURSE PROGRESS ====================
+
+        async function loadCourseOverview() {
+            try {
+                const overview = await apiCall('/admin/course-overview');
+                
+                const tbody = document.getElementById('courseOverviewBody');
+                tbody.innerHTML = overview.length > 0 
+                    ? overview.map(s => {
+                        const accuracy = s.total_questions > 0 
+                            ? Math.round((s.total_score / s.total_questions) * 100) 
+                            : 0;
+                        return `
+                        <tr>
+                            <td><strong>${s.name}</strong><br><small>${s.email}</small></td>
+                            <td><span class="badge badge-info">Class ${s.current_class || 1}</span></td>
+                            <td>${s.classes_completed || 0} / 8</td>
+                            <td>${s.total_questions > 0 ? `${s.total_score}/${s.total_questions} (${accuracy}%)` : '-'}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="selectCourseStudent(${s.user_id})">View / Manage</button>
+                            </td>
+                        </tr>
+                    `}).join('')
+                    : '<tr><td colspan="5" class="empty-state">No students enrolled yet</td></tr>';
+            } catch (error) {
+                console.error('Failed to load course overview:', error);
+                document.getElementById('courseOverviewBody').innerHTML = 
+                    '<tr><td colspan="5" class="empty-state">Error loading data</td></tr>';
+            }
+        }
+
+        function selectCourseStudent(studentId) {
+            document.getElementById('courseStudentSelector').value = studentId;
+            loadStudentCourseProgress();
+        }
+
+        async function loadStudentCourseProgress() {
+            const studentId = document.getElementById('courseStudentSelector').value;
+            
+            if (!studentId) {
+                document.getElementById('studentCourseDetail').style.display = 'none';
+                document.getElementById('courseOverviewCard').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('studentCourseDetail').style.display = 'block';
+            document.getElementById('courseOverviewCard').style.display = 'none';
+
+            // Get student name
+            const student = allStudentsList.find(s => s.id == studentId);
+            document.getElementById('selectedStudentName').textContent = student ? student.name : 'Student';
+
+            try {
+                // Load class progress
+                const progress = await apiCall(`/admin/users/${studentId}/course-progress`);
+                
+                // Render class cards
+                const grid = document.getElementById('classProgressGrid');
+                grid.innerHTML = [1,2,3,4,5,6,7,8].map(num => {
+                    const classProgress = progress.find(p => p.class_number === num) || {};
+                    const isUnlocked = classProgress.is_unlocked || false;
+                    const isCompleted = classProgress.is_completed || false;
+                    const unlockedBy = classProgress.unlocked_by || '';
+                    
+                    let statusClass = 'locked';
+                    let statusText = '🔒 Locked';
+                    let actionBtn = `<button class="unlock-btn" onclick="unlockClass(${studentId}, ${num})">Unlock</button>`;
+                    
+                    if (isCompleted) {
+                        statusClass = 'completed';
+                        statusText = '✓ Completed';
+                        actionBtn = `<button class="lock-btn" onclick="lockClass(${studentId}, ${num})" ${num === 1 ? 'disabled' : ''}>Lock</button>`;
+                    } else if (isUnlocked) {
+                        statusClass = 'unlocked';
+                        statusText = '○ In Progress';
+                        if (unlockedBy === 'admin') statusText += ' (Admin)';
+                        actionBtn = `<button class="lock-btn" onclick="lockClass(${studentId}, ${num})" ${num === 1 ? 'disabled' : ''}>Lock</button>`;
+                    }
+                    
+                    return `
+                        <div class="class-progress-card ${statusClass}">
+                            <div class="class-num">Class ${num}</div>
+                            <div class="class-status">${statusText}</div>
+                            <div class="class-actions">${actionBtn}</div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Load homework drills
+                const drills = await apiCall(`/admin/users/${studentId}/homework-drills`);
+                
+                const drillsBody = document.getElementById('homeworkDrillsBody');
+                drillsBody.innerHTML = drills.length > 0 
+                    ? drills.map(d => `
+                        <tr>
+                            <td>Class ${d.class_number}</td>
+                            <td>Section ${d.section_number}</td>
+                            <td><span class="badge ${d.drill_type === 'timed' ? 'badge-warning' : d.drill_type === 'test' ? 'badge-info' : 'badge-success'}">${d.drill_type}</span></td>
+                            <td><strong>${d.score}</strong> / ${d.total_questions}</td>
+                            <td>${d.time_taken_seconds ? formatTime(d.time_taken_seconds) : '-'}</td>
+                            <td>${new Date(d.completed_at).toLocaleString()}</td>
+                        </tr>
+                    `).join('')
+                    : '<tr><td colspan="6" class="empty-state">No homework drills completed yet</td></tr>';
+
+            } catch (error) {
+                console.error('Failed to load student course progress:', error);
+            }
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        async function unlockClass(studentId, classNumber) {
+            try {
+                await apiCall(`/admin/users/${studentId}/unlock-class`, {
+                    method: 'POST',
+                    body: JSON.stringify({ class_number: classNumber })
+                });
+                alert(`Class ${classNumber} unlocked successfully!`);
+                loadStudentCourseProgress();
+            } catch (error) {
+                alert('Error unlocking class: ' + error.message);
+            }
+        }
+
+        async function lockClass(studentId, classNumber) {
+            if (!confirm(`Are you sure you want to lock Class ${classNumber}? The student will lose access.`)) {
+                return;
+            }
+            try {
+                await apiCall(`/admin/users/${studentId}/lock-class`, {
+                    method: 'POST',
+                    body: JSON.stringify({ class_number: classNumber })
+                });
+                alert(`Class ${classNumber} locked.`);
+                loadStudentCourseProgress();
+            } catch (error) {
+                alert('Error locking class: ' + error.message);
+            }
+        }
+
+        // ==================== QUESTIONS ====================
 
         async function loadQuestions() {
             try {
@@ -1017,28 +1412,16 @@
             }
         }
 
+        // ==================== ATTEMPTS ====================
+
         let allAttempts = [];
-        let allStudentsList = [];
         let allTopicsList = [];
 
         async function loadAttempts() {
             try {
-                // Load attempts
                 allAttempts = await apiCall('/admin/attempts');
-                
-                // Load students for selector
-                const users = await apiCall('/admin/users');
-                allStudentsList = users.filter(u => u.role !== 'admin');
-                
-                // Load topics
                 allTopicsList = await apiCall('/admin/topics');
 
-                // Populate student selector
-                const selector = document.getElementById('studentSelector');
-                selector.innerHTML = '<option value="">-- Choose a student --</option>' +
-                    allStudentsList.map(s => `<option value="${s.id}">${s.name} (${s.email})</option>`).join('');
-
-                // Show all attempts table
                 const tbody = document.getElementById('attemptsTableBody');
                 tbody.innerHTML = allAttempts.length > 0 
                     ? allAttempts.map(a => `
@@ -1085,7 +1468,6 @@
                 ? Math.max(...completedAttempts.map(a => a.score)) 
                 : 0;
 
-            // Update stat cards
             document.getElementById('statTotalAttempts').textContent = totalAttempts;
             document.getElementById('statAvgScore').textContent = avgScore + '%';
             document.getElementById('statTopicsStarted').textContent = topicsStarted + '/10';
@@ -1100,8 +1482,7 @@
                 const untimedBest = untimedAttempts.length > 0 ? Math.max(...untimedAttempts.map(a => a.score)) : null;
                 const timedBest = timedAttempts.length > 0 ? Math.max(...timedAttempts.map(a => a.score)) : null;
                 
-                // Progress: 0-25% (not started), 25-50% (started), 50-75% (good progress), 75-100% (excellent)
-                const maxPossible = 30; // 15 untimed + 15 timed
+                const maxPossible = 30;
                 const achieved = (untimedBest || 0) + (timedBest || 0);
                 const progressPercent = Math.round((achieved / maxPossible) * 100);
 
@@ -1115,7 +1496,6 @@
                 };
             });
 
-            // Render topic progress table
             const topicBody = document.getElementById('topicProgressBody');
             topicBody.innerHTML = topicProgress.map(t => `
                 <tr>
@@ -1133,7 +1513,6 @@
                 </tr>
             `).join('');
 
-            // Render recent attempts for this student
             const studentAttemptsBody = document.getElementById('studentAttemptsBody');
             studentAttemptsBody.innerHTML = studentAttempts.length > 0
                 ? studentAttempts.slice(0, 20).map(a => `
@@ -1150,7 +1529,8 @@
                 : '<tr><td colspan="5" class="empty-state">No attempts yet</td></tr>';
         }
 
-        // Modal functions
+        // ==================== MODALS ====================
+
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
@@ -1190,7 +1570,6 @@
 
             try {
                 if (id) {
-                    // Update
                     const body = { name, is_active: isActive };
                     if (password) body.password = password;
                     await apiCall(`/admin/users/${id}`, {
@@ -1198,7 +1577,6 @@
                         body: JSON.stringify(body)
                     });
                 } else {
-                    // Create
                     await apiCall('/admin/users', {
                         method: 'POST',
                         body: JSON.stringify({ name, email, password })
@@ -1206,6 +1584,7 @@
                 }
                 closeModal('studentModal');
                 loadStudents();
+                loadStudentsList();
             } catch (error) {
                 alert('Error: ' + error.message);
             }
@@ -1216,13 +1595,13 @@
                 try {
                     await apiCall(`/admin/users/${id}`, { method: 'DELETE' });
                     loadStudents();
+                    loadStudentsList();
                 } catch (error) {
                     alert('Error: ' + error.message);
                 }
             }
         }
 
-        // Question functions
         function showAddQuestionModal() {
             document.getElementById('questionModalTitle').textContent = 'Add Question';
             document.getElementById('questionForm').reset();
@@ -1347,14 +1726,12 @@
         function downloadTemplate(event) {
             event.preventDefault();
             
-            // Create template data
             const templateData = [
                 ['topic_name', 'set_type', 'question_number', 'passage', 'question_text', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer', 'explanation'],
                 ['Words in Context', 'untimed', 1, 'The artist\'s innovative approach challenged conventions.', 'In this context, "innovative" most nearly means', 'traditional', 'groundbreaking', 'expensive', 'complicated', 'B', 'Innovative means introducing new ideas, similar to groundbreaking.'],
                 ['Words in Context', 'untimed', 2, '', 'Sample question text here', 'Option A', 'Option B', 'Option C', 'Option D', 'A', 'Explanation here'],
             ];
             
-            // Create CSV content
             let csvContent = templateData.map(row => 
                 row.map(cell => {
                     if (typeof cell === 'string' && (cell.includes(',') || cell.includes('"') || cell.includes('\n'))) {
@@ -1364,7 +1741,6 @@
                 }).join(',')
             ).join('\n');
             
-            // Download as CSV (can be opened in Excel)
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
@@ -1423,7 +1799,6 @@
             }
         }
 
-        // Generate password reset code for a student
         async function generateResetCode(userId, email) {
             try {
                 const result = await apiCall(`/admin/users/${userId}/reset-code`, {
